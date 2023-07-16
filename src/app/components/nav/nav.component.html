@@ -1,0 +1,50 @@
+<nav class="relative flex w-full flex-wrap items-center justify-between py-5 " data-te-navbar-ref>
+    <div>
+        <a href="/" class="font-bold  text-3xl text-black">Travello</a>
+    </div>
+    <div class="flex justify-center">
+        <a href=""
+            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">Destinations</a>
+        <a href=""
+            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">Hotels</a>
+        <a href=""
+            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">Flights</a>
+        <a href=""
+            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100/75 hover:text-slate-900">Bookings</a>
+    </div>
+    <div class="flex">
+        <div class="" *ngIf="!isLoggedIn">
+            <button class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900"
+                (click)="modalService.onLoginButtonClick()">Login</button>
+
+            <span class="border-l mx-3"></span>
+
+            <button class="rounded-lg 
+            px-3 py-1 
+            text-slate-700 
+            font-medium 
+            hover:bg-slate-100 
+            hover:text-slate-900 
+            border-black 
+            border-2  " (click)="modalService.onSignupButtonClick()">
+                Sign up
+                <mat-icon class="py-1">person</mat-icon>
+            </button>
+        </div>
+        <div class="" *ngIf="isLoggedIn">
+            <button
+                class="
+                rounded-lg
+                px-3
+                py-2
+                text-slate-700
+                font-medium
+                hover:bg-slate-100
+                hover:text-slate-900">Profile</button>
+        </div>
+
+        <span class="border-l mx-3"></span>
+        <button class=" px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">EN
+            <mat-icon class=" py-2">keyboard_arrow_down</mat-icon></button>
+    </div>
+</nav>

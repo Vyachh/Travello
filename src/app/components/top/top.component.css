@@ -1,0 +1,8 @@
+mat-card-content:first-child {
+    padding: 0;
+}
+mat-card{
+    border-radius: 35px;
+    max-width: 420px;
+    max-height: 600px;
+}

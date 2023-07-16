@@ -1,0 +1,17 @@
+.container{
+margin-top: 200px;
+justify-content: space-between;
+width: 100%;
+display: flex;
+}
+.title{
+    font-weight:bold;
+    font-size: 28px;
+    padding-bottom: 20px;
+}
+.block{
+    max-width: 144px;
+}
+a{
+    font-size: 20px;
+}
