@@ -3,14 +3,14 @@
         <a href="/" class="font-bold  text-3xl text-black">Travello</a>
     </div>
     <div class="flex justify-center">
-        <a href=""
-            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">Destinations</a>
-        <a href=""
-            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">Hotels</a>
-        <a href=""
-            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">Flights</a>
-        <a href=""
-            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100/75 hover:text-slate-900">Bookings</a>
+        <button (click)="onRedirect('destinations')"
+            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">Destinations</button>
+        <button (click)="onRedirect('hotels')"
+            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">Hotels</button>
+        <button (click)="onRedirect('flights')"
+            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">Flights</button>
+        <button (click)="onRedirect('bookings')"
+            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100/75 hover:text-slate-900">Bookings</button>
     </div>
     <div class="flex">
         <div class="" *ngIf="!isLoggedIn">
@@ -32,19 +32,20 @@
             </button>
         </div>
         <div class="" *ngIf="isLoggedIn">
-            <button
-                class="
+            <button class="
                 rounded-lg
                 px-3
                 py-2
                 text-slate-700
                 font-medium
                 hover:bg-slate-100
-                hover:text-slate-900">Profile</button>
+                hover:text-slate-900" (click)="onRedirect('profile')">Profile</button>
         </div>
 
         <span class="border-l mx-3"></span>
         <button class=" px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">EN
-            <mat-icon class=" py-2">keyboard_arrow_down</mat-icon></button>
+            <mat-icon class=" py-2">keyboard_arrow_down</mat-icon>
+
+        </button>
     </div>
 </nav>

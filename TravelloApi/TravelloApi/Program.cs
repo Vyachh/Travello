@@ -17,9 +17,26 @@ builder.Services.AddControllers();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITripRepository, TripRepository>();
+
+
+
+builder.Services.AddDbContext<DataContext>(options =>
+{
+  options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+});
+
+builder.Services.AddCors(options =>
+{
+  options.AddPolicy("MyPolicy", builder =>
+  {
+    builder.WithOrigins("https://localhost:7001", "http://localhost:4200", "http://localhost:5080");
+    builder.AllowAnyHeader();
+    builder.AllowAnyMethod();
+  });
+});
+
 
 builder.Services.AddSwaggerGen(options =>
 {
@@ -32,11 +49,13 @@ builder.Services.AddSwaggerGen(options =>
   });
   options.OperationFilter<SecurityRequirementsOperationFilter>();
 });
+
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
       options.TokenValidationParameters = new TokenValidationParameters
       {
+        
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
       .GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value)),
@@ -45,21 +64,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
       };
     });
 
-builder.Services.AddDbContext<DataContext>(options =>
-{
-  options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
-});
-
-builder.Services.AddCors(options =>
-{
-  options.AddPolicy("MyPolicy", builder =>
-  {
-    builder.WithOrigins("https://localhost:7001", "http://localhost:4200", "http://localhost:5080");
-
-    builder.AllowAnyHeader();
-    builder.AllowAnyMethod();
-  });
-});
+//builder.Services.AddAuthentication().AddJwtBearer();
 
 var app = builder.Build();
 
@@ -70,11 +75,13 @@ if (app.Environment.IsDevelopment())
   app.UseSwaggerUI();
 }
 
+app.UseCors("MyPolicy");
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
-app.UseAuthentication();
-app.UseCors("MyPolicy");
+
+
 
 app.MapControllers();
 

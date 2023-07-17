@@ -16,7 +16,7 @@ namespace TravelloApi.Helpers
     //{
     //  this.configuration = configuration;
     //}
-    public static string CreateToken(User user, IConfiguration configuration)
+    public string CreateToken(User user, IConfiguration configuration)
     {
       List<Claim> claims = new()
             {
@@ -27,7 +27,7 @@ namespace TravelloApi.Helpers
 
       var key = new SymmetricSecurityKey(Encoding.UTF8
         .GetBytes(configuration
-        .GetSection("AppSettings:Token").Value!));
+        .GetSection("Authentication:Schemes:Bearer:SigningKeys:0:Value").Value!));
 
       var cred = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
@@ -44,7 +44,7 @@ namespace TravelloApi.Helpers
     {
 
       var jwtHandler = new JwtSecurityTokenHandler();
-      var middle = token.Replace("Bearer ", "");
+      var middle = token.Replace("bearer ", "");
       var jwtToken = jwtHandler.ReadJwtToken(middle);
 
       var claims = new Dictionary<string, string>();

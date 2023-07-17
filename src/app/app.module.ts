@@ -22,6 +22,11 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
+import { ProfileComponent } from './page/profile/profile.component';
+import { DestinationsComponent } from './page/destinations/destinations.component';
+import { HotelsComponent } from './page/hotels/hotels.component';
+import { FlightsComponent } from './page/flights/flights.component';
+import { BookingsComponent } from './page/bookings/bookings.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +43,11 @@ import { SignUpComponent } from './components/auth/sign-up/sign-up.component';
     ModalComponent,
     LoginComponent,
     SignUpComponent,
+    ProfileComponent,
+    DestinationsComponent,
+    HotelsComponent,
+    FlightsComponent,
+    BookingsComponent,
   ],
   imports: [
     BrowserModule,

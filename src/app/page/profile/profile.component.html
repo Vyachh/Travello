@@ -1,0 +1,46 @@
+<div class="container mx-auto p-6 flex " *ngIf="isLoggedIn">
+    <div class="mx-16 rounded-xl border px-5 py-5">
+        <div class="flex items-center mb-4">
+            <img class="w-24 h-24 rounded-full mr-4" src="https://via.placeholder.com/96" alt="User Photo">
+            <div class="">
+                <h1 class="text-2xl font-bold">Имя пользователя</h1>
+                <p>{{userInfo.userName}}</p>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <h2 class="text-lg font-bold">Дата рождения:</h2>
+            <p>Дата рождения пользователя</p>
+        </div>
+
+        <div class="mb-6">
+            <h2 class="text-lg font-bold my-1" >Пароль:</h2>
+            <input type="password" [(ngModel)]="password" placeholder='Пароль'
+                class="border rounded-xl p-1 w-full my-3 h-10">
+            <h2 class="text-lg font-bold my-1">Подтверждение пароля:</h2>
+            <input type="password" placeholder='Подтверждение пароля'
+                class="border rounded-xl p-1 w-full my-3 h-10" >
+        </div>
+
+        <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-xl" (click)="onChangePasswordClick()">
+            Редактировать информацию
+        </button>
+    </div>
+    <div class="border rounded-xl px-5 py-5">
+        <h1 class="text-2xl font-bold mb-6 ">Информация о поездках:</h1>
+        <div class="mb-6">
+            <h2 class="text-lg font-bold">Текущая поездка:</h2>
+            <p *ngIf="isInTrip">{{userInfo.currentTripId}}</p>
+            <p *ngIf="!isInTrip">Не в поездке</p>
+        </div>
+
+        <div class="mb-6">
+            <h2 class="text-lg font-bold">Список запланированных поездок:</h2>
+            <ul>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<h1 class="text-6xl font-semibold text-center" *ngIf="!isLoggedIn">Вам нужно авторизоваться!</h1>

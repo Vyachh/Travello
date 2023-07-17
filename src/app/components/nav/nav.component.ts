@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { AccountService } from 'src/app/services/account.service';
 import { ModalService } from 'src/app/services/modal.service';
 
@@ -10,7 +11,13 @@ import { ModalService } from 'src/app/services/modal.service';
 export class NavComponent {
 
   isLoggedIn: boolean
-  constructor(public modalService: ModalService, public accountService: AccountService) {
+  constructor(public modalService: ModalService,
+    public accountService: AccountService,
+    private router: Router) {
     this.isLoggedIn = accountService.isLoggedIn;
+  }
+
+  onRedirect(page:string) {
+    this.router.navigate([`/${page}`])
   }
 }
