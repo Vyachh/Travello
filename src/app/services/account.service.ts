@@ -20,37 +20,49 @@ export class AccountService {
       'Content-Type': 'application/json; charset=utf-8',
       'Authorization': this.token ? "bearer " + this.token : ""
     })
+
   }
 
   headers: HttpHeaders;
   token: string | null;
-  baseURL = "https://localhost:7001"
+  baseURL = "https://localhost:7001/Account"
   user: IUser;
-  isLoggedIn: boolean;
-
+  isLoggedIn: boolean = false;
 
   login(user: IUser): Observable<any> {
     return this.httpClient.post
-      (`${this.baseURL}/Account/Login`, user, { responseType: 'text' })
+      (`${this.baseURL}/Login`, user, { responseType: 'text' })
   }
 
   signUp(user: IUser): Observable<any> {
     return this.httpClient.post
       (
-        `${this.baseURL}/Account/SignUp`, user, { responseType: 'text' }
+        `${this.baseURL}/SignUp`, user, { responseType: 'text' }
       )
   }
+
   getInfo(): Observable<IUserInfo> {
     return this.httpClient.get<IUserInfo>
       (
-        `${this.baseURL}/Account/GetInfo`, { headers: this.headers },
+        `${this.baseURL}/GetInfo`, { headers: this.headers },
       )
   }
 
   сhangePassword(user: IUser) {
     return this.httpClient.put
       (
-        `${this.baseURL}/Account/ChangePassword`, user, { responseType: 'text' }
+        `${this.baseURL}/ChangePassword`, user, { responseType: 'text' }
       )
+  }
+
+  refreshToken() {
+    return this.httpClient.post
+      (
+        `${this.baseURL}/RefreshToken`, { headers: this.headers }
+      )
+  }
+
+  isLoggedInCall(){
+    return this.isLoggedIn
   }
 }

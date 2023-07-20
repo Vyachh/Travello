@@ -9,6 +9,7 @@ namespace TravelloApi.Helpers
     public Mapper()
     {
       CreateMap<UserDto, User>();
+      CreateMap<TripDto, Trip>();
     }
   }
 }

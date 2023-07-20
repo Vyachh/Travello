@@ -1,9 +1,9 @@
-export interface Trip {
-    Id: number
-    UserId: string
-    Title: string
-    Description: string
-    TravelTime: number
-    Author: string
-    Image: string
+export interface ITrip {
+    id: number
+    userId: string
+    title: string
+    description: string
+    travelTime: number
+    author: string
+    image: string
 }

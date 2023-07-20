@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ModalService } from './services/modal.service';
+import { AccountService } from './services/account.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent {
   /**
    *
    */
-  constructor(public modalService: ModalService) {
+  constructor(public modalService: ModalService, public accountService: AccountService) {
 
   }
 }

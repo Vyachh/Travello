@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using TravelloApi.Dto;
 using TravelloApi.Helpers;
@@ -67,7 +68,11 @@ namespace TravelloApi.Controllers
         return BadRequest("Bad password.");
       }
 
+
+      var refreshToken = GenerateRefreshToken();
+      SetRefreshToken(refreshToken, user);
       string token = CreateToken(user);
+
       return Ok(token);
     }
 
@@ -98,6 +103,64 @@ namespace TravelloApi.Controllers
       return Ok(DecodeJwtToken(Authorization));
     }
 
+    [HttpPost("RefreshToken")]
+    public async Task<ActionResult<string>> RefreshToken([FromHeader] string request)
+    {
+      var refreshToken = Request.Cookies["refreshToken"];
+
+      var userInfo = DecodeJwtToken(request);
+      var userId = userInfo["id"];
+
+      var user = await userRepository.GetUserById(userId);
+
+      if (user == null)
+      {
+        return BadRequest("Пользователь не найден!");
+      }
+
+      if (!user.RefreshToken.Equals(refreshToken))
+      {
+        return Unauthorized("Invalid Refresh Token");
+      }
+      else if (user.TokenExpires < DateTime.Now)
+      {
+        return Unauthorized("Token expired.");
+      }
+      string token = CreateToken(user);
+      var newRefreshToken = GenerateRefreshToken();
+      SetRefreshToken(newRefreshToken, user);
+
+      return Ok(token);
+    }
+
+
+
+    private RefreshToken GenerateRefreshToken()
+    {
+      var refreshToken = new RefreshToken
+      {
+        Token = Convert.ToBase64String(RandomNumberGenerator.GetBytes(64)),
+        Expires = DateTime.Now.AddDays(7),
+        Created = DateTime.Now,
+      };
+      return refreshToken;
+    }
+
+    private void SetRefreshToken(RefreshToken newRefreshToken, User user)
+    {
+      var cookieOptions = new CookieOptions
+      {
+        HttpOnly = true,
+        Expires = newRefreshToken.Expires,
+      };
+      Response.Cookies.Append("refreshToken", newRefreshToken.Token, cookieOptions);
+
+      user.TokenExpires = newRefreshToken.Expires;
+      user.TokenCreated = newRefreshToken.Created;
+      user.RefreshToken = newRefreshToken.Token;
+
+      userRepository.Update(user);
+    }
 
     private string CreateToken(User user)
     {
@@ -106,6 +169,7 @@ namespace TravelloApi.Controllers
                 new Claim("userName", user.UserName),
                 new Claim("currentTripId", user.CurrentTripId.ToString() ?? string.Empty),
                 new Claim("id", user.Id ?? string.Empty),
+                new Claim(ClaimTypes.Role, user.Role.ToString()),
             };
 
       var key = new SymmetricSecurityKey(Encoding.UTF8
@@ -116,7 +180,7 @@ namespace TravelloApi.Controllers
 
       var token = new JwtSecurityToken(
           claims: claims,
-          expires: DateTime.UtcNow.AddDays(1),
+          expires: DateTime.UtcNow.AddDays(7),
           signingCredentials: cred
           );
       var result = new JwtSecurityTokenHandler().WriteToken(token);
@@ -140,5 +204,10 @@ namespace TravelloApi.Controllers
       return claims;
     }
 
+    // Admin
+    // Moderator
+    // Organizer
+    //
+    //
   }
 }

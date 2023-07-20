@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
-import {HttpClientModule} from '@angular/common/http'
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http'
 
 import { MatIconModule } from '@angular/material/icon'
 import { MatCardModule } from '@angular/material/card';
@@ -27,6 +27,7 @@ import { DestinationsComponent } from './page/destinations/destinations.componen
 import { HotelsComponent } from './page/hotels/hotels.component';
 import { FlightsComponent } from './page/flights/flights.component';
 import { BookingsComponent } from './page/bookings/bookings.component';
+import { AuthIntreceptor } from './services/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,11 @@ import { BookingsComponent } from './page/bookings/bookings.component';
     MatProgressBarModule
 
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:AuthIntreceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

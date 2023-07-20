@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { AccountService } from 'src/app/services/account.service';
 import { IUserInfo } from 'src/app/models/userInfo';
 import { IUser } from 'src/app/models/user';
+import { ITrip } from 'src/app/models/trip';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { TripService } from 'src/app/services/trip.service';
 
 @Component({
   selector: 'app-profile',
@@ -11,6 +14,7 @@ import { IUser } from 'src/app/models/user';
 export class ProfileComponent implements OnInit {
 
   constructor(private accountService: AccountService,
+    private tripService: TripService
   ) {
     this.isLoggedIn = accountService.isLoggedIn;
   }
@@ -26,16 +30,44 @@ export class ProfileComponent implements OnInit {
     id: '',
     userName: '',
     currentTripId: 0,
-    tripList: []
+    tripList: [],
+    role: 'user'
   }
+  trip: ITrip = {
+    id: 0,
+    userId: '',
+    title: '',
+    description: '',
+    travelTime: 0,
+    author: '',
+    image: ''
+  }
+
+  tripForm = new FormGroup({
+    title: new FormControl<string>('', [
+      Validators.required,
+      Validators.minLength(6)
+    ]),
+    description: new FormControl<string>('', [
+      Validators.required,
+    ]),
+    travelTime: new FormControl<number>(0, [
+      Validators.required,
+      Validators.minLength(2),
+    ]),
+    image: new FormControl<string>('', [
+      Validators.required
+    ])
+  })
 
   ngOnInit(): void {
     this.accountService
       .getInfo()
       .subscribe(
         {
-          next: response => (
-            this.userInfo = response
+          next: (response: any) => (
+            this.userInfo = response,
+            this.userInfo.role = response['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
           ),
           error: e => {
             console.error(e);
@@ -47,6 +79,19 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  onSubmit() {
+
+    this.tripService.addTrip(this.trip).subscribe({
+      next: response => {
+        console.log(response);
+      },
+      error: e => {
+        console.error(e);
+      }
+    });
+
+  }
+
   onChangePasswordClick() {
     this.user.userName = this.userInfo.userName
     this.user.password = this.password
@@ -55,7 +100,6 @@ export class ProfileComponent implements OnInit {
       .subscribe(
         {
           next: response => {
-            console.log(response);
             localStorage.setItem('bearer', response)
             location.reload();
           }, error: e => {
@@ -63,5 +107,10 @@ export class ProfileComponent implements OnInit {
           }
         }
       );
+  }
+
+  onLogout() {
+    localStorage.clear();
+    location.reload();
   }
 }

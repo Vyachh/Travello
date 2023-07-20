@@ -1,7 +1,8 @@
-import { Trip } from './trip';
+import { ITrip } from './trip';
 export interface IUserInfo {
     id: string
     userName: string
     currentTripId: number
-    tripList: Trip[]
+    tripList: ITrip[]
+    role: string
 }
