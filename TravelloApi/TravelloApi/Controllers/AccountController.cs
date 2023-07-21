@@ -169,7 +169,7 @@ namespace TravelloApi.Controllers
                 new Claim("userName", user.UserName),
                 new Claim("currentTripId", user.CurrentTripId.ToString() ?? string.Empty),
                 new Claim("id", user.Id ?? string.Empty),
-                new Claim(ClaimTypes.Role, user.Role.ToString()),
+                new Claim("role", user.Role.ToString()),
             };
 
       var key = new SymmetricSecurityKey(Encoding.UTF8

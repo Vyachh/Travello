@@ -34,7 +34,6 @@ export class ProfileComponent implements OnInit {
     role: 'user'
   }
   trip: ITrip = {
-    id: 0,
     userId: '',
     title: '',
     description: '',
@@ -44,6 +43,9 @@ export class ProfileComponent implements OnInit {
   }
 
   tripForm = new FormGroup({
+    userId: new FormControl<string>('', [
+      Validators.required
+    ]),
     title: new FormControl<string>('', [
       Validators.required,
       Validators.minLength(6)
@@ -61,26 +63,26 @@ export class ProfileComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    this.accountService
-      .getInfo()
-      .subscribe(
-        {
-          next: (response: any) => (
-            this.userInfo = response,
-            this.userInfo.role = response['http://schemas.microsoft.com/ws/2008/06/identity/claims/role']
-          ),
-          error: e => {
-            console.error(e);
-          }
-        }
-      );
+    this.accountService.getInfo().subscribe({
+      next: userInfo => {
+        this.userInfo = userInfo
+      },
+      error: error => {
+        console.error(error);
+      }
+    })
     if (this.userInfo.currentTripId > 0) {
       this.isInTrip = true
     }
   }
 
   onSubmit() {
-
+    this.trip.userId = this.userInfo.id
+    this.trip.description = this.tripForm.value.description || ""
+    this.trip.title = this.tripForm.value.title || ""
+    this.trip.travelTime = this.tripForm.value.travelTime || 0
+    this.trip.author = this.userInfo.userName
+    this.trip.image = this.tripForm.value.image || ""
     this.tripService.addTrip(this.trip).subscribe({
       next: response => {
         console.log(response);

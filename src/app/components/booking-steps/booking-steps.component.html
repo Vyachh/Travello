@@ -32,9 +32,9 @@
     <div class="">
         <div class="shadow-lg h-fit py-9 px-5 rounded-3xl">
             <img src="https://via.placeholder.com/420x210" class="rounded-3xl" alt="">
-            <div class="mt-7">
-                <h3 class="font-medium text-2xl">Trip To Greece</h3>
-                <p class="text-gray-400 font-medium pt-3">14-29 June| by Robbin joseph</p>
+            <div class="mt-7" *ngIf="trip">
+                <h3 class="font-medium text-2xl">Trip To {{trip.title}}</h3>
+                <p class="text-gray-400 font-medium pt-3">14-29 June| by {{trip.author}}</p>
                 <div class="py-5 px-2">
                     <a href=""><mat-icon
                             class="bg-gray-100 text-gray-500 rounded-full m-2 scale-110 transition-all  hover:text-gray-100 hover:bg-gray-500">terrain</mat-icon></a>

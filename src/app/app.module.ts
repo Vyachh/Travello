@@ -28,6 +28,8 @@ import { HotelsComponent } from './page/hotels/hotels.component';
 import { FlightsComponent } from './page/flights/flights.component';
 import { BookingsComponent } from './page/bookings/bookings.component';
 import { AuthIntreceptor } from './services/auth.interceptor';
+import { TravelloComponent } from './page/travello/travello.component';
+import { AdminPanelComponent } from './page/admin-panel/admin-panel/admin-panel.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,8 @@ import { AuthIntreceptor } from './services/auth.interceptor';
     HotelsComponent,
     FlightsComponent,
     BookingsComponent,
+    TravelloComponent,
+    AdminPanelComponent,
   ],
   imports: [
     BrowserModule,

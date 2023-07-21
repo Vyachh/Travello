@@ -6,6 +6,7 @@ import { IUser } from '../models/user';
 import { LocalStorageService } from './local-storage.service';
 import { IUserInfo } from '../models/userInfo';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,14 +21,38 @@ export class AccountService {
       'Content-Type': 'application/json; charset=utf-8',
       'Authorization': this.token ? "bearer " + this.token : ""
     })
-
+    
   }
 
   headers: HttpHeaders;
   token: string | null;
   baseURL = "https://localhost:7001/Account"
   user: IUser;
+  userInfo: IUserInfo;
+
   isLoggedIn: boolean = false;
+  isAdmin: boolean = false;
+  isInfoLoaded: boolean = false;
+
+  getInfo(): Observable<IUserInfo> {
+    if (!this.isInfoLoaded) {
+      return this.loadInfo();
+    }
+    else {
+      return new Observable<IUserInfo>(observer => {
+        observer.next(this.userInfo)
+        observer.complete();
+      })
+    }
+  }
+
+  private loadInfo(): Observable<IUserInfo> {
+    return this.httpClient.get<IUserInfo>
+      (
+        `${this.baseURL}/GetInfo`,
+        { headers: this.headers },
+      )
+  }
 
   login(user: IUser): Observable<any> {
     return this.httpClient.post
@@ -41,11 +66,9 @@ export class AccountService {
       )
   }
 
-  getInfo(): Observable<IUserInfo> {
-    return this.httpClient.get<IUserInfo>
-      (
-        `${this.baseURL}/GetInfo`, { headers: this.headers },
-      )
+  signOut(){
+    localStorage.clear();
+    location.reload();
   }
 
   сhangePassword(user: IUser) {
@@ -62,7 +85,7 @@ export class AccountService {
       )
   }
 
-  isLoggedInCall(){
+  isLoggedInCall() {
     return this.isLoggedIn
   }
 }

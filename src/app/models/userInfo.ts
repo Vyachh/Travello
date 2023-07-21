@@ -1,6 +1,6 @@
 import { ITrip } from './trip';
 export interface IUserInfo {
-    id: string
+    id: string 
     userName: string
     currentTripId: number
     tripList: ITrip[]

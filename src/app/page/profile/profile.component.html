@@ -18,7 +18,11 @@
                 <p>{{userInfo.role}}</p>
             </div>
         </div>
-
+        <div class="mb-6">
+            <h2 class="text-lg font-bold">E-mail:</h2>
+            <p>Email</p>
+            
+        </div>
         <div class="mb-6">
             <h2 class="text-lg font-bold my-1">Password:</h2>
             <input type="password" [(ngModel)]="password" placeholder='Password'
@@ -56,17 +60,30 @@
         <h1 class="text-2xl font-bold mb-6 ">Create New Trip:</h1>
         <div class="mb-6">
             <form action="" [formGroup]="tripForm" (submit)="onSubmit()">
-                <input type="hidden" formControlName="trip.userId">
-                <h2 class="text-lg font-bold my-1">Title:</h2>
-                <input type="text" formControlName="trip.title" placeholder='Title'
-                    class="border rounded-xl p-1 w-full my-3 h-10">
-                <h2 class="text-lg font-bold my-1">Description:</h2>
-                <input type="text" formControlName="trip.description" placeholder='Description' class="border rounded-xl p-1 w-full my-3 h-10">
-                <h2 class="text-lg font-bold my-1">Travel Time:</h2>
-                <input type="text" formControlName="trip.travelTime" placeholder='Travel Time' class="border rounded-xl p-1 w-full my-3 h-10">
-                <h2 class="text-lg font-bold my-1">Image:</h2>
-                <input type="text" formControlName="trip.image" placeholder='Drop Image' class="border rounded-xl p-1 w-full my-3 h-10">
+                <input type="hidden" formControlName="userId">
+                <h2 
+                class="text-lg font-bold my-1">Title:</h2>
+                <input type="text" formControlName="title" placeholder='Title'
+                class="border rounded-xl p-1 w-full mt-1 h-10">
+                <h2 
+                class="text-lg font-bold mt-1">Description:</h2>
+                <input type="text" formControlName="description" placeholder='Description' 
+                class="border rounded-xl p-1 w-full mt-1 h-10">
+                <h2 
+                class="text-lg font-bold mt-1">Travel Time:</h2>
+                <input type="text" formControlName="travelTime" placeholder='Travel Time' 
+                class="border rounded-xl p-1 w-full mt-1 h-10">
+                <h2 
+                class="text-lg font-bold mt-1">Image:</h2>
+                <input type="text" formControlName="image" placeholder='Drop Image' 
+                class="border rounded-xl p-1 w-full mt-1 h-10">
+                <button 
+                class="bg-green-500 hover:bg-green-600 active:bg-green-700 text-white py-2 w-full mt-[10%] rounded-xl" 
+                >
+                    Submit
+                </button>
             </form>
+
         </div>
 
     </div>

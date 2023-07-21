@@ -1,5 +1,4 @@
 export interface ITrip {
-    id: number
     userId: string
     title: string
     description: string

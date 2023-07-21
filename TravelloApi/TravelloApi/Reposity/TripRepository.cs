@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using TravelloApi.Data;
 using TravelloApi.Interfaces;
 using TravelloApi.Models;
@@ -18,10 +19,16 @@ namespace TravelloApi.Reposity
       return Save();
     }
 
-    public bool Delete(string id)
+    public bool Delete(int id)
     {
-      dataContext.Remove(id);
+      var trip = dataContext.Trip.FirstOrDefault(t => t.Id == id);
+      dataContext.Trip.Remove(trip);
       return Save();
+    }
+
+    public async Task<IEnumerable<Trip>> GetAll()
+    {
+      return await dataContext.Trip.ToListAsync();
     }
 
     public async Task<Trip> GetTripById(int id)

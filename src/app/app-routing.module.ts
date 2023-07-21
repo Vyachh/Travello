@@ -6,6 +6,8 @@ import { DestinationsComponent } from './page/destinations/destinations.componen
 import { HotelsComponent } from './page/hotels/hotels.component';
 import { FlightsComponent } from './page/flights/flights.component';
 import { BookingsComponent } from './page/bookings/bookings.component';
+import { TravelloComponent } from './page/travello/travello.component';
+import { AdminPanelComponent } from './page/admin-panel/admin-panel/admin-panel.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,6 +16,8 @@ const routes: Routes = [
   { path: 'hotels', component: HotelsComponent },
   { path: 'flights', component: FlightsComponent },
   { path: 'bookings', component: BookingsComponent },
+  { path: 'travello', component: TravelloComponent },
+  { path: 'adminpanel', component: AdminPanelComponent },
 
 ];
 
