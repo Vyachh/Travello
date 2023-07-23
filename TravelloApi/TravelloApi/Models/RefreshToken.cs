@@ -1,4 +1,4 @@
-namespace TravelloApi.Interfaces
+namespace TravelloApi.Models
 {
   public class RefreshToken
   {

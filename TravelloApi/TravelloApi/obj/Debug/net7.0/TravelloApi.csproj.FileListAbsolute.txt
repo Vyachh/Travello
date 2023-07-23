@@ -81,3 +81,4 @@ C:\Vyacheslau\Coding\Angular\Travello\TravelloApi\TravelloApi\bin\Debug\net7.0\M
 C:\Vyacheslau\Coding\Angular\Travello\TravelloApi\TravelloApi\bin\Debug\net7.0\Scrutor.dll
 C:\Vyacheslau\Coding\Angular\Travello\TravelloApi\TravelloApi\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.dll
 C:\Vyacheslau\Coding\Angular\Travello\TravelloApi\TravelloApi\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
+C:\Vyacheslau\Coding\Angular\Travello\TravelloApi\TravelloApi\bin\Debug\net7.0\TravelloApi.staticwebassets.runtime.json

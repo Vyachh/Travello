@@ -9,18 +9,20 @@ import { AccountService } from './services/account.service';
 })
 export class AppComponent implements OnInit {
   title = 'Travello';
-  /**
-   *
-   */
+ 
   constructor(public modalService: ModalService, public accountService: AccountService) {
 
   }
   ngOnInit(): void {
-    this.accountService.getInfo().subscribe({
-      error: error=>{
-        console.error(error);
-      }
-    })
+    if (this.accountService.isLoggedIn) {
+      this.accountService.getInfo().subscribe({
+        error: error=>{
+          console.error(error);
+        }
+      })
+    }
+    
   }
+  
 
 }

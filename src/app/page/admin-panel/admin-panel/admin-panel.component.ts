@@ -18,9 +18,7 @@ export class AdminPanelComponent implements OnInit {
   ngOnInit(): void {
     this.tripService.getTripList().subscribe({
       next: response => {
-        this.tripList = response,
-        console.log(response);
-        
+        this.tripList = response
       },
       error: error => {
         console.error(error);

@@ -17,13 +17,12 @@ export class BookingStepsComponent implements OnInit {
   }
   trip: ITrip
   ngOnInit(): void {
-    this.tripSubscription = this.tripService.getNextTrip().subscribe((trip: ITrip) => {
+    this.tripService.getNextTrip().subscribe((trip: ITrip) => {
       this.trip = trip;
-      console.log(this.trip);
     });
-  
   }
-  ngOnDestroy(): void {
-    this.tripSubscription.unsubscribe();
-  }
+
+  // ngOnDestroy(): void {
+  //   this.tripSubscription.unsubscribe();
+  // }
 }

@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs'
+import { Observable, of, switchMap } from 'rxjs'
 import { IUser } from '../models/user';
 import { LocalStorageService } from './local-storage.service';
 import { IUserInfo } from '../models/userInfo';
+import { PhotoService } from './photo.service';
 
 
 @Injectable({
@@ -12,7 +13,9 @@ import { IUserInfo } from '../models/userInfo';
 })
 export class AccountService {
   constructor(private httpClient: HttpClient,
-    public localStorage: LocalStorageService,) {
+    public localStorage: LocalStorageService,
+    public photoService: PhotoService
+  ) {
     this.token = localStorage.getItem('bearer');
     if (this.token != null) {
       this.isLoggedIn = true;
@@ -21,7 +24,7 @@ export class AccountService {
       'Content-Type': 'application/json; charset=utf-8',
       'Authorization': this.token ? "bearer " + this.token : ""
     })
-    
+
   }
 
   headers: HttpHeaders;
@@ -34,9 +37,22 @@ export class AccountService {
   isAdmin: boolean = false;
   isInfoLoaded: boolean = false;
 
+
   getInfo(): Observable<IUserInfo> {
+
     if (!this.isInfoLoaded) {
-      return this.loadInfo();
+      return this.loadInfo().pipe(
+        switchMap((userInfo: IUserInfo) => {
+          return this.photoService.getPhoto(userInfo.id).pipe(
+            switchMap((photoData: any) => {
+              userInfo.image = photoData;
+              this.userInfo = userInfo;
+              this.isInfoLoaded = true;
+              return of(userInfo)
+            })
+          )
+        })
+      );
     }
     else {
       return new Observable<IUserInfo>(observer => {
@@ -48,6 +64,14 @@ export class AccountService {
 
   private loadInfo(): Observable<IUserInfo> {
     return this.httpClient.get<IUserInfo>
+      (
+        `${this.baseURL}/GetInfo`,
+        { headers: this.headers },
+      )
+  }
+
+  getPhoto() {
+    return this.httpClient.get
       (
         `${this.baseURL}/GetInfo`,
         { headers: this.headers },
@@ -66,7 +90,7 @@ export class AccountService {
       )
   }
 
-  signOut(){
+  signOut() {
     localStorage.clear();
     location.reload();
   }

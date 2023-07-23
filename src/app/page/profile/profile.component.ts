@@ -5,6 +5,7 @@ import { IUser } from 'src/app/models/user';
 import { ITrip } from 'src/app/models/trip';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TripService } from 'src/app/services/trip.service';
+import { PhotoService } from 'src/app/services/photo.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,12 +15,16 @@ import { TripService } from 'src/app/services/trip.service';
 export class ProfileComponent implements OnInit {
 
   constructor(private accountService: AccountService,
-    private tripService: TripService
+    private tripService: TripService,
+    private photoService: PhotoService
   ) {
     this.isLoggedIn = accountService.isLoggedIn;
   }
-  isLoggedIn: boolean;
-  isInTrip: boolean;
+  isLoggedIn = false;
+  isInTrip = false;
+  isEdit = true;
+
+  date = "01.01.2000";
 
   password: string;
   user: IUser = {
@@ -31,7 +36,10 @@ export class ProfileComponent implements OnInit {
     userName: '',
     currentTripId: 0,
     tripList: [],
-    role: 'user'
+    role: 'user',
+    email: '',
+    birthdate: '',
+    image: ''
   }
   trip: ITrip = {
     userId: '',
@@ -63,14 +71,19 @@ export class ProfileComponent implements OnInit {
   })
 
   ngOnInit(): void {
-    this.accountService.getInfo().subscribe({
-      next: userInfo => {
-        this.userInfo = userInfo
-      },
-      error: error => {
-        console.error(error);
-      }
-    })
+    if (this.isLoggedIn) {
+      this.accountService.getInfo()
+        .subscribe({
+          next: userInfo => {
+            this.userInfo = userInfo
+          },
+          error: error => {
+            console.error(error);
+          }
+        })
+
+    }
+
     if (this.userInfo.currentTripId > 0) {
       this.isInTrip = true
     }
@@ -109,6 +122,24 @@ export class ProfileComponent implements OnInit {
           }
         }
       );
+  }
+
+  onUploadPhoto(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement.files && inputElement.files.length > 0) {
+      const file = inputElement.files[0];
+      this.photoService.uploadPhoto(file, this.userInfo.id).subscribe({
+        next: response => {
+          // Обработка ответа от сервера после загрузки фото
+          console.log('Фото успешно загружено:', response);
+        },
+        error: error => {
+          console.error('Ошибка при загрузке фото:', error);
+        }
+      }
+      );
+
+    }
   }
 
   onLogout() {

@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using TravelloApi.Data;
 using TravelloApi.Interfaces;
 using TravelloApi.Models;
@@ -27,7 +28,7 @@ namespace TravelloApi.Reposity
 
     public async Task<User> GetUserById(string id)
     {
-      return dataContext.User
+      return dataContext.User.Include(u => u.Photo)
                 .FirstOrDefault(u => u.Id == id);
     }
 

@@ -19,6 +19,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITripRepository, TripRepository>();
+builder.Services.AddTransient<IPhotoRepository, PhotoRepository>();
 
 
 
@@ -55,7 +56,7 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     {
       options.TokenValidationParameters = new TokenValidationParameters
       {
-        
+
         ValidateIssuerSigningKey = true,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
       .GetBytes(builder.Configuration.GetSection("AppSettings:Token").Value)),
@@ -75,13 +76,14 @@ if (app.Environment.IsDevelopment())
   app.UseSwaggerUI();
 }
 
+
 app.UseCors("MyPolicy");
 
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-
+app.UseStaticFiles();
 
 app.MapControllers();
 

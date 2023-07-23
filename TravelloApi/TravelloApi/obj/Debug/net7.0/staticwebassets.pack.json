@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\1.jpg",
+      "PackagePath": "staticwebassets\\Avatars\\1.jpg"
+    },
+    {
+      "Id": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\1.jpg.jpg",
+      "PackagePath": "staticwebassets\\Avatars\\1.jpg.jpg"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.TravelloApi.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.TravelloApi.props",
+      "PackagePath": "build\\TravelloApi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.TravelloApi.props",
+      "PackagePath": "buildMultiTargeting\\TravelloApi.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.TravelloApi.props",
+      "PackagePath": "buildTransitive\\TravelloApi.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
