@@ -26,4 +26,14 @@ export class AdminPanelComponent implements OnInit {
       }
     })
   }
+
+  onSetNextTrip(trip: any){
+    this.tripService.setNextTrip(trip.id).subscribe()
+
+  }
+
+  onDeleteTrip(trip: any) {
+    this.tripService.deleteTrip(trip.id).subscribe()
+    location.reload();
+  }
 }

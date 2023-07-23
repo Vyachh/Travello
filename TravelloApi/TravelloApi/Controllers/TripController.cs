@@ -1,6 +1,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Globalization;
 using TravelloApi.Dto;
 using TravelloApi.Interfaces;
 using TravelloApi.Models;
@@ -36,10 +37,20 @@ namespace TravelloApi.Controllers
       return Ok("Success!");
     }
 
+    [HttpGet("SetNextTrip")]
+    public async Task<IActionResult> SetNextTrip(int id)
+    {
+      if (!tripRepository.SetNextTrip(id))
+      {
+        return BadRequest("Smth went wrong.");
+      }
+
+      return Ok();
+    }
     [HttpGet("GetNextTrip")]
     public async Task<IActionResult> GetNextTrip()
     {
-      return Ok(await tripRepository.GetTripById(2));
+      return Ok(await tripRepository.GetById(2));
     }
 
     [HttpGet("GetTripList"), Authorize(Roles = "Admin,Moderator,Organizer")]

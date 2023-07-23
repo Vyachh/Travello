@@ -15,7 +15,6 @@ import { PhotoService } from 'src/app/services/photo.service';
 export class ProfileComponent implements OnInit {
 
   constructor(private accountService: AccountService,
-    private tripService: TripService,
     private photoService: PhotoService
   ) {
     this.isLoggedIn = accountService.isLoggedIn;
@@ -23,8 +22,6 @@ export class ProfileComponent implements OnInit {
   isLoggedIn = false;
   isInTrip = false;
   isEdit = true;
-
-  date = "01.01.2000";
 
   password: string;
   user: IUser = {
@@ -45,30 +42,13 @@ export class ProfileComponent implements OnInit {
     userId: '',
     title: '',
     description: '',
-    travelTime: 0,
+    dateFrom: '',
+    dateTo: '',
     author: '',
     image: ''
   }
 
-  tripForm = new FormGroup({
-    userId: new FormControl<string>('', [
-      Validators.required
-    ]),
-    title: new FormControl<string>('', [
-      Validators.required,
-      Validators.minLength(6)
-    ]),
-    description: new FormControl<string>('', [
-      Validators.required,
-    ]),
-    travelTime: new FormControl<number>(0, [
-      Validators.required,
-      Validators.minLength(2),
-    ]),
-    image: new FormControl<string>('', [
-      Validators.required
-    ])
-  })
+
 
   ngOnInit(): void {
     if (this.isLoggedIn) {
@@ -81,30 +61,10 @@ export class ProfileComponent implements OnInit {
             console.error(error);
           }
         })
-
     }
-
     if (this.userInfo.currentTripId > 0) {
       this.isInTrip = true
     }
-  }
-
-  onSubmit() {
-    this.trip.userId = this.userInfo.id
-    this.trip.description = this.tripForm.value.description || ""
-    this.trip.title = this.tripForm.value.title || ""
-    this.trip.travelTime = this.tripForm.value.travelTime || 0
-    this.trip.author = this.userInfo.userName
-    this.trip.image = this.tripForm.value.image || ""
-    this.tripService.addTrip(this.trip).subscribe({
-      next: response => {
-        console.log(response);
-      },
-      error: e => {
-        console.error(e);
-      }
-    });
-
   }
 
   onChangePasswordClick() {

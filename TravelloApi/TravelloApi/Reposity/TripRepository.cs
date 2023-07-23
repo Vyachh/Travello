@@ -31,12 +31,12 @@ namespace TravelloApi.Reposity
       return await dataContext.Trip.ToListAsync();
     }
 
-    public async Task<Trip> GetTripById(int id)
+    public async Task<Trip> GetById(int id)
     {
       return dataContext.Trip.FirstOrDefault(t => t.Id == id);
     }
 
-    public async Task<Trip> GetTripByName(string title)
+    public async Task<Trip> GetByName(string title)
     {
       return dataContext.Trip.FirstOrDefault(t => t.Title == title);
 
@@ -47,6 +47,15 @@ namespace TravelloApi.Reposity
       var saved = dataContext.SaveChanges();
       return saved > 0;
     }
+
+    public bool SetNextTrip(int id)
+    {
+      var trip = dataContext.Trip.FirstOrDefault(t => t.Id == id);
+      trip.IsNextTrip = true;
+
+      return Save();
+    }
+
 
     public bool Update(Trip trip)
     {

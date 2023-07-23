@@ -2,9 +2,10 @@
     <div class=" rounded-xl border w-full mx-5 px-5 py-5">
         <div class="flex items-center mb-4">
             <div class="relative">
-                <div class="relative z-0 rounded-full bg-contain" [style.background-image]="'url(' + userInfo.image + ')'"
-                    style="width: 96px;height: 96px;">
-                    <label for="fileInput" class="absolute rounded-full flex opacity-0 v items-center w-full h-full justify-center hover:opacity-50 transition-opacity bg-gray-400 cursor-pointer">
+                <div class="relative z-0 rounded-full bg-contain"
+                    [style.background-image]="'url(' + userInfo.image + ')'" style="width: 96px;height: 96px;">
+                    <label for="fileInput"
+                        class="absolute rounded-full flex opacity-0 v items-center w-full h-full justify-center hover:opacity-50 transition-opacity bg-gray-400 cursor-pointer">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
                             <path fill="currentColor"
                                 d="M12 18a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-2a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm-6-6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z">
@@ -13,7 +14,8 @@
                                 d="M7.871 2.89A2 2 0 0 1 9.535 2h4.93a2 2 0 0 1 1.664.89L17.535 5H19a4 4 0 0 1 4 4v9a4 4 0 0 1-4 4H5a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h1.465L7.87 2.89ZM21 9a2 2 0 0 0-2-2h-2a1 1 0 0 1-.832-.445L14.465 4h-4.93L7.832 6.555A1 1 0 0 1 7 7H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9Z">
                             </path>
                         </svg>
-                        <input accept=".jpg, .jpeg, .png" class="z-10 " id="fileInput" name="Photo" type="file" hidden (change)="onUploadPhoto($event)">
+                        <input accept=".jpg, .jpeg, .png" class="z-10 " id="fileInput" name="Photo" type="file" hidden
+                            (change)="onUploadPhoto($event)">
                     </label>
                 </div>
             </div>
@@ -27,7 +29,7 @@
         <div class="mb-6 flex  justify-between">
             <div class="">
                 <h2 class="text-lg font-bold">Birthday:</h2>
-                <p *ngIf="!isEdit">{{date}}</p>
+                <p *ngIf="!isEdit">DATA NADA</p>
                 <div class="relative max-w-sm" *ngIf="isEdit">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
                         <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -97,32 +99,9 @@
         </div>
     </div>
 
-    <div class="border rounded-xl w-full mx-5 px-5 py-5">
-        <h1 class="text-2xl font-bold mb-6 ">Create New Trip:</h1>
-        <div class="mb-6">
-            <form action="" [formGroup]="tripForm" (submit)="onSubmit()">
-                <input type="hidden" formControlName="userId">
-                <h2 class="text-lg font-bold my-1">Title:</h2>
-                <input type="text" formControlName="title" placeholder='Title'
-                    class="border rounded-xl p-1 w-full mt-1 h-10">
-                <h2 class="text-lg font-bold mt-1">Description:</h2>
-                <input type="text" formControlName="description" placeholder='Description'
-                    class="border rounded-xl p-1 w-full mt-1 h-10">
-                <h2 class="text-lg font-bold mt-1">Travel Time:</h2>
-                <input type="text" formControlName="travelTime" placeholder='Travel Time'
-                    class="border rounded-xl p-1 w-full mt-1 h-10">
-                <h2 class="text-lg font-bold mt-1">Image:</h2>
-                <input type="text" formControlName="image" placeholder='Drop Image'
-                    class="border rounded-xl p-1 w-full mt-1 h-10">
-                <button
-                    class="bg-green-500 hover:bg-green-600 active:bg-green-700 text-white py-2 w-full mt-[10%] rounded-xl">
-                    Submit
-                </button>
-            </form>
 
-        </div>
+    <app-trip-form [userInfo]="userInfo" [trip]="trip" class="border rounded-xl w-full mx-5 px-5 py-5"></app-trip-form>
 
-    </div>
 
 </div>
 

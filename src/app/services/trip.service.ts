@@ -16,10 +16,16 @@ export class TripService {
       `${this.baseURL}/CreateTrip`, trip,
       { responseType: 'text' })
   }
-  
+
   getNextTrip(): Observable<ITrip> {
     return this.httpClient.get<ITrip>(
       `${this.baseURL}/GetNextTrip`
+    )
+  }
+
+  setNextTrip(id: number): Observable<ITrip> {
+    return this.httpClient.get<ITrip>(
+      `${this.baseURL}/SetNextTrip?id=${id}`
     )
   }
 
@@ -27,5 +33,10 @@ export class TripService {
     return this.httpClient.get<ITrip[]>(
       `${this.baseURL}/GetTripList`
     )
+  }
+
+  deleteTrip(id: number) {
+    return this.httpClient.delete(
+      `${this.baseURL}/Delete?id=${id}`)
   }
 }
