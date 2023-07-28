@@ -1,8 +1,9 @@
 <div class="container mx-auto p-6 flex  justify-between" *ngIf="isLoggedIn">
+    <app-sidebar [Role]="userInfo.role"></app-sidebar>
     <div class=" rounded-xl border w-full mx-5 px-5 py-5">
         <div class="flex items-center mb-4">
             <div class="relative">
-                <div class="relative z-0 rounded-full bg-contain"
+                <div class="relative z-0 rounded-full bg-contain" *ngIf="userInfo"
                     [style.background-image]="'url(' + userInfo.image + ')'" style="width: 96px;height: 96px;">
                     <label for="fileInput"
                         class="absolute rounded-full flex opacity-0 v items-center w-full h-full justify-center hover:opacity-50 transition-opacity bg-gray-400 cursor-pointer">
@@ -29,19 +30,8 @@
         <div class="mb-6 flex  justify-between">
             <div class="">
                 <h2 class="text-lg font-bold">Birthday:</h2>
-                <p *ngIf="!isEdit">DATA NADA</p>
-                <div class="relative max-w-sm" *ngIf="isEdit">
-                    <div class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                            <path
-                                d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                        </svg>
-                    </div>
-                    <input datepicker type="datetime"
-                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="Select date">
-                </div>
+                <p >{{userInfo.birthdate}}</p>
+                
             </div>
             <div class="">
                 <h2 class="text-lg font-bold">Role:</h2>
@@ -50,38 +40,8 @@
         </div>
         <div class="mb-6">
             <h2 class="text-lg font-bold">E-mail:</h2>
-            <p *ngIf="!isEdit">{{userInfo.email}}</p>
-            <div class="relative " *ngIf="isEdit">
-                <div class="absolute inset-y-0 flex items-center pl-3.5 pointer-events-none">
-                    <svg class="w-4 h-4  text-gray-500 dark:text-gray-400" aria-hidden="true"
-                        xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
-                        <path
-                            d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z" />
-                        <path
-                            d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
-                    </svg>
-                </div>
-                <input type="text" id="input-group-1"
-                    class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96  pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                    placeholder="name@gmail.com">
-            </div>
-        </div>
-        <div class="mb-6">
-            <h2 class="text-lg font-bold my-1">Password:</h2>
-            <input type="password" [(ngModel)]="password" placeholder='Password'
-                class="border rounded-xl p-1 w-full my-3 h-10">
-            <h2 class="text-lg font-bold my-1">Password again:</h2>
-            <input type="password" placeholder='Password again' class="border rounded-xl p-1 w-full my-3 h-10">
-        </div>
-
-        <div class="justify-between flex">
-            <button class="bg-blue-500 hover:bg-blue-600 text-white py-2 w-full mx-1 rounded-xl"
-                (click)="onChangePasswordClick()">
-                Edit
-            </button>
-            <button class="bg-red-500 hover:bg-red-600 text-white py-2 w-full mx-1 rounded-xl" (click)="onLogout()">
-                Exit
-            </button>
+            <p >{{userInfo.email}}</p>
+            
         </div>
     </div>
     <div class="border rounded-xl w-full mx-5 px-5 py-5">
@@ -105,7 +65,7 @@
 
 </div>
 
-<div class="" *ngIf="!isLoggedIn">
+<div class="w-fit" *ngIf="!isLoggedIn">
 
     <h1 class="text-6xl font-semibold text-center">You need to Log in!</h1>
 

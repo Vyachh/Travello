@@ -1,0 +1,25 @@
+<div class="m-auto w-fit">
+    <div class="shadow-lg h-fit py-9 px-5 rounded-3xl text-center">
+        <img [src]="ongoingTrip.imageUrl" class="rounded-3xl m-auto w-48 h-48" alt="">
+        <div class="mt-7 m-auto" *ngIf="ongoingTrip">
+            <h3 class="font-medium text-2xl">Trip To {{ongoingTrip.title}}</h3>
+            <p class="text-gray-400 font-medium pt-3">
+                {{ongoingTrip.dateFrom | day}}
+                {{ongoingTrip.dateFrom | month}}
+                -
+                {{ongoingTrip.dateTo | day}}
+                {{ongoingTrip.dateTo | month}} | by {{ongoingTrip.author}}</p>
+            <div class="py-5 px-2">
+                <a href=""><mat-icon
+                        class="bg-gray-100 text-gray-500 rounded-full m-2 scale-110 transition-all  hover:text-gray-100 hover:bg-gray-500">terrain</mat-icon></a>
+                <a href=""><mat-icon
+                        class="bg-gray-100 text-gray-500 rounded-full m-2 scale-110 transition-all  hover:text-gray-100 hover:bg-gray-500">map</mat-icon></a>
+                <a href=""><mat-icon
+                        class="bg-gray-100 text-gray-500 rounded-full m-2 scale-110 transition-all  hover:text-gray-100 hover:bg-gray-500">navigation</mat-icon></a>
+            </div>
+            <div class="flex text-gray-400 font-medium">
+                <mat-icon class="mr-3">business</mat-icon>
+                <p>NADO people going</p>
+            </div>
+        </div>
+    </div>

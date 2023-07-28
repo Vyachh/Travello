@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, of, switchMap } from 'rxjs'
-import { IUser } from '../models/user';
+import { Observable, catchError, of, switchMap } from 'rxjs'
+import { IUser } from '../models/User';
 import { LocalStorageService } from './local-storage.service';
-import { IUserInfo } from '../models/userInfo';
+import { IUserInfo } from '../models/UserInfo';
 import { PhotoService } from './photo.service';
 
 
@@ -39,11 +39,14 @@ export class AccountService {
 
 
   getInfo(): Observable<IUserInfo> {
-
     if (!this.isInfoLoaded) {
       return this.loadInfo().pipe(
         switchMap((userInfo: IUserInfo) => {
           return this.photoService.getPhoto(userInfo.id).pipe(
+            catchError(error => {
+              console.log("Фото не найдено");
+              return of('')
+            }),
             switchMap((photoData: any) => {
               userInfo.image = photoData;
               this.userInfo = userInfo;
@@ -95,10 +98,22 @@ export class AccountService {
     location.reload();
   }
 
+  changeInfo(user: IUserInfo): Observable<any> {
+    return this.httpClient.put
+      (`${this.baseURL}/ChangeInfo`, user, { responseType: 'text' })
+  }
+
   сhangePassword(user: IUser) {
     return this.httpClient.put
       (
         `${this.baseURL}/ChangePassword`, user, { responseType: 'text' }
+      )
+  }
+
+  getAll() {
+    return this.httpClient.get
+      (
+        `${this.baseURL}/GetAll`
       )
   }
 

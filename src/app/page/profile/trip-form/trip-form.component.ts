@@ -1,9 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ITrip } from 'src/app/models/trip';
-import { IUserInfo } from 'src/app/models/userInfo';
+import { ITrip } from 'src/app/models/Trip';
+import { IUserInfo } from 'src/app/models/UserInfo';
 import { TripService } from 'src/app/services/trip.service';
 import { DatePipe } from '@angular/common';
+import { PhotoService } from 'src/app/services/photo.service';
+import { FileType } from 'src/app/enum/filetype.enum';
 //
 @Component({
   selector: 'app-trip-form',
@@ -14,11 +16,10 @@ export class TripFormComponent implements OnInit {
 
   @Input() userInfo: IUserInfo
   @Input() trip: ITrip
-
   /**
    *
    */
-  constructor(private tripService: TripService, private datePipe: DatePipe) {
+  constructor(private tripService: TripService, private photoService: PhotoService) {
 
   }
 
@@ -48,6 +49,8 @@ export class TripFormComponent implements OnInit {
 
   }
 
+  tripImage: File
+
   onSubmit() {
     this.trip.userId = this.userInfo.id
     this.trip.description = this.tripForm.value.description || ""
@@ -55,17 +58,34 @@ export class TripFormComponent implements OnInit {
     this.trip.dateFrom = this.tripForm.value.dateStart || ""
     this.trip.dateTo = this.tripForm.value.dateEnd || ""
     this.trip.author = this.userInfo.userName
-    this.trip.image = this.tripForm.value.image || ""
+    this.trip.image = this.tripImage
     console.log(this.tripForm.value);
 
-    this.tripService.addTrip(this.trip).subscribe({
+    const formData = new FormData();
+    formData.append('userId', this.trip.userId);
+    formData.append('title', this.trip.title);
+    formData.append('description', this.trip.description);
+    formData.append('dateFrom', this.trip.dateFrom);
+    formData.append('dateTo', this.trip.dateTo);
+    formData.append('author', this.trip.author);
+    formData.append('image', this.tripImage);
+
+
+    // this.tripService.uploadPhoto(this.tripImage, this.userInfo.id, FileType.TripImage).subscribe();
+
+    this.tripService.addTrip(formData).subscribe({
       next: response => {
-        console.log(response);
       },
       error: e => {
         console.error(e);
       }
     });
+  }
 
+  onSavePhoto(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    if (inputElement.files && inputElement.files.length > 0) {
+      this.tripImage = inputElement.files[0];
+    }
   }
 }

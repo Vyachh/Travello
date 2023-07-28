@@ -5,5 +5,8 @@ export interface ITrip {
     dateFrom: string
     dateTo: string
     author: string
-    image: string
+    image: File | null
+    isNextTrip: boolean
+    isOngoingTrip: boolean
+    imageUrl: string
 }

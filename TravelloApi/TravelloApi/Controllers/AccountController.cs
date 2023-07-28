@@ -9,6 +9,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using TravelloApi.Dto;
+using TravelloApi.Enums;
 using TravelloApi.Helpers;
 using TravelloApi.Interfaces;
 using TravelloApi.Models;
@@ -24,12 +25,29 @@ namespace TravelloApi.Controllers
     private readonly IMapper mapper;
     private readonly IConfiguration configuration;
 
-    public AccountController(IUserRepository userRepository, IMapper mapper, IConfiguration configuration)
+    public AccountController(IUserRepository userRepository,
+      IMapper mapper, IConfiguration configuration
+      )
     {
       this.userRepository = userRepository;
       this.mapper = mapper;
       this.configuration = configuration;
     }
+
+    [HttpGet("GetInfo"), Authorize]
+    public async Task<IActionResult> GetInfo([FromHeader] string Authorization)
+    {
+      return Ok(DecodeJwtToken(Authorization));
+    }
+
+    [HttpGet("GetAll"), Authorize]
+    public async Task<IActionResult> GetAll()
+    {
+      return Ok(userRepository.GetAll());
+    }
+
+
+
     [HttpPost("SignUp")]
     public async Task<IActionResult> SignUp([FromBody] UserDto userDto)
     {
@@ -43,6 +61,15 @@ namespace TravelloApi.Controllers
       user.Id = id.ToString();
 
       user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(userDto.Password);
+
+      Photo photo = new()
+      {
+        IdentityId = user.Id,
+        Name = "",
+        FileType = FileType.AvatarImage
+      };
+
+      user.Photo = photo;
 
       if (!userRepository.Add(user))
       {
@@ -76,33 +103,6 @@ namespace TravelloApi.Controllers
       return Ok(token);
     }
 
-    [HttpPut("ChangePassword")]
-    public async Task<IActionResult> ChangePassword([FromBody] UserDto userDto)
-    {
-      var user = await userRepository.GetUserByName(userDto.UserName);
-
-      if (userDto.UserName != user.UserName)
-      {
-        return BadRequest("User not found.");
-      }
-      user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(userDto.Password);
-
-      if (!userRepository.Update(user))
-      {
-        ModelState.AddModelError("", "Что-то пошло не так. Попробуйте еще раз.");
-        return StatusCode(500, ModelState);
-      }
-
-      string token = CreateToken(user);
-      return Ok(token);
-    }
-
-    [HttpGet("GetInfo"), Authorize]
-    public async Task<IActionResult> GetInfo([FromHeader] string Authorization)
-    {
-      return Ok(DecodeJwtToken(Authorization));
-    }
-
     [HttpPost("RefreshToken")]
     public async Task<ActionResult<string>> RefreshToken([FromHeader] string request)
     {
@@ -134,6 +134,66 @@ namespace TravelloApi.Controllers
     }
 
 
+    [HttpPut("ChangeInfo")]
+    public async Task<IActionResult> ChangeInfo([FromBody] UserInfoDto userDto)
+    {
+      var user = await userRepository.GetUserByName(userDto.UserName);
+
+      user.BirthDate = userDto.BirthDate;
+      user.Email = userDto.Email;
+
+      if (user.UserName != user.UserName)
+      {
+        return BadRequest("User not found.");
+      }
+
+      if (!userRepository.Update(user))
+      {
+        ModelState.AddModelError("", "Что-то пошло не так. Попробуйте еще раз.");
+        return base.StatusCode(500, ModelState);
+      }
+
+      string token = CreateToken(user);
+      return Ok(token);
+    }
+
+    [HttpPut("ChangePassword")]
+    public async Task<IActionResult> ChangePassword([FromBody] UserDto userDto)
+    {
+      var user = await userRepository.GetUserByName(userDto.UserName);
+
+      if (userDto.UserName != user.UserName)
+      {
+        return BadRequest("User not found.");
+      }
+      user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(userDto.Password);
+
+      if (!userRepository.Update(user))
+      {
+        ModelState.AddModelError("", "Что-то пошло не так. Попробуйте еще раз.");
+        return StatusCode(500, ModelState);
+      }
+
+      string token = CreateToken(user);
+      return Ok(token);
+    }
+
+    [HttpPut("SetRole")]
+    public async Task<IActionResult> SetRole([FromQuery] int roleId, string userId)
+    {
+      var user = await userRepository.GetUserById(userId);
+      user.Role = (Role)roleId;
+
+      if (!userRepository.Save())
+      {
+        return BadRequest();
+
+      }
+
+
+      return Ok();
+    }
+
 
     private RefreshToken GenerateRefreshToken()
     {
@@ -145,7 +205,6 @@ namespace TravelloApi.Controllers
       };
       return refreshToken;
     }
-
     private void SetRefreshToken(RefreshToken newRefreshToken, User user)
     {
       var cookieOptions = new CookieOptions
@@ -170,6 +229,9 @@ namespace TravelloApi.Controllers
                 new Claim("currentTripId", user.CurrentTripId.ToString() ?? string.Empty),
                 new Claim("id", user.Id ?? string.Empty),
                 new Claim("role", user.Role.ToString()),
+                new Claim("birthdate", user.BirthDate.ToString()),
+                new Claim("email", user.Email.ToString()),
+
             };
 
       var key = new SymmetricSecurityKey(Encoding.UTF8
@@ -204,10 +266,5 @@ namespace TravelloApi.Controllers
       return claims;
     }
 
-    // Admin
-    // Moderator
-    // Organizer
-    //
-    //
   }
 }

@@ -9,6 +9,8 @@ export class ModalService {
 
   loginFormVisible: boolean = false;
   signupFormVisible: boolean = false;
+  birthDateFormVisible: boolean = false;
+  emailFormVisible: boolean = false;
 
   onLoginButtonClick(): void {
     this.isVisible$.next(true)
@@ -20,6 +22,13 @@ export class ModalService {
     this.isVisible$.next(true)
     this.loginFormVisible = false;
     this.signupFormVisible = true;
+  }
+  onBirthDateChange(): void {
+    this.isVisible$.next(true)
+    this.birthDateFormVisible = true;
+    this.loginFormVisible = false;
+    this.signupFormVisible = false;
+
   }
 
 

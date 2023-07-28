@@ -42,6 +42,16 @@ namespace TravelloApi.Reposity
 
     }
 
+    public async Task<Trip> GetNextTrip()
+    {
+      return dataContext.Trip.FirstOrDefault(t => t.IsNextTrip == true);
+    }
+
+    public async Task<Trip> GetOngoingTrip()
+    {
+      return dataContext.Trip.FirstOrDefault(t => t.IsOngoingTrip == true);
+    }
+
     public bool Save()
     {
       var saved = dataContext.SaveChanges();
@@ -50,12 +60,43 @@ namespace TravelloApi.Reposity
 
     public bool SetNextTrip(int id)
     {
-      var trip = dataContext.Trip.FirstOrDefault(t => t.Id == id);
-      trip.IsNextTrip = true;
+      var currentTrip = dataContext.Trip.FirstOrDefault(t => t.IsNextTrip);
+
+      if (currentTrip != null)
+      {
+        currentTrip.IsNextTrip = false;
+      }
+
+
+      var nextTrip = dataContext.Trip.FirstOrDefault(t => t.Id == id);
+
+      if (nextTrip != null)
+      {
+        nextTrip.IsNextTrip = true;
+      }
 
       return Save();
     }
 
+    public bool SetOngoingTrip(int id)
+    {
+      var currentTrip = dataContext.Trip.FirstOrDefault(t => t.IsOngoingTrip);
+
+      if (currentTrip != null)
+      {
+        currentTrip.IsOngoingTrip = false;
+      }
+
+
+      var onGoingTrip = dataContext.Trip.FirstOrDefault(t => t.Id == id);
+
+      if (onGoingTrip != null)
+      {
+        onGoingTrip.IsOngoingTrip = true;
+      }
+
+      return Save();
+    }
 
     public bool Update(Trip trip)
     {

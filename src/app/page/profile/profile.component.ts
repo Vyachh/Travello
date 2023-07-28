@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AccountService } from 'src/app/services/account.service';
-import { IUserInfo } from 'src/app/models/userInfo';
-import { IUser } from 'src/app/models/user';
-import { ITrip } from 'src/app/models/trip';
+import { IUserInfo } from 'src/app/models/UserInfo';
+import { IUser } from 'src/app/models/User';
+import { ITrip } from 'src/app/models/Trip';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TripService } from 'src/app/services/trip.service';
 import { PhotoService } from 'src/app/services/photo.service';
+import { FileType } from 'src/app/enum/filetype.enum';
 
 @Component({
   selector: 'app-profile',
@@ -19,15 +20,10 @@ export class ProfileComponent implements OnInit {
   ) {
     this.isLoggedIn = accountService.isLoggedIn;
   }
+  
   isLoggedIn = false;
   isInTrip = false;
-  isEdit = true;
 
-  password: string;
-  user: IUser = {
-    userName: '',
-    password: ''
-  }
   userInfo: IUserInfo = {
     id: '',
     userName: '',
@@ -45,7 +41,10 @@ export class ProfileComponent implements OnInit {
     dateFrom: '',
     dateTo: '',
     author: '',
-    image: ''
+    image: null,
+    isOngoingTrip: false,
+    isNextTrip: false,
+    imageUrl: ''
   }
 
 
@@ -55,7 +54,9 @@ export class ProfileComponent implements OnInit {
       this.accountService.getInfo()
         .subscribe({
           next: userInfo => {
-            this.userInfo = userInfo
+            this.userInfo = userInfo,
+            console.log(this.userInfo);
+            
           },
           error: error => {
             console.error(error);
@@ -67,28 +68,13 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  onChangePasswordClick() {
-    this.user.userName = this.userInfo.userName
-    this.user.password = this.password
-    this.accountService
-      .сhangePassword(this.user)
-      .subscribe(
-        {
-          next: response => {
-            localStorage.setItem('bearer', response)
-            location.reload();
-          }, error: e => {
-            console.error(e);
-          }
-        }
-      );
-  }
+  
 
   onUploadPhoto(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement.files && inputElement.files.length > 0) {
       const file = inputElement.files[0];
-      this.photoService.uploadPhoto(file, this.userInfo.id).subscribe({
+      this.photoService.uploadPhoto(file, this.userInfo.id, FileType.AvatarImage).subscribe({
         next: response => {
           // Обработка ответа от сервера после загрузки фото
           console.log('Фото успешно загружено:', response);
@@ -102,8 +88,5 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  onLogout() {
-    localStorage.clear();
-    location.reload();
-  }
+
 }

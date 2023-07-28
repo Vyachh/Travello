@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TravelloApi.Dto;
+using TravelloApi.Enums;
 using TravelloApi.Helpers;
 using TravelloApi.Interfaces;
 using TravelloApi.Models;
@@ -14,37 +15,50 @@ namespace TravelloApi.Controllers
   {
     private readonly IPhotoRepository photoRepository;
     private readonly IUserRepository userRepository;
+    private readonly ITripRepository tripRepository;
 
-    public PhotoController(IPhotoRepository photoRepository, IUserRepository userRepository)
+    public PhotoController(IPhotoRepository photoRepository, IUserRepository userRepository,
+      ITripRepository tripRepository)
     {
       this.photoRepository = photoRepository;
       this.userRepository = userRepository;
+      this.tripRepository = tripRepository;
     }
     [HttpPost("upload")]
-    public async Task<IActionResult> UploadPhoto([FromForm] UserPhotoDto userPhotoDto)
+    public async Task<IActionResult> UploadPhoto([FromForm] PhotoDto photoDto)
     {
-      if (!await AddToFolder(userPhotoDto.Photo))
+      if (!await AddToFolder(photoDto.Photo, photoDto.FileType))
       {
         return BadRequest("Photo Upload");
       }
 
-      var user = await userRepository.GetUserById(userPhotoDto.UserId);
+      var user = await userRepository.GetUserById(photoDto.UserId); // Вот эта хуйня все ломает
 
-      if (!await AddToRepository(userPhotoDto, user))
-      {
-        return BadRequest("Photo Repo");
+      if (photoDto.FileType.Equals(FileType.AvatarImage)) {
+        if (!await AddToUserRepository(photoDto, user))
+        {
+          return BadRequest("Photo Repo");
+        }
       }
+
+      //if (photoDto.FileType.Equals(FileType.AvatarImage))
+      //{
+      //  if (!await AddToTripRepository(photoDto, user))
+      //  {
+      //    return BadRequest("Photo Repo");
+      //  }
+      //}
+
 
       return Ok();
     }
 
-    private static async Task<bool> AddToFolder(IFormFile photo)
+    private static async Task<bool> AddToFolder(IFormFile photo, FileType fileType)
     {
       if (photo != null && photo.Length > 0)
       {
-        FileInfo fileInfo = new(photo.FileName);
         var fileName = photo.FileName;
-        var filePath = Common.GetFilePath(fileName);
+        var filePath = Common.GetFilePath(fileName, fileType);
         using var stream = new FileStream(filePath, FileMode.Create);
         await photo.CopyToAsync(stream);
         return true;
@@ -52,14 +66,14 @@ namespace TravelloApi.Controllers
       return false;
     }
 
-    private async Task<bool> AddToRepository(UserPhotoDto userPhotoDto, User user)
+    private async Task<bool> AddToUserRepository(PhotoDto photoDto, User user)
     {
-      if (userPhotoDto.Photo != null && userPhotoDto.Photo.Length > 0)
+      if (photoDto.Photo != null && photoDto.Photo.Length > 0)
       {
         Photo photo = new()
         {
-          Name = userPhotoDto.Photo.FileName,
-          UserId = user.Id
+          Name = photoDto.Photo.FileName,
+          IdentityId = user.Id,
         };
 
         if (!photoRepository.UploadPhoto(photo))
@@ -74,6 +88,32 @@ namespace TravelloApi.Controllers
           return false;
         }
 
+        return true;
+      }
+      return false;
+    }
+
+    private async Task<bool> AddToTripRepository(PhotoDto photoDto, Trip trip, User user)
+    {
+      if (photoDto.Photo != null && photoDto.Photo.Length > 0)
+      {
+        Photo photo = new()
+        {
+          Name = photoDto.Photo.FileName,
+          IdentityId = trip.Id.ToString(),
+        };
+
+        if (!photoRepository.UploadPhoto(photo))
+        {
+          return false;
+        }
+
+        user.Photo = photo;
+
+        if (!userRepository.Update(user))
+        {
+          return false;
+        }
 
         return true;
       }
@@ -91,7 +131,7 @@ namespace TravelloApi.Controllers
       if (System.IO.File.Exists(filePath))
       {
         // Отправляем файл из папки Avatars в ответ на запрос
-         string publicUrl = $"https://localhost:7001/{filePath.Replace("\\", "/").Replace("wwwroot", "").ToLower()}";
+        string publicUrl = $"https://localhost:7001/{filePath.Replace("\\", "/").Replace("wwwroot", "").ToLower()}";
         return Ok(publicUrl);
       }
       else
@@ -101,5 +141,27 @@ namespace TravelloApi.Controllers
       }
 
     }
+
+    [HttpGet("GetTripPhoto")]
+    public async Task<IActionResult> GetTripPhoto([FromQuery] int tripId)
+    {
+      var trip = await tripRepository.GetById(tripId);
+
+      string filePath = Path.Combine("wwwroot", "TripImage", "ROT");
+
+      // Проверяем, существует ли файл на сервере
+      if (System.IO.File.Exists(filePath))
+      {
+        // Отправляем файл из папки Avatars в ответ на запрос
+        string publicUrl = $"https://localhost:7001/{filePath.Replace("\\", "/").Replace("wwwroot", "").ToLower()}";
+        return Ok(publicUrl);
+      }
+      else
+      {
+        // Если файл не найден, возвращаем ошибку 404 Not Found
+        return NotFound();
+      }
+    }
+
   }
 }

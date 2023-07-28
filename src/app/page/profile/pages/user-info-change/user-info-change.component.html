@@ -1,0 +1,44 @@
+<div class="flex" *ngIf="userInfo">
+    <app-sidebar [Role]="userInfo.role"></app-sidebar>
+
+    <div class="w-full justify-center">
+        <div class=" rounded-xl border w-full mx-5 px-5 py-5">
+            <div class="flex items-center mb-4">
+                <div class="relative">
+                    <div class="relative z-0 rounded-full bg-contain" *ngIf="userInfo"
+                        [style.background-image]="'url(' + userInfo.image + ')'" style="width: 96px;height: 96px;">
+                    </div>
+                </div>
+
+                <div class=" ml-4">
+                    <h1 class="text-2xl font-bold">User Name:</h1>
+                    <p>{{userInfo.userName}}</p>
+                </div>
+            </div>
+
+            <div class="mb-6 flex  ">
+                <div class="">
+                    <h2 class="text-lg font-bold">Birthday:</h2>
+                    <p>{{userInfo.birthdate}}</p>
+
+                </div>
+
+                <span class="border-l mx-3"></span>
+
+                <div class="pr-3">
+                    <h2 class="text-lg font-bold">Role:</h2>
+                    <p>{{userInfo.role}}</p>
+                </div>
+            </div>
+            <div class="mb-6">
+                <h2 class="text-lg font-bold">E-mail:</h2>
+                <p>{{userInfo.email}}</p>
+            </div>
+
+            <div class="relative max-w-sm">
+                <button type="button" (click)="modalService.onBirthDateChange()"
+                    class="py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Change</button>
+            </div>
+        </div>
+    </div>
+</div>

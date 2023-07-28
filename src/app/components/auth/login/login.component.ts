@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
-import { trigger, state, style, animate, transition } from '@angular/animations';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AccountService } from 'src/app/services/account.service';
-import { ModalService } from 'src/app/services/modal.service';
-import { IUser } from 'src/app/models/user';
+import { IUser } from 'src/app/models/User';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +12,7 @@ import { IUser } from 'src/app/models/user';
 export class LoginComponent {
 
 
-  constructor(private accountService: AccountService, private modalService: ModalService) {
+  constructor(private accountService: AccountService) {
 
   }
 

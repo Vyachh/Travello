@@ -26,7 +26,10 @@
 
   <ItemGroup>
     <None Include="wwwroot\Avatars\1.jpg" />
-    <None Include="wwwroot\Avatars\1.jpg.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\TripImage\" />
   </ItemGroup>
 
 </Project>

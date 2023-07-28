@@ -8,7 +8,7 @@
         <input type="text" formControlName="description" placeholder='Description'
             class="border rounded-xl p-1 w-full mt-1 h-10">
         <h2 class="text-lg font-bold mt-1">Travel Time:</h2>
-        <div  class="flex items-center">
+        <div class="flex items-center">
             <div class="relative">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
@@ -17,7 +17,7 @@
                             d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                     </svg>
                 </div>
-                <input  formControlName="dateStart" type="date"
+                <input formControlName="dateStart" type="date"
                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     placeholder="Select date start">
             </div>
@@ -36,8 +36,12 @@
             </div>
         </div>
         <h2 class="text-lg font-bold mt-1">Image:</h2>
-        <input type="text" formControlName="image" placeholder='Drop Image'
-            class="border rounded-xl p-1 w-full mt-1 h-10">
+
+        <input (change)="onSavePhoto($event)"
+            class="block w-full text-sm p-1 text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
+            aria-describedby="file_input_help" id="file_input" type="file">
+        <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX.
+            800x400px).</p>
 
         <button class="bg-green-500 hover:bg-green-600 active:bg-green-700 text-white py-2 w-full mt-[10%] rounded-xl">
             Submit

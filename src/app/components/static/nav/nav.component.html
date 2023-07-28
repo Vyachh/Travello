@@ -1,0 +1,89 @@
+<nav class="relative flex w-full flex-wrap items-center justify-between py-5 " data-te-navbar-ref>
+    <div>
+        <button routerLink="/" class="font-bold  text-3xl text-black">Travello</button>
+    </div>
+    <div class="flex justify-center">
+        <button (click)="onRedirect('destinations')"
+            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">Destinations</button>
+        <button (click)="onRedirect('hotels')"
+            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">Hotels</button>
+        <button (click)="onRedirect('flights')"
+            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">Flights</button>
+        <button (click)="onRedirect('bookings')"
+            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100/75 hover:text-slate-900">Bookings</button>
+        <button (click)="onRedirect('travello')"
+            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100/75 hover:text-slate-900 travello">Trip
+            With Travello!
+        </button>
+    </div>
+
+
+    <div class="flex align-middle">
+        <div class="" *ngIf="!isLoggedIn">
+            <button class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900"
+                (click)="modalService.onLoginButtonClick()">Login</button>
+
+            <span class="border-l mx-3"></span>
+
+            <button class="rounded-lg 
+            px-3 py-1 
+            text-slate-700 
+            font-medium 
+            hover:bg-slate-100 
+            hover:text-slate-900 
+            border-black 
+            border-2  " (click)="modalService.onSignupButtonClick()">
+                Sign up
+                <mat-icon class="py-1">person</mat-icon>
+            </button>
+        </div>
+
+        <span class="border-l mx-3"></span>
+
+        <div class="flex justify-center" *ngIf="isLoggedIn && userInfo">
+            <div class="relative inline-block ">
+                <!-- Dropdown toggle button -->
+                <button #menu (click)="isMenuOpen = !isMenuOpen"
+                    class="relative z-10 flex items-center p-2 text-sm text-gray-600 bg-white border border-transparent rounded-md focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:text-white dark:bg-gray-800 focus:outline-none">
+                    <span class="mx-1">{{userInfo.userName}}</span>
+                    <svg class="w-5 h-5 mx-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12 15.713L18.01 9.70299L16.597 8.28799L12 12.888L7.40399 8.28799L5.98999 9.70199L12 15.713Z"
+                            fill="currentColor"></path>
+                    </svg>
+                </button>
+
+                <!-- Dropdown menu -->
+                <div *ngIf="isLoggedIn" [ngClass]="{'hidden': !isMenuOpen, 'block': isMenuOpen}"
+                    class="menu absolute right-0 z-20 w-56 py-2 mt-2 overflow-hidden bg-white rounded-md shadow-xl dark:bg-gray-800">
+                    <button (click)="onRedirect('profile')"
+                        class="flex items-center p-3 w-full text-lef -mt-2 text-sm text-gray-600 transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+                        <div *ngIf="hasPhoto" class="relative z-0 rounded-full bg-contain w-11 h-11"
+                            [style.background-image]="'url(' + userInfo.image + ')'" ></div>
+                        <div *ngIf="!hasPhoto" class="relative z-0 rounded-full bg-contain w-11 h-11"
+                            style="background: url(https://place-hold.it/300x500);" ></div>
+                        <div class="mx-1">
+                            <h1 class="text-sm font-semibold text-gray-700 dark:text-gray-200">{{userInfo.userName}}
+                            </h1>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">{{userInfo.role}}</p>
+                        </div>
+                    </button>
+
+                    <hr class="border-gray-200 dark:border-gray-700 ">
+
+                    <button *ngIf="isAdmin" (click)="onRedirect('adminpanel')"
+                        class="block w-full text-left px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+                        Admin Panel
+                    </button>
+
+                    <hr class="border-gray-200 dark:border-gray-700 ">
+
+                    <button (click)="onSignOut()"
+                        class="block w-full text-left px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
+                        Sign Out
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

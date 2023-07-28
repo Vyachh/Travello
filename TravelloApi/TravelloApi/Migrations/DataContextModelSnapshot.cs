@@ -30,18 +30,18 @@ namespace TravelloApi.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("FileType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("IdentityId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId")
-                        .IsUnique();
 
                     b.ToTable("Photos");
                 });
@@ -68,7 +68,7 @@ namespace TravelloApi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Image")
+                    b.Property<string>("ImageUrl")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -110,6 +110,9 @@ namespace TravelloApi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("PhotoId")
+                        .HasColumnType("int");
+
                     b.Property<string>("RefreshToken")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -128,6 +131,8 @@ namespace TravelloApi.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("PhotoId");
 
                     b.ToTable("User");
                 });
@@ -151,19 +156,13 @@ namespace TravelloApi.Migrations
                     b.ToTable("UserTrips");
                 });
 
-            modelBuilder.Entity("TravelloApi.Models.Photo", b =>
-                {
-                    b.HasOne("TravelloApi.Models.User", null)
-                        .WithOne("Photo")
-                        .HasForeignKey("TravelloApi.Models.Photo", "UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("TravelloApi.Models.User", b =>
                 {
-                    b.Navigation("Photo")
-                        .IsRequired();
+                    b.HasOne("TravelloApi.Models.Photo", "Photo")
+                        .WithMany()
+                        .HasForeignKey("PhotoId");
+
+                    b.Navigation("Photo");
                 });
 #pragma warning restore 612, 618
         }

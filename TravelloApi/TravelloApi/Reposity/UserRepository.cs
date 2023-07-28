@@ -26,16 +26,31 @@ namespace TravelloApi.Reposity
       return Save();
     }
 
+    public async Task<IEnumerable<User>> GetAll()
+    {
+      return dataContext.User
+        .Include(u => u.Photo)
+        .ToList();
+    }
+
     public async Task<User> GetUserById(string id)
     {
-      return dataContext.User.Include(u => u.Photo)
-                .FirstOrDefault(u => u.Id == id);
+      return dataContext.User
+        .Include(u => u.Photo)
+        .FirstOrDefault(u => u.Id == id);
     }
 
     public async Task<User> GetUserByName(string userName)
     {
       return dataContext.User.FirstOrDefault(u => u.UserName == userName);
     }
+
+    public async Task<string> GetUserName(string id)
+    {
+      return dataContext.User.FirstOrDefault(u => u.Id == id).UserName;
+    }
+
+
 
     public bool Save()
     {

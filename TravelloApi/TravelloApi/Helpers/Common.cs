@@ -1,3 +1,5 @@
+using TravelloApi.Enums;
+
 namespace TravelloApi.Helpers
 {
   public class Common
@@ -7,18 +9,26 @@ namespace TravelloApi.Helpers
       var result = Directory.GetCurrentDirectory();
       return result;
     }
-    public static string GetStaticContentDirectory()
+    public static string GetStaticContentDirectory(FileType fileType)
     {
-      var result = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Avatars\\");
+      string result = "";
+      if (fileType.Equals(FileType.TripImage))
+      {
+        result = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\TripImage\\");
+      }
+      if (fileType.Equals(FileType.AvatarImage))
+      {
+        result = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot\\Avatars\\");
+      }
       if (!Directory.Exists(result))
       {
         Directory.CreateDirectory(result);
       }
       return result;
     }
-    public static string GetFilePath(string FileName)
+    public static string GetFilePath(string FileName, FileType fileType)
     {
-      var _GetStaticContentDirectory = GetStaticContentDirectory();
+      var _GetStaticContentDirectory = GetStaticContentDirectory(fileType);
       var result = Path.Combine(_GetStaticContentDirectory, FileName);
       return result;
     }

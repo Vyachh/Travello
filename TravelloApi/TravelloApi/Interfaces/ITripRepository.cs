@@ -6,8 +6,11 @@ namespace TravelloApi.Interfaces
   {
     Task<Trip> GetById(int id);
     Task<Trip> GetByName(string userName);
+    Task<Trip> GetNextTrip();
+    Task<Trip> GetOngoingTrip();
     Task<IEnumerable<Trip>> GetAll();
     bool SetNextTrip(int id);
+    bool SetOngoingTrip(int id);
     bool Add(Trip user);
     bool Update(Trip user);
     bool Delete(int id);
