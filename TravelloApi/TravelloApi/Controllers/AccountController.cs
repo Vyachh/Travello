@@ -46,6 +46,11 @@ namespace TravelloApi.Controllers
       return Ok(userRepository.GetAll());
     }
 
+    [HttpGet("GetOngoingCount"), Authorize]
+    public async Task<IActionResult> GetOngoingPeopleCount()
+    {
+      var count = userRepository.Get
+    }
 
 
     [HttpPost("SignUp")]
@@ -133,7 +138,6 @@ namespace TravelloApi.Controllers
       return Ok(token);
     }
 
-
     [HttpPut("ChangeInfo")]
     public async Task<IActionResult> ChangeInfo([FromBody] UserInfoDto userDto)
     {
@@ -155,6 +159,27 @@ namespace TravelloApi.Controllers
 
       string token = CreateToken(user);
       return Ok(token);
+    }
+
+    [HttpPut("SetCurrentTrip")]
+    public async Task<IActionResult> SetCurrentTrip([FromBody] UserInfoDto[] userDto)
+    {
+      try
+      {
+        foreach (var item in userDto)
+        {
+          var user = await userRepository.GetUserByName(item.UserName);
+          user.CurrentTripId = item.CurrentTripId;
+
+          userRepository.Update(user);
+        }
+        return Ok();
+      }
+      catch (Exception)
+      {
+        return BadRequest();
+      }
+
     }
 
     [HttpPut("ChangePassword")]
@@ -193,6 +218,7 @@ namespace TravelloApi.Controllers
 
       return Ok();
     }
+
 
 
     private RefreshToken GenerateRefreshToken()

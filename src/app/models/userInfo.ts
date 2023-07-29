@@ -9,4 +9,5 @@ export interface IUserInfo {
     email: string
     birthdate: string
     image: string
+    isSelected: boolean
 }

@@ -22,19 +22,6 @@ export class BirthDateChangeComponent implements OnInit {
       email: new FormControl<string>('', [Validators.required])
     });
 
-    this.userInfo = {
-      id: '',
-      userName: '',
-      currentTripId: 0,
-      tripList: [],
-      role: '',
-      email: '',
-      birthdate: '',
-      image: '',
-    };
-
-    console.log(this.accountService.userInfo);
-    
   }
 
   form: FormGroup

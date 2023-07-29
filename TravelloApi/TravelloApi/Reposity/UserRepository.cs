@@ -63,5 +63,10 @@ namespace TravelloApi.Reposity
       dataContext.Update(user);
       return Save();
     }
+
+    public int GetOngoingPeopleCount()
+    {
+      return Database.ExecuteSqlRaw("EXEC dbo.OngoingPeopleCount");
+    }
   }
 }

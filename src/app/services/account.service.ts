@@ -110,7 +110,7 @@ export class AccountService {
       )
   }
 
-  getAll() {
+  getAll(): Observable<any> {
     return this.httpClient.get
       (
         `${this.baseURL}/GetAll`
@@ -126,5 +126,17 @@ export class AccountService {
 
   isLoggedInCall() {
     return this.isLoggedIn
+  }
+
+  addUsersToTrip(userList: IUserInfo[]) {
+    return this.httpClient.put
+      (
+        `${this.baseURL}/SetCurrentTrip`, userList,
+      { headers: this.headers },
+      )
+  }
+
+  getOngoingPeopleCount(){
+    
   }
 }

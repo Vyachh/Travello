@@ -1,4 +1,5 @@
 export interface ITrip {
+    id: number
     userId: string
     title: string
     description: string
@@ -6,7 +7,8 @@ export interface ITrip {
     dateTo: string
     author: string
     image: File | null
+    imageUrl: string
     isNextTrip: boolean
     isOngoingTrip: boolean
-    imageUrl: string
+    isSelected: boolean
 }

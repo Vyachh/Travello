@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "xEvisksQN1MeemyLl/jYUdoC4CeUTM2egmssS45pfBo=",
+  "Hash": "vpeQimtvFbljJ6pJmOz87uvG9hjqDKrmn0Xz/uZT/Yw=",
   "Source": "TravelloApi",
   "BasePath": "_content/TravelloApi",
   "Mode": "Default",
@@ -34,6 +34,23 @@
       "OriginalItemSpec": "wwwroot\\Avatars\\1.jpg"
     },
     {
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\akeys_198983.rar",
+      "SourceId": "TravelloApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "BasePath": "_content/TravelloApi",
+      "RelativePath": "Avatars/akeys_198983.rar",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Avatars\\akeys_198983.rar"
+    },
+    {
       "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\default.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
@@ -49,6 +66,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Avatars\\default.png"
+    },
+    {
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\Skachat_torrent.torrent",
+      "SourceId": "TravelloApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "BasePath": "_content/TravelloApi",
+      "RelativePath": "Avatars/Skachat_torrent.torrent",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Avatars\\Skachat_torrent.torrent"
+    },
+    {
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\XLN_Audio_-_Addictive_Keys_1_1_4_Complete_STANDALONE_VST_AAX_x86_x64_torrent.torrent",
+      "SourceId": "TravelloApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "BasePath": "_content/TravelloApi",
+      "RelativePath": "Avatars/XLN_Audio_-_Addictive_Keys_1_1_4_Complete_STANDALONE_VST_AAX_x86_x64_torrent.torrent",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Avatars\\XLN_Audio_-_Addictive_Keys_1_1_4_Complete_STANDALONE_VST_AAX_x86_x64_torrent.torrent"
     },
     {
       "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\Снимок экрана 2023-05-11 220036.png",

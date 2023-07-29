@@ -41,7 +41,6 @@
         <div class="mb-6">
             <h2 class="text-lg font-bold">E-mail:</h2>
             <p >{{userInfo.email}}</p>
-            
         </div>
     </div>
     <div class="border rounded-xl w-full mx-5 px-5 py-5">
@@ -58,11 +57,7 @@
             </ul>
         </div>
     </div>
-
-
     <app-trip-form [userInfo]="userInfo" [trip]="trip" class="border rounded-xl w-full mx-5 px-5 py-5"></app-trip-form>
-
-
 </div>
 
 <div class="w-fit" *ngIf="!isLoggedIn">
