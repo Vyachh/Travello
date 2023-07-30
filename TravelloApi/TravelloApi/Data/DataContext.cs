@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using System.Numerics;
 using TravelloApi.Models;
 
 namespace TravelloApi.Data
@@ -15,7 +17,6 @@ namespace TravelloApi.Data
     public DbSet<Trip> Trip { get; set; }
     public DbSet<UserTrips> UserTrips { get; set; }
     public DbSet<Photo> Photos { get; set; }
-
 
   }
 }

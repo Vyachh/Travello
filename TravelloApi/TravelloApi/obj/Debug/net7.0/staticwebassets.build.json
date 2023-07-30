@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vpeQimtvFbljJ6pJmOz87uvG9hjqDKrmn0Xz/uZT/Yw=",
+  "Hash": "lD2RVc9yDFodrO6aT3WqB+vTfvwd2iIKX7TCMrBjUmk=",
   "Source": "TravelloApi",
   "BasePath": "_content/TravelloApi",
   "Mode": "Default",
@@ -255,6 +255,23 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-05-16 213805.png"
     },
     {
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-20 132451.png",
+      "SourceId": "TravelloApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "BasePath": "_content/TravelloApi",
+      "RelativePath": "TripImage/Снимок экрана 2023-05-20 132451.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-05-20 132451.png"
+    },
+    {
       "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-24 000725.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
@@ -272,6 +289,23 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-05-24 000725.png"
     },
     {
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-25 205201.png",
+      "SourceId": "TravelloApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "BasePath": "_content/TravelloApi",
+      "RelativePath": "TripImage/Снимок экрана 2023-05-25 205201.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-05-25 205201.png"
+    },
+    {
       "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-29 225336.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
@@ -287,6 +321,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-05-29 225336.png"
+    },
+    {
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-07-16 140510.png",
+      "SourceId": "TravelloApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "BasePath": "_content/TravelloApi",
+      "RelativePath": "TripImage/Снимок экрана 2023-07-16 140510.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-07-16 140510.png"
     }
   ]
 }

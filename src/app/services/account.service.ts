@@ -132,11 +132,11 @@ export class AccountService {
     return this.httpClient.put
       (
         `${this.baseURL}/SetCurrentTrip`, userList,
-      { headers: this.headers },
+        { headers: this.headers },
       )
   }
 
-  getOngoingPeopleCount(){
-    
+  getOngoingCount() {
+    return this.httpClient.get(`${this.baseURL}/GetOngoingCount`)
   }
 }

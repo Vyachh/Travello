@@ -64,9 +64,18 @@ namespace TravelloApi.Reposity
       return Save();
     }
 
-    public int GetOngoingPeopleCount()
+    public async Task<List<TripCount>> GetOngoingPeopleCount()
     {
-      return Database.ExecuteSqlRaw("EXEC dbo.OngoingPeopleCount");
+      return await dataContext.Trip
+    .GroupJoin(dataContext.User, t => t.Id, u => u.CurrentTripId, (t, userGroup) => new { Trip = t, Users = userGroup })
+    .SelectMany(t => t.Users.DefaultIfEmpty(), (t, u) => new { t.Trip, User = u })
+    .GroupBy(t => new { t.Trip.Id })
+    .Select(g => new TripCount
+    {
+      TripId = g.Key.Id,
+      Count = g.Count(u => u.User != null)
+    })
+    .ToListAsync();
     }
   }
 }

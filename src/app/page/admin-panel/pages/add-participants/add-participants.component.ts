@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ITrip } from 'src/app/models/Trip';
+import { ITripCount } from 'src/app/models/TripCount';
 import { IUserInfo } from 'src/app/models/UserInfo';
 import { AccountService } from 'src/app/services/account.service';
 import { TripService } from 'src/app/services/trip.service';
@@ -12,13 +13,19 @@ import { TripService } from 'src/app/services/trip.service';
 export class AddParticipantsComponent implements OnInit {
 
   userInfos: IUserInfo[]
-  trips: ITrip[]
+  trips: ITrip[] = []
+  defaultTrip: ITrip[] = []
 
   selectedTrip: ITrip
 
   selectedUsers: IUserInfo[] = [];
 
   usersInTrip: IUserInfo[] = [];
+
+  onGoingCount: any
+
+  searchTrip: string
+  searchUser: string
 
   constructor(public accountService: AccountService, public tripService: TripService) {
 
@@ -28,15 +35,33 @@ export class AddParticipantsComponent implements OnInit {
     this.accountService.getAll().subscribe({
       next: response => {
         this.userInfos = response.result
+
       }
     })
+    this.getTripList();
+  }
+
+  private getTripList(){
     this.tripService.getTripList().subscribe({
-      next: (response: any) => {
-        this.trips = response
+      next: (response: ITrip[]) => {
+        let tripArray = response
+        this.accountService.getOngoingCount().subscribe({
+          next: (response: any) => {
+            this.onGoingCount = response
+            this.onGoingCount.forEach((element: any) => {
+              let trip = tripArray.find(t => t.id == element.tripId)
+              if (trip) {
+                if (trip.id == element.tripId) {
+                  trip.onGoingCount = element.count
+                  this.trips.push(trip);
+                }
+              }
+            })
+          }
+        })
       }
     })
   }
-
 
   selectTrip(trip: ITrip) {
     trip.isSelected = true;
@@ -44,6 +69,7 @@ export class AddParticipantsComponent implements OnInit {
     this.selectedUsers = [];
 
     this.usersInTrip = this.getUsersInTrips(trip.id)
+
     this.trips.forEach(element => {
       if (element !== trip) {
         element.isSelected = false
@@ -79,5 +105,22 @@ export class AddParticipantsComponent implements OnInit {
 
       }
     })
+  }
+
+  getOngoingCount() {
+    this.accountService.getOngoingCount().subscribe({
+      next: (response: any) => {
+        return response
+      }
+    })
+  }
+
+  onSearchTripChange() {
+    if (this.searchTrip == "") {
+      this.trips = []
+      this.getTripList()
+    }
+   this.trips = this.trips.filter(t => t.title.includes(this.searchTrip))
+
   }
 }

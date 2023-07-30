@@ -15,6 +15,7 @@
           <th scope="col" class="px-6 py-4 font-medium text-gray-900">Description</th>
           <th scope="col" class="px-6 py-4 font-medium text-gray-900">Date From</th>
           <th scope="col" class="px-6 py-4 font-medium text-gray-900">Date To</th>
+          <th scope="col" class="px-6 py-4 font-medium text-gray-900">Price</th>
           <th scope="col" class="px-6 py-4 font-medium text-gray-900">Author</th>
           <th scope="col" class="px-6 py-4 font-medium text-gray-900">Tools</th>
           <th scope="col" class="px-6 py-4 font-medium text-gray-900">Next Trip</th>
@@ -27,8 +28,6 @@
           <th class="flex gap-3 px-6 py-4 font-normal text-gray-900">
             <div class="relative h-10 w-10">
               <img class="h-full w-full rounded-full object-cover object-center" [src]="trip.imageUrl" alt="" />
-              <!-- SUDA PHOTO NADO -->
-              <!-- <span class="absolute right-0 bottom-0 h-2 w-2 rounded-full bg-green-400 ring ring-white"></span> -->
             </div>
             <div class="text-base align-middle">
               <div class="font-medium text-gray-700">{{trip.title}}</div>
@@ -37,6 +36,7 @@
           <td class="px-6 py-4">{{trip.description}}</td>
           <td class="px-6 py-4">{{trip.dateFrom}}</td>
           <td class="px-6 py-4">{{trip.dateTo}}</td>
+          <td class="px-6 py-4">{{trip.price}}</td>
           <td class="px-6 py-4">{{trip.author}}</td>
           <td class="px-6 py-4">
             <div class="flex justify-start gap-4">

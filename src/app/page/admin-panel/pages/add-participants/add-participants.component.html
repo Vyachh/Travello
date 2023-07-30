@@ -15,7 +15,7 @@
                                     stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                             </svg>
                         </div>
-                        <input type="text" id="table-search"
+                        <input  type="text" id="table-search" [(ngModel)]="searchTrip" (input)="onSearchTripChange()"
                             class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                             placeholder="Search for items">
                     </div>
@@ -30,9 +30,6 @@
                                 People Ongoing
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Category
-                            </th>
-                            <th scope="col" class="px-6 py-3">
                                 Price
                             </th>
                             <th scope="col" class="px-6 py-3">
@@ -43,20 +40,16 @@
                     <tbody>
                         <tr *ngFor="let trip of trips"
                             class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-
                             <th scope="row"
                                 class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex">
-                                <img [src]="trip.imageUrl" alt="" class="w-10 mr-4">
+                                <img [src]="trip.imageUrl" alt="" class="w-14 rounded-full mr-4">
                                 {{trip.title}}
                             </th>
                             <td class="px-6 py-4">
-                                0
+                                {{trip.onGoingCount}}
                             </td>
                             <td class="px-6 py-4">
-                                Laptop
-                            </td>
-                            <td class="px-6 py-4">
-                                $2999
+                                {{trip.price}}
                             </td>
                             <td class="px-6 py-4">
                                 <button *ngIf="!trip.isSelected" (click)="selectTrip(trip)"
@@ -98,9 +91,6 @@
                                 Current Trip
                             </th>
                             <th scope="col" class="px-6 py-3">
-                                Price
-                            </th>
-                            <th scope="col" class="px-6 py-3">
                                 Action
                             </th>
                         </tr>
@@ -120,9 +110,6 @@
                             </td>
                             <td class="px-6 py-4">
                                 {{user.currentTripId}}
-                            </td>
-                            <td class="px-6 py-4">
-                                $2999
                             </td>
                             <td class="px-6 py-4">
                                 <button *ngIf="!user.isSelected" (click)="selectUserTrip(user)"
@@ -162,9 +149,6 @@
                             Current Trip
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Price
-                        </th>
-                        <th scope="col" class="px-6 py-3">
                             Action
                         </th>
                     </tr>
@@ -174,18 +158,13 @@
                         dark:hover:bg-gray-600">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                             <img [src]="user.image" alt="" class="w-10 mr-4">
-
                             {{user.userName}}
                         </th>
                         <td class="px-6 py-4">
                             {{user.email}}
-
                         </td>
                         <td class="px-6 py-4">
                             {{user.currentTripId}}
-                        </td>
-                        <td class="px-6 py-4">
-                            $2999
                         </td>
                         <td class="px-6 py-4">
                             <button *ngIf="!user.isSelected" (click)="selectUserTrip(user)"

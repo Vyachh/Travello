@@ -1,5 +1,7 @@
 export interface ITrip {
     id: number
+    onGoingCount: number
+    price: number
     userId: string
     title: string
     description: string

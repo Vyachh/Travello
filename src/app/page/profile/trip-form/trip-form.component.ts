@@ -3,9 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ITrip } from 'src/app/models/Trip';
 import { IUserInfo } from 'src/app/models/UserInfo';
 import { TripService } from 'src/app/services/trip.service';
-import { DatePipe } from '@angular/common';
-import { PhotoService } from 'src/app/services/photo.service';
-import { FileType } from 'src/app/enum/filetype.enum';
+import { AccountService } from 'src/app/services/account.service';
 //
 @Component({
   selector: 'app-trip-form',
@@ -14,12 +12,7 @@ import { FileType } from 'src/app/enum/filetype.enum';
 })
 export class TripFormComponent implements OnInit {
 
-  @Input() userInfo: IUserInfo
-  @Input() trip: ITrip
-  /**
-   *
-   */
-  constructor(private tripService: TripService, private photoService: PhotoService) {
+  constructor(private tripService: TripService, private accountService: AccountService) {
 
   }
 
@@ -40,10 +33,15 @@ export class TripFormComponent implements OnInit {
     dateEnd: new FormControl<string>('', [
       Validators.required,
     ]),
+    price: new FormControl<string>('', [
+      Validators.required,
+    ]),
     image: new FormControl<string>('', [
       Validators.required
     ])
   })
+
+  userInfo: IUserInfo
 
   ngOnInit(): void {
 
@@ -52,32 +50,25 @@ export class TripFormComponent implements OnInit {
   tripImage: File
 
   onSubmit() {
-    this.trip.userId = this.userInfo.id
-    this.trip.description = this.tripForm.value.description || ""
-    this.trip.title = this.tripForm.value.title || ""
-    this.trip.dateFrom = this.tripForm.value.dateStart || ""
-    this.trip.dateTo = this.tripForm.value.dateEnd || ""
-    this.trip.author = this.userInfo.userName
-    this.trip.image = this.tripImage
-    console.log(this.tripForm.value);
+    this.accountService.getInfo().subscribe({
+      next: response => {
+        this.userInfo = response
+      }
+    });
 
     const formData = new FormData();
-    formData.append('userId', this.trip.userId);
-    formData.append('title', this.trip.title);
-    formData.append('description', this.trip.description);
-    formData.append('dateFrom', this.trip.dateFrom);
-    formData.append('dateTo', this.trip.dateTo);
-    formData.append('author', this.trip.author);
+    formData.append('userId', this.userInfo.id);
+    formData.append('title', this.tripForm.value.title || "");
+    formData.append('description', this.tripForm.value.description || "");
+    formData.append('dateFrom', this.tripForm.value.dateStart || "");
+    formData.append('dateTo', this.tripForm.value.dateEnd || "");
+    formData.append('price', this.tripForm.value.price || "");
+    formData.append('author', this.userInfo.userName);
     formData.append('image', this.tripImage);
-
-
-    // this.tripService.uploadPhoto(this.tripImage, this.userInfo.id, FileType.TripImage).subscribe();
 
     this.tripService.addTrip(formData).subscribe({
       next: response => {
-      },
-      error: e => {
-        console.error(e);
+        location.reload()
       }
     });
   }

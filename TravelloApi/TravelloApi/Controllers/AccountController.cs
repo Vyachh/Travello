@@ -5,9 +5,11 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
+using System.Numerics;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using TravelloApi.Data;
 using TravelloApi.Dto;
 using TravelloApi.Enums;
 using TravelloApi.Helpers;
@@ -46,10 +48,11 @@ namespace TravelloApi.Controllers
       return Ok(userRepository.GetAll());
     }
 
-    [HttpGet("GetOngoingCount"), Authorize]
+    [HttpGet("GetOngoingCount")]
     public async Task<IActionResult> GetOngoingPeopleCount()
     {
-      var count = userRepository.Get
+      var result = await userRepository.GetOngoingPeopleCount();
+      return Ok(result);
     }
 
 

@@ -13,27 +13,25 @@ export class ModalService {
   emailFormVisible: boolean = false;
 
   onLoginButtonClick(): void {
-    this.isVisible$.next(true)
-    this.loginFormVisible = true;
-    this.signupFormVisible = false;
+    this.setFormVisibility(true, false, false, false);
   }
 
   onSignupButtonClick(): void {
-    this.isVisible$.next(true)
-    this.loginFormVisible = false;
-    this.signupFormVisible = true;
+    this.setFormVisibility(false, true, false, false);
   }
   onBirthDateChange(): void {
-    this.isVisible$.next(true)
-    this.birthDateFormVisible = true;
-    this.loginFormVisible = false;
-    this.signupFormVisible = false;
-
+    this.setFormVisibility(false, false, true, false);
   }
 
+  private setFormVisibility(login: boolean, signup: boolean, birthDate: boolean, email: boolean): void {
+    this.isVisible$.next(true);
+    this.loginFormVisible = login;
+    this.signupFormVisible = signup;
+    this.birthDateFormVisible = birthDate;
+    this.emailFormVisible = email;
+  }
 
   close() {
     this.isVisible$.next(false)
   }
-  constructor() { }
 }
