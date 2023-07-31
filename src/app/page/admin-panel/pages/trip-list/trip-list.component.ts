@@ -18,8 +18,6 @@ export class TripListComponent {
     this.tripService.getTripList().subscribe({
       next: response => {
         this.tripList = response
-        console.log(response);
-        
       },
       error: error => {
         console.error(error);

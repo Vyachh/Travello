@@ -1,0 +1,109 @@
+<div class="flex">
+    <app-admin-sidebar></app-admin-sidebar>
+    <div class="block m-auto">
+        <div class="flex overflow-x-auto justify-center shadow-md sm:rounded-lg m-2 h-full w-max">
+            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" *ngIf="userInfos">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                    <tr>
+                        <th scope="col" class="px-6 py-3">
+                            Name
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Email
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Current Trip
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Role
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            Action
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of userInfos" class=" bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50
+                        dark:hover:bg-gray-600">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <img [src]="user.image" alt="" class="w-10 mr-4">
+                            {{user.userName}}
+                        </th>
+                        <td class="px-6 py-4">
+                            {{user.email}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{user.currentTripId}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{user.role}}
+                        </td>
+                        <td class="px-6 py-4">
+                            <button *ngIf="!user.isSelected" (click)="selectUser(user)"
+                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Select</button>
+                            <button *ngIf="user.isSelected" (click)="selectUser(user)"
+                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><svg
+                                    xmlns="http://www.w3.org/2000/svg" height="2em"
+                                    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                                    <path
+                                        d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z" />
+                                </svg></button>
+                        </td>
+                    </tr>
+                    <p *ngIf="userInfos.length == 0" class="text-center m-5"> There is no participants.</p>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="p-10 ">
+            <div class="max-w-md mx-auto">
+                <label for="select" class="font-semibold block py-2">Select Role:</label>
+
+                <div class="relative">
+                    <div class="h-10 bg-white flex border border-gray-200 rounded items-center">
+                        <input [value]="role" name="select" id="select"
+                            class="px-4 appearance-none outline-none text-gray-800 w-full" checked />
+                        <label for="show_more"
+                            class="cursor-pointer outline-none focus:outline-none border-l border-gray-200 transition-all text-gray-300 hover:text-gray-600">
+                            <svg class="w-4 h-4 mx-2 fill-current" xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round">
+                                <polyline points="18 15 12 9 6 15"></polyline>
+                            </svg>
+                        </label>
+                    </div>
+
+                    <input type="checkbox" name="show_more" id="show_more" class="hidden peer" />
+                    <div
+                        class="absolute rounded shadow bg-white overflow-hidden hidden peer-checked:flex flex-col w-full mt-1 border border-gray-200">
+                        <div class="cursor-pointer group">
+                            <button (click)="selectRole(0)"
+                                class="block w-full text-left p-2 border-transparent border-l-4 group-hover:border-blue-600 group-hover:bg-gray-100">Admin</button>
+                        </div>
+                        <div class="cursor-pointer group border-t">
+                            <button (click)="selectRole(1)"
+                                class="block w-full text-left p-2 border-transparent border-l-4 group-hover:border-blue-600 border-blue-600 group-hover:bg-gray-100">Moderator</button>
+                        </div>
+                        <div class="cursor-pointer group border-t">
+                            <button (click)="selectRole(2)"
+                                class="block w-full text-left p-2 border-transparent border-l-4 group-hover:border-blue-600 group-hover:bg-gray-100">Organizer</button>
+                        </div>
+                        <div class="cursor-pointer group border-t">
+                            <button (click)="selectRole(3)"
+                                class="block w-full text-left p-2 border-transparent border-l-4 group-hover:border-blue-600 group-hover:bg-gray-100">User</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="">
+            <button
+                class="relative flex  justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+                <span
+                    class="relative px-5 py-2.5 transition-all ease-in duration-100 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                    Submit
+                </span>
+            </button>
+        </div>
+    </div>

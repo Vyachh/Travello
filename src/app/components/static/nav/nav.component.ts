@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { IUserInfo } from 'src/app/models/UserInfo';
 import { AccountService } from 'src/app/services/account.service';
@@ -10,10 +10,10 @@ import { PhotoService } from 'src/app/services/photo.service';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent {
+export class NavComponent implements OnInit {
 
   isLoggedIn: boolean
-  isAdmin: boolean
+  isAdmin: boolean = false;
   @ViewChild('menu') menu: ElementRef;
   isMenuOpen: boolean = false;
   hasPhoto = false;
@@ -26,10 +26,11 @@ export class NavComponent {
     private router: Router,
   ) {
     this.isLoggedIn = accountService.isLoggedIn;
-    this.isAdmin = false
+  }
 
+  ngOnInit(): void {
     if (this.isLoggedIn) {
-      accountService.getInfo().subscribe({
+      this.accountService.getInfo().subscribe({
         next: userInfo => {
           this.userInfo = userInfo
           if (userInfo.image) {
@@ -44,9 +45,10 @@ export class NavComponent {
         }
       })
     }
-
   }
 
+
+  
   // @HostListener('document:click', ['$event.target'])
   // if (isLoggedIn) {
 

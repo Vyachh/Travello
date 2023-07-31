@@ -12,6 +12,13 @@ export class TripService {
   constructor(private httpClient: HttpClient) { }
   baseURL = "https://localhost:7001/Trip"
 
+  getById(id: number): Observable<ITrip> {
+    return this.httpClient.get<ITrip>(
+      `${this.baseURL}/GetTrip?id=${id}`
+    )
+  }
+
+
   addTrip(formData: FormData) {
     return this.httpClient.post(
       `${this.baseURL}/CreateTrip`, formData,

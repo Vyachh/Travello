@@ -1,7 +1,7 @@
-<div class="flex">
-    <app-sidebar></app-sidebar>
+<div class="flex ">
+    <app-sidebar [Role]="userInfo.role"></app-sidebar>
 
-    <div class="m-auto">
+    <div class="m-auto ">
         <h1 class="text-2xl font-bold mb-6 ">Create New Trip:</h1>
         <div class="mb-6">
             <form action="" [formGroup]="tripForm" (submit)="onSubmit()">
@@ -10,8 +10,8 @@
                 <input type="text" formControlName="title" placeholder='Title'
                     class="border rounded-xl p-1 w-full mt-1 h-10">
                 <h2 class="text-lg font-bold mt-1">Description:</h2>
-                <input type="text" formControlName="description" placeholder='Description'
-                    class="border rounded-xl p-1 w-full mt-1 h-10">
+                <textarea type="text" formControlName="description" placeholder='Description'
+                    class="border rounded-xl p-1 w-full mt-1 h-10"></textarea>
                 <h2 class="text-lg font-bold mt-1">Travel Time:</h2>
                 <div class="flex items-center">
                     <div class="relative">
@@ -46,10 +46,15 @@
                     class="border rounded-xl p-1 w-full mt-1 h-10">
 
                 <h2 class="text-lg font-bold mt-1">Image:</h2>
-
-                <input (change)="onSavePhoto($event)"
-                    class="block w-full text-sm p-1 text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"
-                    aria-describedby="file_input_help" id="file_input" type="file">
+                <label class="block border rounded-xl">
+                    <input type="file" class="block w-full text-sm text-gray-500
+      file:mr-4 file:py-2 file:px-4
+      file:rounded-xl file:border-0
+      file:text-sm file:font-medium
+      file:bg-blue-500 file:text-white
+      hover:file:bg-blue-600
+    " />
+                </label>
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX.
                     800x400px).</p>
 

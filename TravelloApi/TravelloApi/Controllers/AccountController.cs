@@ -42,6 +42,14 @@ namespace TravelloApi.Controllers
       return Ok(DecodeJwtToken(Authorization));
     }
 
+    [HttpGet("GetCurrentTrip"), Authorize]
+    public async Task<IActionResult> GetCurrentTrip([FromQuery] string id)
+    {
+      var user = await userRepository.GetUserById(id);
+
+      return Ok(user.CurrentTripId);
+    }
+
     [HttpGet("GetAll"), Authorize]
     public async Task<IActionResult> GetAll()
     {

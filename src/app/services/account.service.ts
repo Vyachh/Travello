@@ -81,6 +81,12 @@ export class AccountService {
       )
   }
 
+  getCurrentTripId(id: string):Observable<number> {
+    return this.httpClient.get<number>(
+      `${this.baseURL}/GetCurrentTrip?id=${id}`
+    )
+  }
+
   login(user: IUser): Observable<any> {
     return this.httpClient.post
       (`${this.baseURL}/Login`, user, { responseType: 'text' })

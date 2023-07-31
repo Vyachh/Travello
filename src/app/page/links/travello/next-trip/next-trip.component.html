@@ -1,54 +1,26 @@
-<div class="m-auto w-fit">
-    <div class="shadow-lg h-fit py-9 px-5 rounded-3xl text-center">
-        <img [src]="trip.imageUrl" class="rounded-3xl m-auto  w-48 h-48" alt="">
-        <div class="mt-7 m-auto" *ngIf="trip">
-            <h3 class="font-medium text-2xl">Trip To {{trip.title}}</h3>
-            <p class="text-gray-400 font-medium pt-3">
-                {{trip.dateFrom | day}}
-                {{trip.dateFrom | month}}
-                -
-                {{trip.dateTo | day}}
-                {{trip.dateTo | month}} | by {{trip.author}}</p>
-            <div class="py-5 px-2">
-                <a href=""><mat-icon
-                        class="bg-gray-100 text-gray-500 rounded-full m-2 scale-110 transition-all  hover:text-gray-100 hover:bg-gray-500">terrain</mat-icon></a>
-                <a href=""><mat-icon
-                        class="bg-gray-100 text-gray-500 rounded-full m-2 scale-110 transition-all  hover:text-gray-100 hover:bg-gray-500">map</mat-icon></a>
-                <a href=""><mat-icon
-                        class="bg-gray-100 text-gray-500 rounded-full m-2 scale-110 transition-all  hover:text-gray-100 hover:bg-gray-500">navigation</mat-icon></a>
-            </div>
-            <div class="flex text-gray-400 font-medium">
-                <mat-icon class="mr-3">business</mat-icon>
-                <p>NADO people going</p>
-            </div>
-
-
-
-            <form action="" *ngIf="userInfo && accountService.isLoggedIn">
-                <label for="input-group-1" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your
-                    Email</label>
-                <div class="relative ">
-                    <div class="absolute inset-y-0 flex items-center pl-3.5 pointer-events-none">
-                        <svg class="w-4 h-4  text-gray-500 dark:text-gray-400" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 16">
-                            <path
-                                d="m10.036 8.278 9.258-7.79A1.979 1.979 0 0 0 18 0H2A1.987 1.987 0 0 0 .641.541l9.395 7.737Z" />
-                            <path
-                                d="M11.241 9.817c-.36.275-.801.425-1.255.427-.428 0-.845-.138-1.187-.395L0 2.6V14a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V2.5l-8.759 7.317Z" />
-                        </svg>
-                    </div>
-                    <input type="text" id="input-group-1"
-                        class="bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-96  pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="name@gmail.com">
-                </div>
-                <button 
-                    class="relative inline-flex items-center justify-center p-0.5 my-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800">
-
-                    <span
-                        class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                        Select
-                    </span>
-                </button>
-            </form>
+<div class="relative ">
+    <h2 class=" absolute right-0 left-0 text-4xl font-medium text-black text-center mb-8 z-10">Next Trip:</h2>
+    <img src="{{trip.imageUrl}}" alt="Trip Image" class=" w-max h-max z-0">
+    <div class="absolute inset-0 flex flex-col justify-end items-center pb-10">
+      <div class="grid grid-cols-1 gap-6 ">
+        <div class="bg-white shadow-lg rounded-xl p-6 flex flex-col justify-between">
+          <h3 class="text-2xl font-bold">Trip To {{trip.title}}</h3>
+          <p class="text-gray-400 font-medium mt-2">
+            {{trip.dateFrom | day}} {{trip.dateFrom | month}} - {{trip.dateTo | day}} {{trip.dateTo | month}} | by {{trip.author}}
+          </p>
+          <div class="flex items-center mt-4 text-gray-400 font-medium">
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
+            </svg>
+            <p>{{trip.onGoingCount || 0}} people going</p>
+            
+            <button class="relative inline-flex items-center justify-center p-0.5 mb-2 ml-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+                <span (click)="modalService.onSubscribeButtonClick()" class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white hover:text-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                    I Want!
+                </span>
+              </button>
+          </div>
         </div>
+      </div>
     </div>
+  </div>

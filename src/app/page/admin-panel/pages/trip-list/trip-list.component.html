@@ -33,7 +33,7 @@
               <div class="font-medium text-gray-700">{{trip.title}}</div>
             </div>
           </th>
-          <td class="px-6 py-4">{{trip.description}}</td>
+          <td class="px-6 py-4">{{trip.description | truncate:20}}</td>
           <td class="px-6 py-4">{{trip.dateFrom}}</td>
           <td class="px-6 py-4">{{trip.dateTo}}</td>
           <td class="px-6 py-4">{{trip.price}}</td>

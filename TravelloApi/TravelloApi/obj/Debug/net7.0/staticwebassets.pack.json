@@ -33,6 +33,14 @@
       "PackagePath": "staticwebassets\\TripImage\\1.jpg"
     },
     {
+      "Id": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\DALL·E 2023-07-31 11.16.51 - Trip to Rome.png",
+      "PackagePath": "staticwebassets\\TripImage\\DALL·E 2023-07-31 11.16.51 - Trip to Rome.png"
+    },
+    {
+      "Id": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Norway.png",
+      "PackagePath": "staticwebassets\\TripImage\\Norway.png"
+    },
+    {
       "Id": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-10 142754.png",
       "PackagePath": "staticwebassets\\TripImage\\Снимок экрана 2023-05-10 142754.png"
     },
@@ -71,6 +79,10 @@
     {
       "Id": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-29 225336.png",
       "PackagePath": "staticwebassets\\TripImage\\Снимок экрана 2023-05-29 225336.png"
+    },
+    {
+      "Id": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-06-28 170530.png",
+      "PackagePath": "staticwebassets\\TripImage\\Снимок экрана 2023-06-28 170530.png"
     },
     {
       "Id": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-07-16 140510.png",

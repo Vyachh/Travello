@@ -1,15 +1,21 @@
-<h1 class="travello m-auto w-fit p-5 font-medium text-5xl rounded-2xl">Trip With Travello!</h1>
+<!-- Верхняя часть страницы с категорией "Travello" -->
+<!-- <div class="bg-gradient-to-r from-purple-600 to-blue-500 py-10">
+    <h1 class="text-white text-5xl text-center font-medium">Travello.</h1>
+</div> -->
+<div class="flex">
+    <!-- Секция с категорией "Next Trip" -->
+    <section class="bg-white w-[50%] ">
+        <div class="">
+                <app-next-trip [trip]="trip"></app-next-trip>
+        </div>
+    </section>
 
-
-<div class="flex justify-between">
-    <div class="">
-        <h2 class="font-medium text-4xl text-center">Next Trip:</h2>
-        <app-next-trip [trip]="trip"></app-next-trip>
-
-    </div>
-    <div class="">
-        <h2 class="font-medium text-4xl text-center">Ongoing Trip:</h2>
-        <app-ongoing-trip [ongoingTrip]="ongoingTrip"></app-ongoing-trip>
-
-    </div>
+    <!-- Секция с категорией "Ongoing Trip" -->
+    <section class="bg-white w-[50%]">
+        <div class="">
+            <div class="">
+                <app-ongoing-trip [ongoingTrip]="ongoingTrip"></app-ongoing-trip>
+            </div>
+        </div>
+    </section>
 </div>

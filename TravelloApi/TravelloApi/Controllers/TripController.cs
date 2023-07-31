@@ -26,6 +26,14 @@ namespace TravelloApi.Controllers
       this.userRepository = userRepository;
       this.mapper = mapper;
     }
+
+
+    [HttpGet("GetTrip")]
+    public async Task<IActionResult> GetTrip([FromQuery]int id)
+    {
+      return Ok(tripRepository.GetById(id));
+    }
+
     [HttpPost("CreateTrip"), Authorize(Roles = "Admin,Moderator,Organizer")]
     public async Task<IActionResult> AddTrip([FromForm] TripDto tripDto)
     {

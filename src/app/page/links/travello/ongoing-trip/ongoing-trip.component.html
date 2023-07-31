@@ -1,25 +1,20 @@
-<div class="m-auto w-fit">
-    <div class="shadow-lg h-fit py-9 px-5 rounded-3xl text-center">
-        <img [src]="ongoingTrip.imageUrl" class="rounded-3xl m-auto w-48 h-48" alt="">
-        <div class="mt-7 m-auto" *ngIf="ongoingTrip">
-            <h3 class="font-medium text-2xl">Trip To {{ongoingTrip.title}}</h3>
-            <p class="text-gray-400 font-medium pt-3">
-                {{ongoingTrip.dateFrom | day}}
-                {{ongoingTrip.dateFrom | month}}
-                -
-                {{ongoingTrip.dateTo | day}}
-                {{ongoingTrip.dateTo | month}} | by {{ongoingTrip.author}}</p>
-            <div class="py-5 px-2">
-                <a href=""><mat-icon
-                        class="bg-gray-100 text-gray-500 rounded-full m-2 scale-110 transition-all  hover:text-gray-100 hover:bg-gray-500">terrain</mat-icon></a>
-                <a href=""><mat-icon
-                        class="bg-gray-100 text-gray-500 rounded-full m-2 scale-110 transition-all  hover:text-gray-100 hover:bg-gray-500">map</mat-icon></a>
-                <a href=""><mat-icon
-                        class="bg-gray-100 text-gray-500 rounded-full m-2 scale-110 transition-all  hover:text-gray-100 hover:bg-gray-500">navigation</mat-icon></a>
-            </div>
-            <div class="flex text-gray-400 font-medium">
-                <mat-icon class="mr-3">business</mat-icon>
-                <p>NADO people going</p>
-            </div>
+<div class="relative">
+    <h2 class="absolute left-0 right-0 text-4xl font-bold text-center mb-8">Ongoing Trip:</h2>
+    <img src="{{ongoingTrip.imageUrl}}" alt="Ongoing Trip Image" class="w-max h-max z-0">
+    <div class="absolute inset-0 flex flex-col justify-end items-center pb-10">
+      <div class="grid grid-cols-1  gap-6">
+        <div class="bg-white shadow-lg rounded-xl p-6 flex flex-col justify-between">
+          <h3 class="text-2xl font-bold">Trip To {{ongoingTrip.title}}</h3>
+          <p class="text-gray-400 font-medium mt-2">
+            {{ongoingTrip.dateFrom | day}} {{ongoingTrip.dateFrom | month}} - {{ongoingTrip.dateTo | day}} {{ongoingTrip.dateTo | month}} | by {{ongoingTrip.author}}
+          </p>
+          <div class="flex items-center mt-4 text-gray-400 font-medium">
+            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
+            </svg>
+            <p>{{ongoingTrip.onGoingCount || 0}} people going</p>
+          </div>
         </div>
+      </div>
     </div>
+  </div>

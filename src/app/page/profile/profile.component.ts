@@ -16,7 +16,8 @@ import { FileType } from 'src/app/enum/filetype.enum';
 export class ProfileComponent implements OnInit {
 
   constructor(private accountService: AccountService,
-    private photoService: PhotoService
+    private photoService: PhotoService,
+    private tripService: TripService
   ) {
     this.isLoggedIn = accountService.isLoggedIn;
   }
@@ -33,15 +34,30 @@ export class ProfileComponent implements OnInit {
         .subscribe({
           next: userInfo => {
             this.userInfo = userInfo
+            this.accountService.getCurrentTripId(userInfo.id).subscribe({
+              next: (response: number) => {
+                this.userInfo.currentTripId = response
+                if (this.userInfo.currentTripId > 0) {
+                  this.isInTrip = true
+                  this.tripService.getById(this.userInfo.currentTripId).subscribe({
+                    next: (response: any) => {
+                      this.trip = response.result
+    
+                    }
+                  })
+                }
+              }
+            })
+            
           },
           error: error => {
             console.error(error);
           }
         })
+
+
     }
-    if (this.userInfo.currentTripId > 0) {
-      this.isInTrip = true
-    }
+
   }
 
 

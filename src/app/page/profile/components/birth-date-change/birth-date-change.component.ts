@@ -50,9 +50,6 @@ export class BirthDateChangeComponent implements OnInit {
   }
 
   submit() {
-
-    console.log(this.form);
-
     if (this.form.valid) {
       this.userInfo = this.accountService.userInfo
 

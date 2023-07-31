@@ -35,7 +35,6 @@ export class AddParticipantsComponent implements OnInit {
     this.accountService.getAll().subscribe({
       next: response => {
         this.userInfos = response.result
-
       }
     })
     this.getTripList();
@@ -102,7 +101,6 @@ export class AddParticipantsComponent implements OnInit {
     this.accountService.addUsersToTrip(this.selectedUsers).subscribe({
       next: response => {
         location.reload();
-
       }
     })
   }

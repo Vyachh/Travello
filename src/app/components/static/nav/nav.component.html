@@ -54,7 +54,7 @@
                 </button>
 
                 <!-- Dropdown menu -->
-                <div *ngIf="isLoggedIn" [ngClass]="{'hidden': !isMenuOpen, 'block': isMenuOpen}"
+                <div *ngIf="userInfo" [ngClass]="{'hidden': !isMenuOpen, 'block': isMenuOpen}"
                     class="menu absolute right-0 z-20 w-56 py-2 mt-2 overflow-hidden bg-white rounded-md shadow-xl dark:bg-gray-800">
                     <button (click)="onRedirect('profile')"
                         class="flex items-center p-3 w-full text-lef -mt-2 text-sm text-gray-600 transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
@@ -65,7 +65,7 @@
                         <div class="mx-1">
                             <h1 class="text-sm font-semibold text-gray-700 dark:text-gray-200">{{userInfo.userName}}
                             </h1>
-                            <p class="text-sm text-gray-500 dark:text-gray-400">{{userInfo.role}}</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400" >{{userInfo.role}}</p>
                         </div>
                     </button>
 

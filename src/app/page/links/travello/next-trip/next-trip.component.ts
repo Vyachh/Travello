@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ITrip } from 'src/app/models/Trip';
 import { IUserInfo } from 'src/app/models/UserInfo';
 import { AccountService } from 'src/app/services/account.service';
+import { ModalService } from 'src/app/services/modal.service';
 
 @Component({
   selector: 'app-next-trip',
@@ -11,7 +12,7 @@ import { AccountService } from 'src/app/services/account.service';
 export class NextTripComponent implements OnInit {
   @Input() trip: ITrip
 
-  constructor(public accountService: AccountService) {
+  constructor(public accountService: AccountService, public modalService: ModalService) {
 
   }
 
@@ -24,5 +25,4 @@ export class NextTripComponent implements OnInit {
       }
     })
   }
-
 }

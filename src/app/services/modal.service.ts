@@ -10,7 +10,7 @@ export class ModalService {
   loginFormVisible: boolean = false;
   signupFormVisible: boolean = false;
   birthDateFormVisible: boolean = false;
-  emailFormVisible: boolean = false;
+  subscribeFormVisible: boolean = false;
 
   onLoginButtonClick(): void {
     this.setFormVisibility(true, false, false, false);
@@ -19,16 +19,21 @@ export class ModalService {
   onSignupButtonClick(): void {
     this.setFormVisibility(false, true, false, false);
   }
+
   onBirthDateChange(): void {
     this.setFormVisibility(false, false, true, false);
   }
+  
+  onSubscribeButtonClick(): void {
+    this.setFormVisibility(false, false, false, true);
+  }
 
-  private setFormVisibility(login: boolean, signup: boolean, birthDate: boolean, email: boolean): void {
+  private setFormVisibility(login: boolean, signup: boolean, birthDate: boolean, subscribe: boolean): void {
     this.isVisible$.next(true);
     this.loginFormVisible = login;
     this.signupFormVisible = signup;
     this.birthDateFormVisible = birthDate;
-    this.emailFormVisible = email;
+    this.subscribeFormVisible = subscribe;
   }
 
   close() {

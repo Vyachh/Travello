@@ -13,6 +13,7 @@ import { TripListComponent } from './page/admin-panel/pages/trip-list/trip-list.
 import { UserInfoChangeComponent } from './page/profile/pages/user-info-change/user-info-change.component';
 import { AddParticipantsComponent } from './page/admin-panel/pages/add-participants/add-participants.component';
 import { TripFormComponent } from './page/profile/trip-form/trip-form.component';
+import { AdminChangeUserInformationComponent } from './page/admin-panel/pages/admin-change-user-information/admin-change-user-information.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'adminpanel', component: AdminPanelComponent },
   { path: 'adminpanel/triplist', component: TripListComponent },
   { path: 'adminpanel/addparticipants', component: AddParticipantsComponent },
+  { path: 'adminpanel/changeuserinfo', component: AdminChangeUserInformationComponent },
 
 ];
 
