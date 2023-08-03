@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ITrip } from '../models/Trip';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, switchMap } from 'rxjs';
 import { FileType } from '../enum/filetype.enum';
 
 @Injectable({
@@ -9,7 +9,20 @@ import { FileType } from '../enum/filetype.enum';
 })
 export class TripService {
 
-  constructor(private httpClient: HttpClient) { }
+  tripList: ITrip[]
+
+  isInfoLoaded: boolean = false;
+
+  headers: HttpHeaders;
+  token: string | null;
+
+  constructor(private httpClient: HttpClient) {
+    this.token = localStorage.getItem('bearer');
+    this.headers = new HttpHeaders({
+      'Content-Type': 'application/json; charset=utf-8',
+      'Authorization': this.token ? "bearer " + this.token : ""
+    })
+  }
   baseURL = "https://localhost:7001/Trip"
 
   getById(id: number): Observable<ITrip> {
@@ -18,6 +31,25 @@ export class TripService {
     )
   }
 
+  getInfo(): Observable<ITrip[]> {
+    if (!this.isInfoLoaded) {
+      return this.loadInfo();
+    }
+    else {
+      return new Observable<ITrip[]>(observer => {
+        observer.next(this.tripList)
+        observer.complete();
+      })
+    }
+  }
+
+  private loadInfo(): Observable<ITrip[]> {
+    return this.httpClient.get<ITrip[]>
+      (
+        `${this.baseURL}/GetTripList`,
+        { headers: this.headers },
+      )
+  }
 
   addTrip(formData: FormData) {
     return this.httpClient.post(
@@ -43,6 +75,7 @@ export class TripService {
       `${this.baseURL}/SetNextTrip?id=${id}`
     )
   }
+
   setOngoingTrip(id: number): Observable<ITrip> {
     return this.httpClient.get<ITrip>(
       `${this.baseURL}/SetOngoingTrip?id=${id}`
@@ -53,6 +86,19 @@ export class TripService {
     return this.httpClient.get<ITrip[]>(
       `${this.baseURL}/GetTripList`
     )
+  }
+
+  approve(id: number) {
+    return this.httpClient.put(
+      `${this.baseURL}/Approve?id=${id}`,
+      { responseType: 'text' }
+    )
+  }
+
+  updateTrip(formData: FormData){
+    return this.httpClient.put(
+      `${this.baseURL}/Update`, formData,
+      { responseType: 'text' })
   }
 
   deleteTrip(id: number) {

@@ -87,6 +87,17 @@ export class AccountService {
     )
   }
 
+  getAll(): Observable<any> {
+    return this.httpClient.get
+      (
+        `${this.baseURL}/GetAll`
+      )
+  }
+
+  getOngoingCount() {
+    return this.httpClient.get(`${this.baseURL}/GetOngoingCount`)
+  }
+
   login(user: IUser): Observable<any> {
     return this.httpClient.post
       (`${this.baseURL}/Login`, user, { responseType: 'text' })
@@ -116,13 +127,6 @@ export class AccountService {
       )
   }
 
-  getAll(): Observable<any> {
-    return this.httpClient.get
-      (
-        `${this.baseURL}/GetAll`
-      )
-  }
-
   refreshToken() {
     return this.httpClient.post
       (
@@ -142,7 +146,5 @@ export class AccountService {
       )
   }
 
-  getOngoingCount() {
-    return this.httpClient.get(`${this.baseURL}/GetOngoingCount`)
-  }
+
 }

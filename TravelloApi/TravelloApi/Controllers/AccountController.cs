@@ -156,6 +156,7 @@ namespace TravelloApi.Controllers
 
       user.BirthDate = userDto.BirthDate;
       user.Email = userDto.Email;
+      user.Role = Enum.Parse<Role>(userDto.Role);
 
       if (user.UserName != user.UserName)
       {

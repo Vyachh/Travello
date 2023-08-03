@@ -1,5 +1,5 @@
-<div class="flex ">
-    <app-sidebar [Role]="userInfo.role"></app-sidebar>
+<div class="flex" *ngIf="accountService.userInfo">
+    <app-sidebar [Role]="accountService.userInfo.role"></app-sidebar>
 
     <div class="m-auto ">
         <h1 class="text-2xl font-bold mb-6 ">Create New Trip:</h1>
@@ -47,13 +47,15 @@
 
                 <h2 class="text-lg font-bold mt-1">Image:</h2>
                 <label class="block border rounded-xl">
-                    <input type="file" class="block w-full text-sm text-gray-500
-      file:mr-4 file:py-2 file:px-4
-      file:rounded-xl file:border-0
-      file:text-sm file:font-medium
-      file:bg-blue-500 file:text-white
-      hover:file:bg-blue-600
-    " />
+                    <input type="file" 
+                    class="block w-full text-sm text-gray-500
+                            file:mr-4 file:py-2 file:px-4
+                            file:rounded-xl file:border-0
+                            file:text-sm file:font-medium
+                            file:bg-blue-500 file:text-white
+                            hover:file:bg-blue-600
+                                " 
+                                (change)="onSavePhoto($event)"/>
                 </label>
                 <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX.
                     800x400px).</p>
@@ -65,4 +67,18 @@
             </form>
         </div>
     </div>
+</div>
+
+<div class="mb-52" *ngIf="!accountService.isLoggedIn">
+
+    <p class="text-red-500 text-center text-3xl">You must Log in!</p>
+
+    <div class="flex items-center justify-around">
+        <app-login></app-login>
+
+        <p>Or:</p>
+
+        <app-sign-up></app-sign-up>
+    </div>
+
 </div>

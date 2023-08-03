@@ -17,4 +17,7 @@
     <ng-container *ngIf="modalService.subscribeFormVisible">
         <app-subscribe-trip></app-subscribe-trip>
     </ng-container>
+    <ng-container *ngIf="modalService.editTripFormVisible">
+        <app-trip-edit></app-trip-edit>
+    </ng-container>
 </app-modal>

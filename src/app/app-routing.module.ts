@@ -14,6 +14,7 @@ import { UserInfoChangeComponent } from './page/profile/pages/user-info-change/u
 import { AddParticipantsComponent } from './page/admin-panel/pages/add-participants/add-participants.component';
 import { TripFormComponent } from './page/profile/trip-form/trip-form.component';
 import { AdminChangeUserInformationComponent } from './page/admin-panel/pages/admin-change-user-information/admin-change-user-information.component';
+import { TripComponent } from './page/trip/trip.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'profile/changepassword', component: ChangePasswordComponent },
   { path: 'profile/changeinfo', component: UserInfoChangeComponent },
   { path: 'profile/createtrip', component: TripFormComponent },
+  { path: 'trip/:id', component: TripComponent },
   { path: 'destinations', component: DestinationsComponent },
   { path: 'hotels', component: HotelsComponent },
   { path: 'flights', component: FlightsComponent },

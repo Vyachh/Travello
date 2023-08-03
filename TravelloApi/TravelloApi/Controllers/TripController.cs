@@ -29,7 +29,7 @@ namespace TravelloApi.Controllers
 
 
     [HttpGet("GetTrip")]
-    public async Task<IActionResult> GetTrip([FromQuery]int id)
+    public async Task<IActionResult> GetTrip([FromQuery] int id)
     {
       return Ok(tripRepository.GetById(id));
     }
@@ -97,6 +97,33 @@ namespace TravelloApi.Controllers
       return Ok(tripList);
     }
 
+    [HttpPut("Approve")]
+    public async Task<IActionResult> Approve(int id)
+    {
+      var trip = await tripRepository.GetById(id);
+      if (trip == null)
+      {
+        return BadRequest();
+      }
+
+      trip.IsApproved = true;
+      tripRepository.Save();
+      return Ok();
+    }
+
+    [HttpPut("Update"), Authorize(Roles = "Admin,Moderator,Organizer")]
+    public async Task<IActionResult> Update([FromBody] TripDto tripDto)
+    {
+      var trip =  mapper.Map<Trip>(tripDto);
+
+      if (!tripRepository.Update(trip))
+      {
+        return BadRequest("Error while Updating Trip.");
+      }
+
+      return Ok();
+    }
+
     [HttpDelete("Delete"), Authorize(Roles = "Admin,Moderator,Organizer")]
     public async Task<IActionResult> DeleteTrip([FromQuery] int id)
     {
@@ -109,20 +136,6 @@ namespace TravelloApi.Controllers
     }
 
 
-    private async Task<bool> AddImage(TripDto tripDto)
-    {
-      var photo = tripDto.Image;
-
-      if (tripDto.Image != null && tripDto.Image.Length > 0)
-      {
-        var fileName = photo.FileName;
-        var filePath = Common.GetFilePath(fileName, FileType.TripImage);
-        using var stream = new FileStream(filePath, FileMode.Create);
-        await photo.CopyToAsync(stream);
-        return true;
-      }
-      return false;
-    }
 
     private async Task<string> GetTripPhoto(string fileName)
     {
@@ -141,5 +154,22 @@ namespace TravelloApi.Controllers
         return "";
       }
     }
+
+    private async Task<bool> AddImage(TripDto tripDto)
+    {
+      var photo = tripDto.Image;
+
+      if (tripDto.Image != null && tripDto.Image.Length > 0)
+      {
+        var fileName = photo.FileName;
+        var filePath = Common.GetFilePath(fileName, FileType.TripImage);
+        using var stream = new FileStream(filePath, FileMode.Create);
+        await photo.CopyToAsync(stream);
+        return true;
+      }
+      return false;
+    }
+
   }
+
 }

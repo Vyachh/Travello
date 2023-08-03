@@ -46,10 +46,13 @@ import { BirthDateChangeComponent } from './page/profile/components/birth-date-c
 import { OngoingTripComponent } from './page/links/travello/ongoing-trip/ongoing-trip.component';
 import { NextTripComponent } from './page/links/travello/next-trip/next-trip.component';
 import { AddParticipantsComponent } from './page/admin-panel/pages/add-participants/add-participants.component';
-import { TripInfoComponent } from './page/trip-info/trip-info.component';
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { SubscribeTripComponent } from './page/links/travello/next-trip/subscribe-trip/subscribe-trip.component';
 import { AdminChangeUserInformationComponent } from './page/admin-panel/pages/admin-change-user-information/admin-change-user-information.component';
+import { RolePipe } from './pipes/role.pipe';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TripComponent } from './page/trip/trip.component';
+import { TripEditComponent } from './page/trip/trip-edit/trip-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -85,10 +88,12 @@ import { AdminChangeUserInformationComponent } from './page/admin-panel/pages/ad
     OngoingTripComponent,
     NextTripComponent,
     AddParticipantsComponent,
-    TripInfoComponent,
     TruncatePipe,
     SubscribeTripComponent,
     AdminChangeUserInformationComponent,
+    RolePipe,
+    TripComponent,
+    TripEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -99,17 +104,17 @@ import { AdminChangeUserInformationComponent } from './page/admin-panel/pages/ad
     ReactiveFormsModule,
     MatIconModule,
     MatCardModule,
-    MatProgressBarModule
-
+    MatProgressBarModule,
+    FontAwesomeModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthIntreceptor,
     multi: true,
   },
-  DatePipe
+    DatePipe
 
-],
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

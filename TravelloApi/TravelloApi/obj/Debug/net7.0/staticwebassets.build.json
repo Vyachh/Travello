@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "oSlfUvE99dVBGZ9b9oVNE+GKvSnGoJ2zi0GI98pBx94=",
+  "Hash": "JpAWyt9vTseuR1Ymo7G6VXUo18OrBZdi39SysnPd+AE=",
   "Source": "TravelloApi",
   "BasePath": "_content/TravelloApi",
   "Mode": "Default",
@@ -51,6 +51,23 @@
       "OriginalItemSpec": "wwwroot\\Avatars\\akeys_198983.rar"
     },
     {
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\DALL·E 2023-07-31 11.16.51 - Trip to Rome.png",
+      "SourceId": "TravelloApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "BasePath": "_content/TravelloApi",
+      "RelativePath": "Avatars/DALL·E 2023-07-31 11.16.51 - Trip to Rome.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Avatars\\DALL·E 2023-07-31 11.16.51 - Trip to Rome.png"
+    },
+    {
       "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\default.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
@@ -66,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Avatars\\default.png"
+    },
+    {
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\Norway.png",
+      "SourceId": "TravelloApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "BasePath": "_content/TravelloApi",
+      "RelativePath": "Avatars/Norway.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Avatars\\Norway.png"
     },
     {
       "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\Skachat_torrent.torrent",

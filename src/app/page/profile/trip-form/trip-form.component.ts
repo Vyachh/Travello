@@ -1,7 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ITrip } from 'src/app/models/Trip';
-import { IUserInfo } from 'src/app/models/UserInfo';
 import { TripService } from 'src/app/services/trip.service';
 import { AccountService } from 'src/app/services/account.service';
 //
@@ -12,7 +10,7 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class TripFormComponent implements OnInit {
 
-  constructor(private tripService: TripService, private accountService: AccountService) {
+  constructor(private tripService: TripService, public accountService: AccountService) {
 
   }
 
@@ -41,7 +39,6 @@ export class TripFormComponent implements OnInit {
     ])
   })
 
-  userInfo: IUserInfo
 
   ngOnInit(): void {
 
@@ -50,33 +47,36 @@ export class TripFormComponent implements OnInit {
   tripImage: File
 
   onSubmit() {
-    this.accountService.getInfo().subscribe({
-      next: response => {
-        this.userInfo = response
-      }
-    });
 
     const formData = new FormData();
-    formData.append('userId', this.userInfo.id);
+    formData.append('userId', this.accountService.userInfo.id);
     formData.append('title', this.tripForm.value.title || "");
     formData.append('description', this.tripForm.value.description || "");
     formData.append('dateFrom', this.tripForm.value.dateStart || "");
     formData.append('dateTo', this.tripForm.value.dateEnd || "");
     formData.append('price', this.tripForm.value.price || "");
-    formData.append('author', this.userInfo.userName);
+    formData.append('author', this.accountService.userInfo.userName);
     formData.append('image', this.tripImage);
 
+    console.log(this.tripImage);
+    
+
     this.tripService.addTrip(formData).subscribe({
-      next: response => {
-        location.reload()
+      next: response =>{
+        console.log(response);
+        
       }
     });
+    
   }
 
   onSavePhoto(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement.files && inputElement.files.length > 0) {
+      console.log(inputElement);
+      
       this.tripImage = inputElement.files[0];
     }
   }
+
 }

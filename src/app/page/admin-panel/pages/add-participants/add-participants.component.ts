@@ -40,14 +40,13 @@ export class AddParticipantsComponent implements OnInit {
     this.getTripList();
   }
 
-  private getTripList(){
+  private getTripList() {
     this.tripService.getTripList().subscribe({
       next: (response: ITrip[]) => {
-        let tripArray = response
+        let tripArray = response.filter(t => t.isApproved == true);
         this.accountService.getOngoingCount().subscribe({
           next: (response: any) => {
-            this.onGoingCount = response
-            this.onGoingCount.forEach((element: any) => {
+            response.forEach((element: any) => {
               let trip = tripArray.find(t => t.id == element.tripId)
               if (trip) {
                 if (trip.id == element.tripId) {
@@ -118,7 +117,7 @@ export class AddParticipantsComponent implements OnInit {
       this.trips = []
       this.getTripList()
     }
-   this.trips = this.trips.filter(t => t.title.includes(this.searchTrip))
+    this.trips = this.trips.filter(t => t.title.includes(this.searchTrip))
 
   }
 }

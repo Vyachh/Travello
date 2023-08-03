@@ -12,9 +12,10 @@ export class AdminChangeUserInformationComponent {
   isRolesDropdown: boolean = false
 
   userInfos: IUserInfo[]
+  selectedUser: IUserInfo
   role: string = 'User'
 
-  constructor(private accountService: AccountService) {
+  constructor(public accountService: AccountService) {
     accountService.getAll().subscribe({
       next: response => {
         this.userInfos = response.result
@@ -23,10 +24,23 @@ export class AdminChangeUserInformationComponent {
   }
 
   selectUser(user: IUserInfo) {
-
+    user.isSelected = true
+    this.selectedUser = user
+    
+    this.userInfos.forEach(element => {
+      if (element !== user) {
+        element.isSelected = false
+      }
+    });
   }
 
   selectRole(id: number) {
     this.role = Role[id]
-    }
+  }
+
+  changeRole() {
+    this.selectedUser.role = this.role
+    this.accountService.changeInfo(this.selectedUser).subscribe()
+    location.reload()
+  }
 }

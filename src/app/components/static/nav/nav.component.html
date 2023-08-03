@@ -4,17 +4,21 @@
     </div>
     <div class="flex justify-center">
         <button (click)="onRedirect('destinations')"
-            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">Destinations</button>
+            class="rounded-lg ml-1 px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">Destinations</button>
         <button (click)="onRedirect('hotels')"
-            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">Hotels</button>
+            class="rounded-lg ml-1 px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">Hotels</button>
         <button (click)="onRedirect('flights')"
-            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">Flights</button>
+            class="rounded-lg ml-1 px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900">Flights</button>
         <button (click)="onRedirect('bookings')"
-            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100/75 hover:text-slate-900">Bookings</button>
+            class="rounded-lg ml-1 px-3 py-2 text-slate-700 font-medium hover:bg-slate-100/75 hover:text-slate-900">Bookings</button>
+
+            <span class="border-l mx-3"></span>
+
         <button (click)="onRedirect('travello')"
-            class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100/75 hover:text-slate-900 travello">Trip
+            class="rounded-lg ml-1 px-3 py-2 text-slate-700 font-medium hover:bg-slate-100/75 hover:text-slate-900 travello">Trip
             With Travello!
         </button>
+
     </div>
 
 
@@ -59,21 +63,21 @@
                     <button (click)="onRedirect('profile')"
                         class="flex items-center p-3 w-full text-lef -mt-2 text-sm text-gray-600 transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
                         <div *ngIf="hasPhoto" class="relative z-0 rounded-full bg-contain w-11 h-11"
-                            [style.background-image]="'url(' + userInfo.image + ')'" ></div>
+                            [style.background-image]="'url(' + userInfo.image + ')'"></div>
                         <div *ngIf="!hasPhoto" class="relative z-0 rounded-full bg-contain w-11 h-11"
-                            style="background: url(https://place-hold.it/300x500);" ></div>
+                            style="background: url(https://place-hold.it/300x500);"></div>
                         <div class="mx-1">
                             <h1 class="text-sm font-semibold text-gray-700 dark:text-gray-200">{{userInfo.userName}}
                             </h1>
-                            <p class="text-sm text-gray-500 dark:text-gray-400" >{{userInfo.role}}</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">{{userInfo.role}}</p>
                         </div>
                     </button>
 
                     <hr class="border-gray-200 dark:border-gray-700 ">
 
-                    <button *ngIf="isAdmin" (click)="onRedirect('adminpanel')"
+                    <button *ngIf="accountService.userInfo.role != 'User'" (click)="onRedirect('adminpanel')"
                         class="block w-full text-left px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white">
-                        Admin Panel
+                        Control Panel
                     </button>
 
                     <hr class="border-gray-200 dark:border-gray-700 ">

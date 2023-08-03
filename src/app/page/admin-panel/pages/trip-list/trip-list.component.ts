@@ -26,11 +26,19 @@ export class TripListComponent {
   }
 
   onSetNextTrip(trip: any) {
+    if (trip.isOngoingTrip) {
+      return console.error();
+    }
     this.tripService.setNextTrip(trip.id).subscribe()
+    location.reload()
   }
 
   onSetOngoingTrip(trip: any) {
+    if (trip.isNextTrip) {
+      return console.error();
+    }
     this.tripService.setOngoingTrip(trip.id).subscribe()
+    location.reload()
   }
 
   onDeleteTrip(trip: any) {

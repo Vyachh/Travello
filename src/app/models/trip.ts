@@ -10,7 +10,9 @@ export interface ITrip {
     author: string
     image: File | null
     imageUrl: string
+
     isNextTrip: boolean
     isOngoingTrip: boolean
     isSelected: boolean
+    isApproved: boolean
 }

@@ -11,7 +11,7 @@ import { ProfileComponent } from '../../profile.component';
 })
 export class ChangePasswordComponent {
 
-  constructor(private accountService: AccountService) {
+  constructor(public accountService: AccountService) {
 
   }
 

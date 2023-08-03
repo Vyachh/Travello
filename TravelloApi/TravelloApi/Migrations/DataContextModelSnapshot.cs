@@ -72,6 +72,9 @@ namespace TravelloApi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsApproved")
+                        .HasColumnType("bit");
+
                     b.Property<bool>("IsNextTrip")
                         .HasColumnType("bit");
 
