@@ -69,7 +69,7 @@ namespace TravelloApi.Controllers
     /// Получает список всех пользователей.
     /// </summary>
     /// <returns>Список всех пользователей.</returns>
-    [HttpGet("GetAll"), Authorize]
+    [HttpGet("GetAll"), Authorize(Roles = "Moderator,Admin")]
     public async Task<IActionResult> GetAll()
     {
       return Ok(userRepository.GetAll());
@@ -79,7 +79,7 @@ namespace TravelloApi.Controllers
     /// Получает количество пользователей, участвующих в текущей поездке.
     /// </summary>
     /// <returns>Количество пользователей, участвующих в текущей поездке.</returns>
-    [HttpGet("GetOngoingCount")]
+    [HttpGet("GetOngoingCount"), Authorize(Roles = "Moderator,Admin")]
     public async Task<IActionResult> GetOngoingPeopleCount()
     {
       var result = await userRepository.GetOngoingPeopleCount();
@@ -156,10 +156,10 @@ namespace TravelloApi.Controllers
     /// </summary>
     /// <param name="request">Заголовок запроса с JWT-токеном.</param>
     /// <returns>Обновленный JWT-токен.</returns>
-    [HttpPost("RefreshToken")]
+    [HttpPost("RefreshToken"), Authorize]
     public async Task<ActionResult<string>> RefreshToken([FromHeader] string request)
     {
-      var refreshToken = Request.Cookies["refreshToken"];
+      var refreshToken =  contextAccessor.HttpContext.Request.Cookies["refreshToken"];
 
       var userInfo = DecodeJwtToken(request);
       var userId = userInfo["id"];
@@ -191,19 +191,24 @@ namespace TravelloApi.Controllers
     /// </summary>
     /// <param name="userDto">Данные пользователя для обновления.</param>
     /// <returns>Обновленный токен для пользователя.</returns>
-    [HttpPut("ChangeInfo")]
+    [HttpPut("ChangeInfo"), Authorize]
     public async Task<IActionResult> ChangeInfo([FromBody] UserInfoDto userDto)
     {
       var user = await userRepository.GetUserByName(userDto.UserName);
 
-      user.BirthDate = userDto.BirthDate;
-      user.Email = userDto.Email;
-      user.Role = Enum.Parse<Role>(userDto.Role);
+      if (user == null)
+      {
+        return BadRequest("User not found.");
+      }
 
       if (user.UserName != user.UserName)
       {
         return BadRequest("User not found.");
       }
+
+      user.BirthDate = userDto.BirthDate;
+      user.Email = userDto.Email;
+      user.Role = Enum.Parse<Role>(userDto.Role);
 
       if (!userRepository.Update(user))
       {
@@ -220,24 +225,22 @@ namespace TravelloApi.Controllers
     /// </summary>
     /// <param name="userDto">Массив данных о пользователях и их текущих поездках.</param>
     /// <returns>Результат выполнения операции.</returns>
-    [HttpPut("SetCurrentTrip")]
+    [HttpPut("SetCurrentTrip"), Authorize(Roles = "Moderator,Admin")]
     public async Task<IActionResult> SetCurrentTrip([FromBody] UserInfoDto[] userDto)
     {
-      try
-      {
+
+        User user = new();
         foreach (var item in userDto)
         {
-          var user = await userRepository.GetUserByName(item.UserName);
+          user = await userRepository.GetUserByName(item.UserName);
           user.CurrentTripId = item.CurrentTripId;
-
-          userRepository.Update(user);
         }
+        if (!userRepository.Update(user))
+        {
+          return BadRequest();
+        }
+
         return Ok();
-      }
-      catch (Exception)
-      {
-        return BadRequest();
-      }
 
     }
 
@@ -246,10 +249,16 @@ namespace TravelloApi.Controllers
     /// </summary>
     /// <param name="userDto">Данные пользователя для изменения пароля.</param>
     /// <returns>Обновленный токен для пользователя.</returns>
-    [HttpPut("ChangePassword")]
+    [HttpPut("ChangePassword"), Authorize]
     public async Task<IActionResult> ChangePassword([FromBody] UserDto userDto)
     {
       var user = await userRepository.GetUserByName(userDto.UserName);
+
+      if (user == null)
+      {
+        return BadRequest("User not found.");
+
+      }
 
       if (userDto.UserName != user.UserName)
       {
@@ -273,18 +282,21 @@ namespace TravelloApi.Controllers
     /// <param name="roleId">Идентификатор роли.</param>
     /// <param name="userId">Идентификатор пользователя.</param>
     /// <returns>Результат выполнения операции.</returns>
-    [HttpPut("SetRole")]
+    [HttpPut("SetRole"), Authorize(Roles = "Moderator,Admin")]
     public async Task<IActionResult> SetRole([FromQuery] int roleId, string userId)
     {
       var user = await userRepository.GetUserById(userId);
+      if (user == null)
+      {
+        return BadRequest("User Not Found.");
+      }
+
       user.Role = (Role)roleId;
 
       if (!userRepository.Save())
       {
-        return BadRequest();
-
+        return BadRequest("Unable to set role.");
       }
-
 
       return Ok();
     }
@@ -316,7 +328,7 @@ namespace TravelloApi.Controllers
         HttpOnly = true,
         Expires = newRefreshToken.Expires,
       };
-      contextAccessor.HttpContext?.Response.Cookies.Append("refreshToken", newRefreshToken.Token, cookieOptions);
+      contextAccessor.HttpContext.Response.Cookies.Append("refreshToken", newRefreshToken.Token, cookieOptions);
 
       user.TokenExpires = newRefreshToken.Expires;
       user.TokenCreated = newRefreshToken.Created;
@@ -339,9 +351,10 @@ namespace TravelloApi.Controllers
                 new Claim("role", user.Role.ToString()),
                 new Claim("birthdate", user.BirthDate.ToString()),
                 new Claim("email", user.Email.ToString()),
-
             };
 
+      //var tokenSettings = configuration.GetSection("AppSettings:Token").Value;
+      //var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenSettings));
       var key = new SymmetricSecurityKey(Encoding.UTF8
         .GetBytes(configuration
         .GetSection("AppSettings:Token").Value!));

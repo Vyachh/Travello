@@ -1,6 +1,7 @@
 using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
 using System.Globalization;
 using TravelloApi.Dto;
 using TravelloApi.Enums;
@@ -22,6 +23,7 @@ namespace TravelloApi.Controllers
     private readonly ITripRepository tripRepository;
     private readonly IUserRepository userRepository;
     private readonly IMapper mapper;
+    private readonly IHttpContextAccessor contextAccessor;
 
     /// <summary>
     /// Инициализирует новый экземпляр контроллера для управления данными о поездках.
@@ -29,11 +31,12 @@ namespace TravelloApi.Controllers
     /// <param name="tripRepository">Репозиторий для работы с данными о поездках.</param>
     /// <param name="userRepository">Репозиторий для работы с данными о пользователях.</param>
     /// <param name="mapper">Объект для маппинга данных между сущностями и DTO.</param>
-    public TripController(ITripRepository tripRepository, IUserRepository userRepository, IMapper mapper)
+    public TripController(ITripRepository tripRepository, IUserRepository userRepository, IMapper mapper, IHttpContextAccessor contextAccessor)
     {
       this.tripRepository = tripRepository;
       this.userRepository = userRepository;
       this.mapper = mapper;
+      this.contextAccessor = contextAccessor;
     }
 
     /// <summary>
@@ -42,7 +45,13 @@ namespace TravelloApi.Controllers
     [HttpGet("GetTrip")]
     public async Task<IActionResult> GetTrip([FromQuery] int id)
     {
-      return Ok(tripRepository.GetById(id));
+      var trip = await tripRepository.GetById(id);
+      if (trip == null)
+      {
+        return NotFound();
+      }
+
+      return Ok(trip);
     }
 
     /// <summary>
@@ -53,7 +62,7 @@ namespace TravelloApi.Controllers
     {
       if (!tripRepository.SetOngoingTrip(id))
       {
-        return BadRequest("Smth went wrong.");
+        return BadRequest("Unable to set ongoing trip.");
       }
 
       return Ok();
@@ -67,12 +76,11 @@ namespace TravelloApi.Controllers
     {
       if (!tripRepository.SetNextTrip(id))
       {
-        return BadRequest("Smth went wrong.");
+        return BadRequest("Unable to set ongoing trip.");
       }
 
       return Ok();
     }
-
 
     /// <summary>
     /// Получает информацию о следующей поездке.
@@ -100,6 +108,11 @@ namespace TravelloApi.Controllers
     {
       var tripList = await tripRepository.GetAll();
 
+      if (tripList == null)
+      {
+        return BadRequest();
+      }
+
       return Ok(tripList);
     }
 
@@ -112,6 +125,11 @@ namespace TravelloApi.Controllers
     public async Task<IActionResult> AddTrip([FromForm] TripDto tripDto)
     {
       var trip = mapper.Map<Trip>(tripDto);
+
+      if (trip == null)
+      {
+        return StatusCode(500);
+      }
 
       trip.Author = await userRepository.GetUserName(trip.UserId);
 
@@ -126,7 +144,7 @@ namespace TravelloApi.Controllers
       {
         return BadRequest("Smth went wrong.");
       }
-      return Ok("Success!");
+      return Ok();
     }
 
     /// <summary>
@@ -143,7 +161,11 @@ namespace TravelloApi.Controllers
       }
 
       trip.IsApproved = true;
-      tripRepository.Save();
+      if (!tripRepository.Save())
+      {
+        return StatusCode(500);
+      }
+
       return Ok();
     }
 
@@ -157,14 +179,14 @@ namespace TravelloApi.Controllers
 
       if (!await AddImage(tripDto))
       {
-        return BadRequest("Smth went wrong.");
+        return BadRequest("Unable to upload photo.");
       }
 
       trip.ImageUrl = await GetTripPhoto(tripDto.Image.FileName);
 
       if (!tripRepository.Update(trip))
       {
-        return BadRequest("Error while Updating Trip.");
+        return BadRequest("Unable to update trip.");
       }
 
       return Ok();
@@ -189,7 +211,8 @@ namespace TravelloApi.Controllers
     /// </summary>
     /// <param name="fileName">Имя файла фотографии.</param>
     /// <returns>Публичный URL фотографии.</returns>
-    private async Task<string> GetTripPhoto(string fileName)
+     [ApiExplorerSettings(IgnoreApi = true)]
+    public async Task<string> GetTripPhoto(string fileName)
     {
 
       string filePath = Path.Combine("wwwroot", "TripImage", fileName);
@@ -203,7 +226,7 @@ namespace TravelloApi.Controllers
       }
       else
       {
-        return "";
+        throw new FileNotFoundException(filePath);
       }
     }
 
@@ -212,7 +235,8 @@ namespace TravelloApi.Controllers
     /// </summary>
     /// <param name="tripDto">Данные о поездке.</param>
     /// <returns>Значение true, если изображение было успешно добавлено, иначе false.</returns>
-    private async Task<bool> AddImage(TripDto tripDto)
+     [ApiExplorerSettings(IgnoreApi = true)]
+    public async Task<bool> AddImage(TripDto tripDto)
     {
       var photo = tripDto.Image;
 

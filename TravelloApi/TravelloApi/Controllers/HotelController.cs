@@ -28,7 +28,7 @@ namespace TravelloApi.Controllers
     /// 
     /// </summary>
     /// <returns>Возвращает полный список отелей из базы данных</returns>
-    [HttpGet("getall")]
+    [HttpGet("getall")] //Client side search
     public async Task<IActionResult> GetAll()
     {
       return Ok(await hotelRepository.AsyncGetAll());

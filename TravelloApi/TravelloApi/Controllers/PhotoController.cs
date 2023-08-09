@@ -126,33 +126,5 @@ namespace TravelloApi.Controllers
       }
       return false;
     }
-
-    private async Task<bool> AddToTripRepository(PhotoDto photoDto, Trip trip, User user)
-    {
-      if (photoDto.Photo != null && photoDto.Photo.Length > 0)
-      {
-        Photo photo = new()
-        {
-          Name = photoDto.Photo.FileName,
-          IdentityId = trip.Id.ToString(),
-        };
-
-        if (!photoRepository.UploadPhoto(photo))
-        {
-          return false;
-        }
-
-        user.Photo = photo;
-
-        if (!userRepository.Update(user))
-        {
-          return false;
-        }
-
-        return true;
-      }
-      return false;
-    }
-
    }
 }

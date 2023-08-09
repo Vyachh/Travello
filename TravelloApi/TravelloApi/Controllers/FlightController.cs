@@ -23,7 +23,7 @@ namespace TravelloApi.Controllers
       return Ok(await flightRepository.AsyncGetAll());
     }
 
-    [HttpPost("search")]
+    [HttpPost("search")] // Server side search 
     public async Task<IActionResult> SearchFlights([FromBody] FlightSearchParameters searchParameters)
     {
       var flights = await flightRepository.SearchFlights(searchParameters);
