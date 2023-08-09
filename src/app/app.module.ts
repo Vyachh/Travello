@@ -53,6 +53,8 @@ import { RolePipe } from './pipes/role.pipe';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TripComponent } from './page/trip/trip.component';
 import { TripEditComponent } from './page/trip/trip-edit/trip-edit.component';
+import { FilterByGradePipe } from './pipes/filter-by-grade.pipe';
+import { FilterByCityPipe } from './pipes/filter-by-city.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -94,6 +96,8 @@ import { TripEditComponent } from './page/trip/trip-edit/trip-edit.component';
     RolePipe,
     TripComponent,
     TripEditComponent,
+    FilterByGradePipe,
+    FilterByCityPipe,
   ],
   imports: [
     BrowserModule,

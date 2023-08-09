@@ -82,3 +82,11 @@ C:\Vyacheslau\Coding\Angular\Travello\TravelloApi\TravelloApi\bin\Debug\net7.0\S
 C:\Vyacheslau\Coding\Angular\Travello\TravelloApi\TravelloApi\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.dll
 C:\Vyacheslau\Coding\Angular\Travello\TravelloApi\TravelloApi\bin\Debug\net7.0\Swashbuckle.AspNetCore.Filters.Abstractions.dll
 C:\Vyacheslau\Coding\Angular\Travello\TravelloApi\TravelloApi\bin\Debug\net7.0\TravelloApi.staticwebassets.runtime.json
+C:\Vyacheslau\Coding\Angular\Travello\TravelloApi\TravelloApi\bin\Debug\net7.0\Bogus.dll
+C:\Vyacheslau\Coding\Angular\Travello\TravelloApi\TravelloApi\bin\Debug\net7.0\Faker.Net.6.0.dll
+C:\Vyacheslau\Coding\Angular\Travello\TravelloApi\TravelloApi\bin\Debug\net7.0\de-DE\Faker.Net.6.0.resources.dll
+C:\Vyacheslau\Coding\Angular\Travello\TravelloApi\TravelloApi\bin\Debug\net7.0\BouncyCastle.Cryptography.dll
+C:\Vyacheslau\Coding\Angular\Travello\TravelloApi\TravelloApi\bin\Debug\net7.0\MailKit.dll
+C:\Vyacheslau\Coding\Angular\Travello\TravelloApi\TravelloApi\bin\Debug\net7.0\MimeKit.dll
+C:\Vyacheslau\Coding\Angular\Travello\TravelloApi\TravelloApi\bin\Debug\net7.0\System.Security.Cryptography.Pkcs.dll
+C:\Vyacheslau\Coding\Angular\Travello\TravelloApi\TravelloApi\bin\Debug\net7.0\runtimes\win\lib\net7.0\System.Security.Cryptography.Pkcs.dll

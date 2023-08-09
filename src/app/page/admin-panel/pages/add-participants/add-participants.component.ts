@@ -35,15 +35,21 @@ export class AddParticipantsComponent implements OnInit {
     this.accountService.getAll().subscribe({
       next: response => {
         this.userInfos = response.result
+        this.getTripList();
       }
     })
-    this.getTripList();
+
   }
 
   private getTripList() {
     this.tripService.getTripList().subscribe({
       next: (response: ITrip[]) => {
-        let tripArray = response.filter(t => t.isApproved == true);
+        let tripArray = response
+        if (this.accountService.userInfo.role == 'Organizer') {
+          tripArray = response.filter(t => t.isApproved == true && t.userId == this.accountService.userInfo.id)
+        } else {
+          tripArray = response.filter(t => t.isApproved == true);
+        }
         this.accountService.getOngoingCount().subscribe({
           next: (response: any) => {
             response.forEach((element: any) => {

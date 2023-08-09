@@ -5,43 +5,58 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
-using System.Numerics;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using TravelloApi.Data;
 using TravelloApi.Dto;
 using TravelloApi.Enums;
-using TravelloApi.Helpers;
 using TravelloApi.Interfaces;
 using TravelloApi.Models;
 
 namespace TravelloApi.Controllers
 {
+  /// <summary>
+  /// Контроллер для управления данными пользователей.
+  /// </summary>
   [ApiController]
   [Route("[controller]")]
-  [EnableCors("MyPolicy")]
   public class AccountController : ControllerBase
   {
     private readonly IUserRepository userRepository;
     private readonly IMapper mapper;
     private readonly IConfiguration configuration;
+    private readonly IHttpContextAccessor contextAccessor;
 
-    public AccountController(IUserRepository userRepository,
-      IMapper mapper, IConfiguration configuration
-      )
+    /// <summary>
+    /// Инициализирует новый экземпляр контроллера для управления данными пользователей.
+    /// </summary>
+    /// <param name="userRepository">Репозиторий для работы с данными о пользователях.</param>
+    /// <param name="mapper">Объект для маппинга данных между сущностями и DTO.</param>
+    /// <param name="configuration">Конфигурация приложения.</param>
+    public AccountController(IUserRepository userRepository, IMapper mapper, IConfiguration configuration, IHttpContextAccessor contextAccessor)
     {
       this.userRepository = userRepository;
       this.mapper = mapper;
       this.configuration = configuration;
+      this.contextAccessor = contextAccessor;
     }
 
+    /// <summary>
+    /// Получает информацию о пользователе на основе JWT-токена.
+    /// </summary>
+    /// <param name="Authorization">JWT-токен, предоставленный клиентом в заголовке Authorization.</param>
+    /// <returns>Информация о пользователе из токена.</returns>
     [HttpGet("GetInfo"), Authorize]
     public async Task<IActionResult> GetInfo([FromHeader] string Authorization)
     {
       return Ok(DecodeJwtToken(Authorization));
     }
 
+    /// <summary>
+    /// Получает текущий поездку пользователя.
+    /// </summary>
+    /// <param name="id">Идентификатор пользователя.</param>
+    /// <returns>Идентификатор текущей поездки пользователя.</returns>
     [HttpGet("GetCurrentTrip"), Authorize]
     public async Task<IActionResult> GetCurrentTrip([FromQuery] string id)
     {
@@ -50,12 +65,20 @@ namespace TravelloApi.Controllers
       return Ok(user.CurrentTripId);
     }
 
+    /// <summary>
+    /// Получает список всех пользователей.
+    /// </summary>
+    /// <returns>Список всех пользователей.</returns>
     [HttpGet("GetAll"), Authorize]
     public async Task<IActionResult> GetAll()
     {
       return Ok(userRepository.GetAll());
     }
 
+    /// <summary>
+    /// Получает количество пользователей, участвующих в текущей поездке.
+    /// </summary>
+    /// <returns>Количество пользователей, участвующих в текущей поездке.</returns>
     [HttpGet("GetOngoingCount")]
     public async Task<IActionResult> GetOngoingPeopleCount()
     {
@@ -63,7 +86,11 @@ namespace TravelloApi.Controllers
       return Ok(result);
     }
 
-
+    /// <summary>
+    /// Регистрирует нового пользователя.
+    /// </summary>
+    /// <param name="userDto">Данные нового пользователя.</param>
+    /// <returns>Токен, предоставляющий доступ к приложению для зарегистрированного пользователя.</returns>
     [HttpPost("SignUp")]
     public async Task<IActionResult> SignUp([FromBody] UserDto userDto)
     {
@@ -97,6 +124,11 @@ namespace TravelloApi.Controllers
       return Ok(token);
     }
 
+    /// <summary>
+    /// Авторизует пользователя на основе предоставленных учетных данных.
+    /// </summary>
+    /// <param name="userDto">Данные пользователя для аутентификации.</param>
+    /// <returns>Токен, предоставляющий доступ к приложению для аутентифицированного пользователя.</returns>
     [HttpPost("Login")]
     public async Task<IActionResult> Login([FromBody] UserDto userDto)
     {
@@ -119,6 +151,11 @@ namespace TravelloApi.Controllers
       return Ok(token);
     }
 
+    /// <summary>
+    /// Обновляет существующий JWT-токен с помощью Refresh Token.
+    /// </summary>
+    /// <param name="request">Заголовок запроса с JWT-токеном.</param>
+    /// <returns>Обновленный JWT-токен.</returns>
     [HttpPost("RefreshToken")]
     public async Task<ActionResult<string>> RefreshToken([FromHeader] string request)
     {
@@ -149,6 +186,11 @@ namespace TravelloApi.Controllers
       return Ok(token);
     }
 
+    /// <summary>
+    /// Изменяет информацию о пользователе.
+    /// </summary>
+    /// <param name="userDto">Данные пользователя для обновления.</param>
+    /// <returns>Обновленный токен для пользователя.</returns>
     [HttpPut("ChangeInfo")]
     public async Task<IActionResult> ChangeInfo([FromBody] UserInfoDto userDto)
     {
@@ -173,6 +215,11 @@ namespace TravelloApi.Controllers
       return Ok(token);
     }
 
+    /// <summary>
+    /// Устанавливает текущую поездку для указанных пользователей.
+    /// </summary>
+    /// <param name="userDto">Массив данных о пользователях и их текущих поездках.</param>
+    /// <returns>Результат выполнения операции.</returns>
     [HttpPut("SetCurrentTrip")]
     public async Task<IActionResult> SetCurrentTrip([FromBody] UserInfoDto[] userDto)
     {
@@ -194,6 +241,11 @@ namespace TravelloApi.Controllers
 
     }
 
+    /// <summary>
+    /// Изменяет пароль пользователя.
+    /// </summary>
+    /// <param name="userDto">Данные пользователя для изменения пароля.</param>
+    /// <returns>Обновленный токен для пользователя.</returns>
     [HttpPut("ChangePassword")]
     public async Task<IActionResult> ChangePassword([FromBody] UserDto userDto)
     {
@@ -215,6 +267,12 @@ namespace TravelloApi.Controllers
       return Ok(token);
     }
 
+    /// <summary>
+    /// Устанавливает роль для указанного пользователя.
+    /// </summary>
+    /// <param name="roleId">Идентификатор роли.</param>
+    /// <param name="userId">Идентификатор пользователя.</param>
+    /// <returns>Результат выполнения операции.</returns>
     [HttpPut("SetRole")]
     public async Task<IActionResult> SetRole([FromQuery] int roleId, string userId)
     {
@@ -231,8 +289,10 @@ namespace TravelloApi.Controllers
       return Ok();
     }
 
-
-
+    /// <summary>
+    /// Генерирует объект обновления Refresh Token.
+    /// </summary>
+    /// <returns>Объект Refresh Token.</returns>
     private RefreshToken GenerateRefreshToken()
     {
       var refreshToken = new RefreshToken
@@ -243,6 +303,12 @@ namespace TravelloApi.Controllers
       };
       return refreshToken;
     }
+
+    /// <summary>
+    /// Устанавливает Refresh Token для пользователя и создает соответствующий HTTP-кукис.
+    /// </summary>
+    /// <param name="newRefreshToken">Новый Refresh Token.</param>
+    /// <param name="user">Пользователь, для которого устанавливается Refresh Token.</param>
     private void SetRefreshToken(RefreshToken newRefreshToken, User user)
     {
       var cookieOptions = new CookieOptions
@@ -250,7 +316,7 @@ namespace TravelloApi.Controllers
         HttpOnly = true,
         Expires = newRefreshToken.Expires,
       };
-      Response.Cookies.Append("refreshToken", newRefreshToken.Token, cookieOptions);
+      contextAccessor.HttpContext?.Response.Cookies.Append("refreshToken", newRefreshToken.Token, cookieOptions);
 
       user.TokenExpires = newRefreshToken.Expires;
       user.TokenCreated = newRefreshToken.Created;
@@ -259,6 +325,10 @@ namespace TravelloApi.Controllers
       userRepository.Update(user);
     }
 
+    /// <summary>
+    /// Создает JWT-токен на основе данных пользователя.
+    /// </summary>
+    /// <param name="user">Пользователь, для которого создается токен.</param>
     private string CreateToken(User user)
     {
       List<Claim> claims = new()
@@ -288,6 +358,12 @@ namespace TravelloApi.Controllers
       return result;
 
     }
+
+    /// <summary>
+    /// Декодирует JWT-токен и возвращает его содержимое как словарь пар "тип-значение".
+    /// </summary>
+    /// <param name="token">JWT-токен для декодирования.</param>
+    /// <returns>Словарь, содержащий пары "тип-значение" из JWT-токена.</returns>
     private static IDictionary<string, string> DecodeJwtToken(string token)
     {
 

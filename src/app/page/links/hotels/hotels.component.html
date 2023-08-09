@@ -1,1 +1,67 @@
-<p>hotels works!</p>
+<div class="">
+    <div class="mb-4 w-full flex shadow-lg p-3 rounded-xl">
+        <div class="block mx-2">
+            <span class=" text-gray-400 mr-3">Select grade:</span>
+            <select class="border p-3 bg-slate-200 rounded-xl" [value]="" [(ngModel)]="selectedGrade"
+                (ngModelChange)="filterByGrade($event)">
+                <option value="">All Grades</option>
+                <option value="5.0">5.0</option>
+                <option value="4.5">4.5</option>
+                <option value="4.0">4.0</option>
+                <option value="3.5">3.5</option>
+                <option value="3.0">3.0</option>
+            </select>
+        </div>
+        <div class="block mx-2">
+            <span class=" text-gray-400 mr-3">Select City:</span>
+            <select class="border p-3 bg-slate-200 rounded-xl" [(ngModel)]="selectedCity"
+                (ngModelChange)="filterByCity($event)">
+                <option value="">All Cities</option>
+                <option value="Miami">Miami</option>
+                <option value="Malibu">Malibu</option>
+                <option value="Aspen">Aspen</option>
+                <option value="New York">New York</option>
+                <!-- ... Добавьте остальные города -->
+            </select>
+        </div>
+    </div>
+
+
+    <div class="m-auto" *ngIf="hotels">
+        <div *ngFor="let hotel of hotels | filterByCity:selectedCity | filterByGrade: selectedGrade"
+            class="hotel-block mb-4 bg-white shadow-lg rounded-xl p-2 flex ">
+            <div class="mx-5">
+                <img [src]="hotel.pictureUrl" alt="Hotel Photo" class="rounded-xl mb-4 h-48 w-80">
+            </div>
+            <span class="border rounded-2xl max-h-xl"></span>
+            <div class="mx-5 w-1/3 ">
+                <h3 class="text-2xl font-bold">{{hotel.title}}</h3>
+                <p class="text-gray-400 font-medium mt-2">{{hotel.description}}</p>
+                <div class="flex items-center mt-4">
+                    <a href="" class="bg-gray-300 text-gray-600 rounded-full p-2 hover:bg-gray-400">
+                        {{hotel.city}}
+                    </a>
+                    <a href="" class="bg-gray-300 text-gray-600 rounded-full p-2 mx-2 hover:bg-gray-400">
+                        Show on map
+                    </a>
+                </div>
+            </div>
+            <div class="mx-5 ">
+                <div class="flex items-center mt-4 text-gray-400 font-medium">
+                    <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
+                    </svg>
+                    <p> {{hotel.grade}} Grade</p>
+                </div>
+                <div class="mt-10">
+                    <a href=""
+                        class="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg text-center font-medium hover:bg-blue-600 transition-colors duration-300">
+                        Show Price
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

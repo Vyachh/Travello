@@ -15,18 +15,16 @@ export class AdminChangeUserInformationComponent {
   selectedUser: IUserInfo
   role: string = 'User'
 
+  showRoleOptions: boolean = false
+
   constructor(public accountService: AccountService) {
-    accountService.getAll().subscribe({
-      next: response => {
-        this.userInfos = response.result
-      }
-    })
+this.getAll()
   }
 
   selectUser(user: IUserInfo) {
     user.isSelected = true
     this.selectedUser = user
-    
+
     this.userInfos.forEach(element => {
       if (element !== user) {
         element.isSelected = false
@@ -36,11 +34,27 @@ export class AdminChangeUserInformationComponent {
 
   selectRole(id: number) {
     this.role = Role[id]
+    this.showRoleOptions = false
   }
 
   changeRole() {
     this.selectedUser.role = this.role
-    this.accountService.changeInfo(this.selectedUser).subscribe()
-    location.reload()
+    this.accountService.changeInfo(this.selectedUser).subscribe(
+      {
+        next: response => {
+this.getAll()
+        }
+      }
+    )
+  }
+
+  getAll() {
+    if (this.accountService.isLoggedIn) {
+      this.accountService.getAll().subscribe({
+        next: response => {
+          this.userInfos = response.result
+        }
+      })
+    }
   }
 }

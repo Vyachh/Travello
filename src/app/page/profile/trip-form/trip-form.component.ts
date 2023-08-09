@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TripService } from 'src/app/services/trip.service';
 import { AccountService } from 'src/app/services/account.service';
+import { Router } from '@angular/router';
 //
 @Component({
   selector: 'app-trip-form',
@@ -10,7 +11,9 @@ import { AccountService } from 'src/app/services/account.service';
 })
 export class TripFormComponent implements OnInit {
 
-  constructor(private tripService: TripService, public accountService: AccountService) {
+  constructor(private tripService: TripService, public accountService: AccountService,
+    private router: Router
+  ) {
 
   }
 
@@ -58,23 +61,17 @@ export class TripFormComponent implements OnInit {
     formData.append('author', this.accountService.userInfo.userName);
     formData.append('image', this.tripImage);
 
-    console.log(this.tripImage);
-    
-
     this.tripService.addTrip(formData).subscribe({
-      next: response =>{
-        console.log(response);
-        
+      next: response => {
+        this.router.navigate(['/adminpanel'])
       }
     });
-    
+
   }
 
   onSavePhoto(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement.files && inputElement.files.length > 0) {
-      console.log(inputElement);
-      
       this.tripImage = inputElement.files[0];
     }
   }

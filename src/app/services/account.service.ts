@@ -27,9 +27,9 @@ export class AccountService {
 
   }
 
-  headers: HttpHeaders;
-  token: string | null;
-  baseURL = "https://localhost:7001/Account"
+  private headers: HttpHeaders;
+  private token: string | null;
+  private baseURL = "https://localhost:7001/Account"
   user: IUser;
   userInfo: IUserInfo;
 

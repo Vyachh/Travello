@@ -4,6 +4,7 @@ import { ITrip } from 'src/app/models/Trip';
 import { AccountService } from 'src/app/services/account.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { TripService } from 'src/app/services/trip.service';
+import { TripEditComponent } from './trip-edit/trip-edit.component';
 
 @Component({
   selector: 'app-trip',
@@ -33,7 +34,13 @@ export class TripComponent implements OnInit {
     })
   }
 
-  onEdit(trip: ITrip) {
+  onEdit() {
+    console.log('aa');
+    
+    // this.tripService.selectedTrip = trip.id
+    console.log(this.tripService.selectedTrip);
+    
+    this.modalService.onEditTripButtonClick()
 
   }
 }

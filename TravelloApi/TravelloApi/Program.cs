@@ -8,6 +8,7 @@ using System.Text;
 using TravelloApi.Data;
 using TravelloApi.Interfaces;
 using TravelloApi.Reposity;
+using TravelloApi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,12 +20,12 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<ITripRepository, TripRepository>();
-builder.Services.AddTransient<IPhotoRepository, PhotoRepository>();
-
-
+builder.Services.AddScoped<IPhotoRepository, PhotoRepository>();
+builder.Services.AddScoped<IHotelRepository, HotelRepository>();
+builder.Services.AddScoped<IFlightRepository, FlightRepository>();
+builder.Services.AddScoped<IEmailService, EmailService>();
 
 builder.Services.AddDbContext<DataContext>(options =>
-
 {
   options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });

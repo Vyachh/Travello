@@ -27,8 +27,6 @@ export class AdminPanelComponent implements OnInit {
     this.tripService.getTripList().subscribe({
       next: response => {
         this.tripList = response.filter(t => t.isApproved == false)
-        console.log(response);
-
       },
       error: error => {
         console.error(error);
@@ -47,7 +45,7 @@ export class AdminPanelComponent implements OnInit {
   onDeleteTrip(id: number) {
     this.tripService.deleteTrip(id).subscribe({
       next: response => {
-        location.reload();
+        this.getTripList()
       }
     })
   }
@@ -57,13 +55,13 @@ export class AdminPanelComponent implements OnInit {
       this.tripList = []
       this.getTripList()
     }
-    this.tripList = this.tripList.filter(t => t.title.includes(this.searchTrip))
+    this.tripList = this.tripList
   }
 
   onApprove(id: number) {
     this.tripService.approve(id).subscribe({
       next: response => {
-        location.reload();
+        this.getTripList()
       }
     }
     );
@@ -72,7 +70,7 @@ export class AdminPanelComponent implements OnInit {
   private getTripList() {
     this.tripService.getTripList().subscribe({
       next: (response: ITrip[]) => {
-        this.tripList = response
+        this.tripList = response.filter(t => t.title.includes(this.searchTrip))
         // this.accountService.getOngoingCount().subscribe({
         //   next: (response: any) => {
         //     this.onGoingCount = response

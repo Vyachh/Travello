@@ -1,8 +1,7 @@
 <form action="" [formGroup]="tripForm" (submit)="onSubmit()">
-    <input type="hidden" formControlName="userId">
+    <!-- <input type="hidden" formControlName="id"> -->
     <h2 class="text-lg font-bold my-1">Title:</h2>
-    <input type="text" formControlName="title" placeholder='Title'
-        class="border rounded-xl p-1 w-full mt-1 h-10">
+    <input type="text" formControlName="title" placeholder='Title' class="border rounded-xl p-1 w-full mt-1 h-10">
     <h2 class="text-lg font-bold mt-1">Description:</h2>
     <textarea type="text" formControlName="description" placeholder='Description'
         class="border rounded-xl p-1 w-full mt-1 h-10"></textarea>
@@ -36,26 +35,20 @@
     </div>
 
     <h2 class="text-lg font-bold mt-1">Price:</h2>
-    <input type="number" formControlName="price" placeholder='Price'
-        class="border rounded-xl p-1 w-full mt-1 h-10">
+    <input type="number" formControlName="price" placeholder='Price' class="border rounded-xl p-1 w-full mt-1 h-10">
 
     <h2 class="text-lg font-bold mt-1">Image:</h2>
     <label class="block border rounded-xl">
-        <input type="file" 
-        class="block w-full text-sm text-gray-500
+        <input type="file" class="block w-full text-sm text-gray-500
                 file:mr-4 file:py-2 file:px-4
                 file:rounded-xl file:border-0
                 file:text-sm file:font-medium
                 file:bg-blue-500 file:text-white
-                hover:file:bg-blue-600
-                    " 
-                    (change)="onSavePhoto($event)"/>
+                hover:file:bg-blue-600" (change)="onSavePhoto($event)" />
     </label>
-    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG or GIF (MAX.
-        800x400px).</p>
+    <p class="mt-1 text-sm text-gray-500 dark:text-gray-300" id="file_input_help">SVG, PNG, JPG</p>
 
-    <button
-        class="bg-green-500 hover:bg-green-600 active:bg-green-700 text-white py-2 w-full mt-[10%] rounded-xl">
+    <button class="bg-green-500 hover:bg-green-600 active:bg-green-700 text-white py-2 w-full mt-[10%] rounded-xl">
         Submit
     </button>
 </form>

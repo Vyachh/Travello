@@ -13,8 +13,10 @@ export class TripService {
 
   isInfoLoaded: boolean = false;
 
-  headers: HttpHeaders;
-  token: string | null;
+  private headers: HttpHeaders;
+  private token: string | null;
+
+  selectedTrip: number
 
   constructor(private httpClient: HttpClient) {
     this.token = localStorage.getItem('bearer');
@@ -23,7 +25,7 @@ export class TripService {
       'Authorization': this.token ? "bearer " + this.token : ""
     })
   }
-  baseURL = "https://localhost:7001/Trip"
+  private  baseURL = "https://localhost:7001/Trip"
 
   getById(id: number): Observable<ITrip> {
     return this.httpClient.get<ITrip>(
@@ -95,10 +97,9 @@ export class TripService {
     )
   }
 
-  updateTrip(formData: FormData){
+  updateTrip(formData: FormData) {
     return this.httpClient.put(
-      `${this.baseURL}/Update`, formData,
-      { responseType: 'text' })
+      `${this.baseURL}/Update`, formData, { responseType: 'text' })
   }
 
   deleteTrip(id: number) {

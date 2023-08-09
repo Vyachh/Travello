@@ -10,7 +10,9 @@ import { TripService } from 'src/app/services/trip.service';
 })
 export class TripEditComponent {
 
+
   tripImage: File
+
 
   tripForm = new FormGroup({
     userId: new FormControl<string>('', [
@@ -42,8 +44,8 @@ export class TripEditComponent {
   }
 
   onSubmit() {
-
     const formData = new FormData();
+    formData.append('id', this.tripService.selectedTrip.toString());
     formData.append('userId', this.accountService.userInfo.id);
     formData.append('title', this.tripForm.value.title || "");
     formData.append('description', this.tripForm.value.description || "");
@@ -53,11 +55,8 @@ export class TripEditComponent {
     formData.append('author', this.accountService.userInfo.userName);
     formData.append('image', this.tripImage);
 
-    //UPDATE
-    this.tripService.addTrip(formData).subscribe({
+    this.tripService.updateTrip(formData).subscribe({
       next: response => {
-        console.log(response);
-
       }
     });
 
@@ -66,8 +65,6 @@ export class TripEditComponent {
   onSavePhoto(event: Event) {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement.files && inputElement.files.length > 0) {
-      console.log(inputElement);
-
       this.tripImage = inputElement.files[0];
     }
   }
