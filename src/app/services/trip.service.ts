@@ -5,116 +5,108 @@ import { Observable, switchMap } from 'rxjs';
 import { FileType } from '../enum/filetype.enum';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TripService {
-
-  tripList: ITrip[]
+  tripList: ITrip[];
 
   isInfoLoaded: boolean = false;
 
   private headers: HttpHeaders;
   private token: string | null;
 
-  selectedTrip: number
+  selectedTrip: number;
 
   constructor(private httpClient: HttpClient) {
     this.token = localStorage.getItem('bearer');
     this.headers = new HttpHeaders({
       'Content-Type': 'application/json; charset=utf-8',
-      'Authorization': this.token ? "bearer " + this.token : ""
-    })
+      Authorization: this.token ? 'bearer ' + this.token : '',
+    });
   }
-  private  baseURL = "https://localhost:7001/Trip"
+  private baseURL = 'https://localhost:7001/Trip';
 
   getById(id: number): Observable<ITrip> {
-    return this.httpClient.get<ITrip>(
-      `${this.baseURL}/GetTrip?id=${id}`
-    )
+    return this.httpClient.get<ITrip>(`${this.baseURL}/GetTrip?id=${id}`);
   }
 
   getInfo(): Observable<ITrip[]> {
     if (!this.isInfoLoaded) {
       return this.loadInfo();
-    }
-    else {
-      return new Observable<ITrip[]>(observer => {
-        observer.next(this.tripList)
+    } else {
+      return new Observable<ITrip[]>((observer) => {
+        observer.next(this.tripList);
         observer.complete();
-      })
+      });
     }
   }
 
   private loadInfo(): Observable<ITrip[]> {
-    return this.httpClient.get<ITrip[]>
-      (
-        `${this.baseURL}/GetTripList`,
-        { headers: this.headers },
-      )
+    return this.httpClient.get<ITrip[]>(`${this.baseURL}/GetTripList`, {
+      headers: this.headers,
+    });
   }
 
   addTrip(formData: FormData) {
-    return this.httpClient.post(
-      `${this.baseURL}/CreateTrip`, formData,
-      { responseType: 'text' })
+    return this.httpClient.post(`${this.baseURL}/CreateTrip`, formData, {
+      responseType: 'text',
+    });
   }
 
-
   getNextTrip(): Observable<ITrip> {
-    return this.httpClient.get<ITrip>(
-      `${this.baseURL}/GetNextTrip`
-    )
+    return this.httpClient.get<ITrip>(`${this.baseURL}/GetNextTrip`);
   }
 
   getOngoingTrip(): Observable<ITrip> {
-    return this.httpClient.get<ITrip>(
-      `${this.baseURL}/GetOngoingTrip`
-    )
+    return this.httpClient.get<ITrip>(`${this.baseURL}/GetOngoingTrip`);
   }
 
   setNextTrip(id: number): Observable<ITrip> {
-    return this.httpClient.get<ITrip>(
-      `${this.baseURL}/SetNextTrip?id=${id}`
-    )
+    return this.httpClient.get<ITrip>(`${this.baseURL}/SetNextTrip?id=${id}`);
+  }
+
+  undoNextTrip(id: number): Observable<ITrip> {
+    return this.httpClient.get<ITrip>(`${this.baseURL}/UndoNextTrip?id=${id}`);
   }
 
   setOngoingTrip(id: number): Observable<ITrip> {
     return this.httpClient.get<ITrip>(
       `${this.baseURL}/SetOngoingTrip?id=${id}`
-    )
+    );
+  }
+
+  undoOngoingTrip(id: number): Observable<ITrip> {
+    return this.httpClient.get<ITrip>(
+      `${this.baseURL}/UndoOngoingTrip?id=${id}`
+    );
   }
 
   getTripList(): Observable<ITrip[]> {
-    return this.httpClient.get<ITrip[]>(
-      `${this.baseURL}/GetTripList`
-    )
+    return this.httpClient.get<ITrip[]>(`${this.baseURL}/GetTripList`);
   }
 
   approve(id: number) {
-    return this.httpClient.put(
-      `${this.baseURL}/Approve?id=${id}`,
-      { responseType: 'text' }
-    )
+    return this.httpClient.put(`${this.baseURL}/Approve?id=${id}`, {
+      responseType: 'text',
+    });
   }
 
   updateTrip(formData: FormData) {
-    return this.httpClient.put(
-      `${this.baseURL}/Update`, formData, { responseType: 'text' })
+    return this.httpClient.put(`${this.baseURL}/Update`, formData, {
+      responseType: 'text',
+    });
   }
 
   deleteTrip(id: number) {
-    return this.httpClient.delete(
-      `${this.baseURL}/Delete?id=${id}`)
+    return this.httpClient.delete(`${this.baseURL}/Delete?id=${id}`);
   }
 
   uploadPhoto(photo: File, userId: string, fileType: FileType) {
     const formData = new FormData();
-    formData.append('photo', photo)
-    formData.append('userId', userId)
-    formData.append('fileType', fileType)
+    formData.append('photo', photo);
+    formData.append('userId', userId);
+    formData.append('fileType', fileType);
 
-    return this.httpClient.post(
-      `${this.baseURL}/upload`, formData
-    )
+    return this.httpClient.post(`${this.baseURL}/upload`, formData);
   }
 }

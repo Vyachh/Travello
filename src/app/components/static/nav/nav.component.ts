@@ -1,5 +1,6 @@
 import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { IUserInfo } from 'src/app/models/UserInfo';
 import { AccountService } from 'src/app/services/account.service';
 import { ModalService } from 'src/app/services/modal.service';
@@ -11,6 +12,7 @@ import { PhotoService } from 'src/app/services/photo.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+  [x: string]: any;
 
   isLoggedIn: boolean
   isAdmin: boolean = false;
@@ -24,6 +26,7 @@ export class NavComponent implements OnInit {
     public modalService: ModalService,
     public accountService: AccountService,
     private router: Router,
+    private notifier:ToastrService
   ) {
     this.isLoggedIn = accountService.isLoggedIn;
   }
@@ -42,6 +45,10 @@ export class NavComponent implements OnInit {
         },
         error: error => {
           console.error(error);
+          this.notifier.error('','The User information has not been loaded.', {
+            timeOut: 3000,
+            positionClass: 'toast-bottom-right',
+          });
         }
       })
     }

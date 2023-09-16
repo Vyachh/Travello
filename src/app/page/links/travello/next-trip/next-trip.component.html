@@ -1,26 +1,51 @@
-<div class="relative ">
-    <h2 class=" absolute right-0 left-0 text-4xl font-medium text-black text-center mb-8 z-10">Next Trip:</h2>
-    <img src="{{trip.imageUrl}}" alt="Trip Image" class=" w-max h-max z-0">
-    <div class="absolute inset-0 flex flex-col justify-end items-center pb-10">
-      <div class="grid grid-cols-1 gap-6 ">
-        <div class="bg-white shadow-lg rounded-xl p-6 flex flex-col justify-between">
-          <h3 class="text-2xl font-bold">Trip To {{trip.title}}</h3>
-          <p class="text-gray-400 font-medium mt-2">
-            {{trip.dateFrom | day}} {{trip.dateFrom | month}} - {{trip.dateTo | day}} {{trip.dateTo | month}} | by {{trip.author}}
-          </p>
-          <div class="flex items-center mt-4 text-gray-400 font-medium">
-            <svg class="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
-            </svg>
-            <p>{{trip.onGoingCount || 0}} people going</p>
-            
-            <button class="relative inline-flex items-center justify-center p-0.5 mb-2 ml-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
-                <span (click)="modalService.onSubscribeButtonClick()" class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white hover:text-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                    I Want!
-                </span>
-              </button>
-          </div>
+<div class="relative">
+  <h2 class="text-4xl font-medium text-black text-center mb-8 z-10">
+    Next Trip:
+  </h2>
+  <img
+    class="inset-0 h-96 w-full object-cover object-center"
+    [src]="nextTrip.imageUrl"
+  />
+  <div class="inset justify-end items-center">
+    <div class="h-20">
+      <div
+        class="bg-white shadow-lg rounded-xl h-32 p-2 flex flex-col justify-between"
+      >
+        <h3 class="text-2xl font-bold">Trip To {{ nextTrip.title }}</h3>
+        <p class="text-gray-400 font-medium mt-2">
+          {{ nextTrip.dateFrom | day }} {{ nextTrip.dateFrom | month }} -
+          {{ nextTrip.dateTo | day }} {{ nextTrip.dateTo | month }} | by
+          {{ nextTrip.author }}
+        </p>
+        <div class="flex items-center mt-2 text-gray-400 font-medium">
+          <svg
+            class="w-6 h-6 mr-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"
+            ></path>
+          </svg>
+          <p>{{ nextTrip.onGoingCount || 0 }} people going</p>
+
+          <button
+            class="relative inline-flex items-center justify-center p-0.5 mb-2 ml-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800"
+          >
+            <span
+              (click)="modalService.onSubscribeButtonClick()"
+              class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white hover:text-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+            >
+              I Want!
+            </span>
+          </button>
         </div>
       </div>
     </div>
   </div>
+</div>

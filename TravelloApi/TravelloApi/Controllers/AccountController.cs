@@ -94,7 +94,7 @@ namespace TravelloApi.Controllers
     [HttpPost("SignUp")]
     public async Task<IActionResult> SignUp([FromBody] UserDto userDto)
     {
-      if (await userRepository.GetUserByName(userDto.UserName) != null)
+      if (await userRepository.GetUserByName(userDto.UserName) == null)
       {
         return BadRequest("Ошибка! Пользователь найден.");
       }

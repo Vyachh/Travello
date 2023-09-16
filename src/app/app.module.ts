@@ -31,7 +31,7 @@ import { AuthIntreceptor } from './services/auth.interceptor';
 import { TravelloComponent } from './page/links/travello/travello.component';
 import { AdminPanelComponent } from './page/admin-panel/admin-panel.component';
 import { TripFormComponent } from './page/profile/trip-form/trip-form.component';
-import { DatePipe } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { ChangePasswordComponent } from './page/profile/pages/change-password/change-password.component';
 
 import '@angular/common/locales/global/ru';
@@ -55,6 +55,10 @@ import { TripComponent } from './page/trip/trip.component';
 import { TripEditComponent } from './page/trip/trip-edit/trip-edit.component';
 import { FilterByGradePipe } from './pipes/filter-by-grade.pipe';
 import { FilterByCityPipe } from './pipes/filter-by-city.pipe';
+import { AdminTripFormComponent } from './page/admin-panel/pages/admin-trip-form/admin-trip-form.component';
+import { ToastrModule } from 'ngx-toastr';
+import { NotFoundComponent } from './page/not-found/not-found.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -98,8 +102,11 @@ import { FilterByCityPipe } from './pipes/filter-by-city.pipe';
     TripEditComponent,
     FilterByGradePipe,
     FilterByCityPipe,
+    AdminTripFormComponent,
+    NotFoundComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -109,7 +116,8 @@ import { FilterByCityPipe } from './pipes/filter-by-city.pipe';
     MatIconModule,
     MatCardModule,
     MatProgressBarModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ToastrModule.forRoot(),
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
@@ -121,4 +129,5 @@ import { FilterByCityPipe } from './pipes/filter-by-city.pipe';
   ],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

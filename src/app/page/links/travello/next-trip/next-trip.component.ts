@@ -10,7 +10,7 @@ import { ModalService } from 'src/app/services/modal.service';
   styleUrls: ['./next-trip.component.css']
 })
 export class NextTripComponent implements OnInit {
-  @Input() trip: ITrip
+  @Input() nextTrip: ITrip
 
   constructor(public accountService: AccountService, public modalService: ModalService) {
 

@@ -1,5 +1,6 @@
 <div class="flex" *ngIf="accountService.userInfo">
-    <app-admin-sidebar></app-admin-sidebar>
+    <app-admin-sidebar [Role]="accountService.userInfo.role"></app-admin-sidebar>
+
 
     <div class="w-full">
         <h1 class="text-center font-medium text-2xl">Control Panel</h1>

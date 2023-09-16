@@ -68,6 +68,17 @@ namespace TravelloApi.Controllers
       return Ok();
     }
 
+    [HttpGet("UndoOngoingTrip")]
+    public async Task<IActionResult> UndoOngoingTrip([FromQuery] int id)
+    {
+      if (!tripRepository.UndoOngoingTrip(id))
+      {
+        return BadRequest("Unable to undo ongoing trip.");
+      }
+
+      return Ok();
+    }
+
     /// <summary>
     /// Устанавливает текущую поездку как следующую.
     /// </summary>
@@ -76,7 +87,18 @@ namespace TravelloApi.Controllers
     {
       if (!tripRepository.SetNextTrip(id))
       {
-        return BadRequest("Unable to set ongoing trip.");
+        return BadRequest("Unable to set next trip.");
+      }
+
+      return Ok();
+    }
+
+    [HttpGet("UndoNextTrip")]
+    public async Task<IActionResult> UndoNextTrip([FromQuery] int id)
+    {
+      if (!tripRepository.UndoNextTrip(id))
+      {
+        return BadRequest("Unable to undo next trip.");
       }
 
       return Ok();

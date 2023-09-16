@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import {  Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { AccountService } from 'src/app/services/account.service';
 
 @Component({
   selector: 'app-admin-sidebar',
@@ -8,12 +9,9 @@ import {  Router } from '@angular/router';
 })
 export class AdminSidebarComponent {
 
-@Input() Role: string
+  @Input() Role: string
 
-  /**
-   *
-   */
-  constructor(private router: Router) {
+  constructor(private router: Router,public accountService:AccountService) {
 
   }
 

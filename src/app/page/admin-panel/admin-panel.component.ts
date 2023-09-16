@@ -4,6 +4,7 @@ import { TripService } from 'src/app/services/trip.service';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faX } from '@fortawesome/free-solid-svg-icons';
 import { AccountService } from 'src/app/services/account.service';
+import { IUserInfo } from 'src/app/models/UserInfo';
 
 @Component({
   selector: 'app-admin-panel',
@@ -19,6 +20,8 @@ export class AdminPanelComponent implements OnInit {
 
   tripList: ITrip[]
 
+  userInfo:IUserInfo
+
   constructor(private tripService: TripService, public accountService: AccountService) {
 
   }
@@ -32,6 +35,16 @@ export class AdminPanelComponent implements OnInit {
         console.error(error);
       }
     })
+    this.accountService.getInfo().subscribe({
+      next: response => {
+        this.userInfo = response
+  },
+      error: error => {
+        console.error(error);
+      }
+    });
+    
+    
   }
 
   onSetNextTrip(trip: any) {

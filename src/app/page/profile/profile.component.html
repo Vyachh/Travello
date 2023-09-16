@@ -3,7 +3,7 @@
     <div class=" rounded-xl border w-full mx-5 px-5 py-5 ">
         <div class="flex items-center mb-4 ">
             <div class="relative">
-                <div class="relative z-0 rounded-full bg-contain" *ngIf="userInfo"
+                <div class="relative z-0 rounded-full bg-no-repeat bg-cover" *ngIf="userInfo"
                     [style.background-image]="'url(' + userInfo.image + ')'" style="width: 96px;height: 96px;">
                     <label for="fileInput"
                         class="absolute rounded-full flex opacity-0 v items-center w-full h-full justify-center hover:opacity-50 transition-opacity bg-gray-400 cursor-pointer">
@@ -71,7 +71,7 @@
     </div>
 </div>
 
-<div class="w-fit" *ngIf="!isLoggedIn">
+<div class="w-fit m-auto p-5" *ngIf="!isLoggedIn">
 
     <h1 class="text-6xl font-semibold text-center">You need to Log in!</h1>
 

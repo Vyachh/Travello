@@ -97,6 +97,33 @@ namespace TravelloApi.Reposity
       return Save();
     }
 
+    public bool UndoNextTrip(int id)
+    {
+      var currentTrip = dataContext.Trip.FirstOrDefault(t => t.Id == id);
+
+      if (currentTrip != null && currentTrip.IsNextTrip)
+      {
+        currentTrip.IsNextTrip = false;
+        return Save();
+
+      }
+
+      throw new ArgumentException();
+    }
+
+    public bool UndoOngoingTrip(int id)
+    {
+      var currentTrip = dataContext.Trip.FirstOrDefault(t => t.Id == id);
+
+      if (currentTrip != null && currentTrip.IsOngoingTrip)
+      {
+        currentTrip.IsOngoingTrip = false;
+        return Save();
+      }
+
+      throw new ArgumentException();
+    }
+
     public bool Update(Trip trip)
     {
       dataContext.Trip.Update(trip);

@@ -27,19 +27,22 @@ export class TripComponent implements OnInit {
       const id = +params['id']
 
       this.tripService.getById(id).subscribe({
-        next: (response: any) => {
-          this.trip = response.result
+        next: (response: ITrip) => {
+          if (response.id == 0) {
+            return
+          }
+          this.trip = response
+          
+        },
+        error: error =>{
+          console.log(error);
+          
         }
       })
     })
   }
 
   onEdit() {
-    console.log('aa');
-    
-    // this.tripService.selectedTrip = trip.id
-    console.log(this.tripService.selectedTrip);
-    
     this.modalService.onEditTripButtonClick()
 
   }

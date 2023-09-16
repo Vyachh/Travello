@@ -10,7 +10,9 @@ namespace TravelloApi.Interfaces
     Task<Trip> GetOngoingTrip();
     Task<IEnumerable<Trip>> GetAll();
     bool SetNextTrip(int id);
+    bool UndoNextTrip(int id);
     bool SetOngoingTrip(int id);
+    bool UndoOngoingTrip(int id);
     bool Add(Trip user);
     bool Update(Trip user);
     bool Delete(int id);

@@ -29,8 +29,8 @@
             </div>
         </div>
     </div>
-    <div class="">
-        <div class="shadow-lg h-fit py-9 px-5 rounded-3xl" *ngIf="nextTrip">
+    <div class="" >
+        <div class="shadow-lg h-fit py-9 px-5 rounded-3xl" *ngIf="hasNextTripLoadCompleted; else NextTripNotLoaded" >
             <img [src]="nextTrip.imageUrl" class="rounded-3xl min-w-full max-w-lg" alt="">
             <div class="mt-7" *ngIf="nextTrip">
                 <h3 class="font-medium text-2xl">Trip To {{nextTrip.title}}</h3>
@@ -49,7 +49,18 @@
                 </div>
             </div>
         </div>
-        <div class="flex shadow-lg h-fit p-2 rounded-xl mt-10 ">
+
+        <ng-template #NextTripNotLoaded>
+            <div class="shadow-lg h-fit py-9 px-5 rounded-3xl" >
+                <img src="https://place-hold.it/384x176" class="rounded-3xl min-w-full max-w-sm max-h-44" alt="">
+                <div class="mt-7">
+                    <h3 class="font-medium text-2xl">The next trip has not been choosen.</h3>
+                    <p class="text-gray-400 font-medium pt-3">You must wait for it!</p>
+                </div>
+            </div>
+        </ng-template>
+
+        <div class="flex shadow-lg h-fit p-2 rounded-xl mt-10 " *ngIf="hasOngoingTripLoadCompleted; else OngoingTripNotLoaded">
             <div class=" p-3">
                 <img [src]="ongoingTrip.imageUrl" alt="" class="rounded-full w-12 h-12">
             </div>
@@ -62,5 +73,11 @@
                 </div>
             </div>
         </div>
+
+        <ng-template #OngoingTripNotLoaded>
+            <div class="shadow-lg h-fit p-2 mt-4 rounded-3xl" >
+                    <h3 class="font-medium text-gray-400 text-center">The ongoing trip has not been choosen.</h3>
+            </div>
+        </ng-template>
     </div>
 </div>

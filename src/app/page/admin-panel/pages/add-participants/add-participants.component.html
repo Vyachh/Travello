@@ -1,194 +1,269 @@
-<div class="flex " *ngIf="accountService.userInfo">
-    <app-admin-sidebar></app-admin-sidebar>
+<div class="flex" *ngIf="accountService.userInfo">
+  <app-admin-sidebar></app-admin-sidebar>
 
-    <div class="w-full">
-        <div class="grid grid-cols-2 border rounded-2xl w-full">
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-2 ">
-                <p class="text-center font-medium">Choose Trip</p>
-                <div class="pb-4 bg-white dark:bg-gray-900 flex justify-center">
-                    <label for="table-search" class="sr-only">Search</label>
-                    <div class="relative mt-1">
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                            </svg>
-                        </div>
-                        <input  type="text" id="table-search" [(ngModel)]="searchTrip" (input)="onSearchTripChange()"
-                            class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Search for items">
-                    </div>
-                </div>
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">
-                                Trip title
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                People Ongoing
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Price
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Action
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let trip of trips"
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex">
-                                <img [src]="trip.imageUrl" alt="" class="w-14 rounded-full mr-4">
-                                {{trip.title}}
-                            </th>
-                            <td class="px-6 py-4">
-                                {{trip.onGoingCount}}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{trip.price}}
-                            </td>
-                            <td class="px-6 py-4">
-                                <button *ngIf="!trip.isSelected" (click)="selectTrip(trip)"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Select</button>
-                                <p *ngIf="trip.isSelected" class="font-medium text-black dark:text-white ">Selected</p>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+  <div class="w-full">
+    <div class="grid grid-cols-2 border rounded-2xl w-full">
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-2">
+        <p class="text-center font-medium">Choose Trip</p>
+        <div class="pb-4 bg-white dark:bg-gray-900 flex justify-center">
+          <label for="table-search" class="sr-only">Search</label>
+          <div class="relative mt-1">
+            <div
+              class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+            >
+              <svg
+                class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                />
+              </svg>
             </div>
-            <!--  first -->
-            <div class="relative overflow-x-auto  shadow-md sm:rounded-lg m-2 ">
-                <p class="text-center font-medium">Choose Participant</p>
-                <div class="pb-4 bg-white dark:bg-gray-900 flex justify-center">
-                    <label for="table-search" class="sr-only">Search</label>
-                    <div class="relative mt-1 ">
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none ">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                            </svg>
-                        </div>
-                        <input type="text" id="table-search"
-                            class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Search for items">
-                    </div>
-                </div>
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">
-                                Name
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Email
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Current Trip
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Action
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let user of userInfos" class=" bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50
-                        dark:hover:bg-gray-600">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                <img [src]="user.image" alt="" class="w-10 mr-4">
-
-                                {{user.userName}}
-                            </th>
-                            <td class="px-6 py-4">
-                                {{user.email}}
-
-                            </td>
-                            <td class="px-6 py-4">
-                                {{user.currentTripId}}
-                            </td>
-                            <td class="px-6 py-4">
-                                <button *ngIf="!user.isSelected" (click)="selectUserTrip(user)"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Select</button>
-                                <button *ngIf="user.isSelected" (click)="selectUserTrip(user)"
-                                    class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><svg
-                                        xmlns="http://www.w3.org/2000/svg" height="2em"
-                                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                        <path
-                                            d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z" />
-                                    </svg></button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="flex justify-center">
-                    <button type="button" (click)="addUsersToTrip()"
-                        class="text-white px-3 mt-3 bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm py-1 text-center">
-                        Add
-                    </button>
-                </div>
+            <input
+              type="text"
+              id="table-search"
+              [(ngModel)]="searchTrip"
+              (input)="onSearchTripChange()"
+              class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Search for items"
+            />
+          </div>
+        </div>
+        <table
+          class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        >
+          <thead
+            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+          >
+            <tr>
+              <th scope="col" class="px-6 py-3">Trip title</th>
+              <th scope="col" class="px-6 py-3">People Ongoing</th>
+              <th scope="col" class="px-6 py-3">Price</th>
+              <th scope="col" class="px-6 py-3">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let trip of trips"
+              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+            >
+              <th
+                scope="row"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex"
+              >
+                <img
+                  [src]="trip.imageUrl"
+                  alt=""
+                  class="w-14 rounded-full mr-4"
+                />
+                {{ trip.title }}
+              </th>
+              <td class="px-6 py-4">
+                {{ trip.onGoingCount }}
+              </td>
+              <td class="px-6 py-4">
+                {{ trip.price }}
+              </td>
+              <td class="px-6 py-4">
+                <button
+                  *ngIf="!trip.isSelected"
+                  (click)="selectTrip(trip)"
+                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                >
+                  Select
+                </button>
+                <p
+                  *ngIf="trip.isSelected"
+                  class="font-medium text-black dark:text-white"
+                >
+                  Selected
+                </p>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <!--  first -->
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-2">
+        <p class="text-center font-medium">Choose Participant</p>
+        <div class="pb-4 bg-white dark:bg-gray-900 flex justify-center">
+          <label for="table-search" class="sr-only">Search</label>
+          <div class="relative mt-1">
+            <div
+              class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+            >
+              <svg
+                class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                />
+              </svg>
             </div>
-            <!-- second -->
+            <input
+              type="text"
+              id="table-search"
+              class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Search for items"
+            />
+          </div>
         </div>
-        <div class="relative overflow-x-auto  shadow-md sm:rounded-lg m-2 ">
-            <p class="text-center font-medium">Choosed Participants</p>
-            <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="px-6 py-3">
-                            Name
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Email
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Current Trip
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let user of usersInTrip" class=" bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50
-                        dark:hover:bg-gray-600">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <img [src]="user.image" alt="" class="w-10 mr-4">
-                            {{user.userName}}
-                        </th>
-                        <td class="px-6 py-4">
-                            {{user.email}}
-                        </td>
-                        <td class="px-6 py-4">
-                            {{user.currentTripId}}
-                        </td>
-                        <td class="px-6 py-4">
-                            <button *ngIf="!user.isSelected" (click)="selectUserTrip(user)"
-                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Select</button>
-                            <button *ngIf="user.isSelected" (click)="selectUserTrip(user)"
-                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><svg
-                                    xmlns="http://www.w3.org/2000/svg" height="2em"
-                                    viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                    <path
-                                        d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z" />
-                                </svg></button>
-                        </td>
-                    </tr>
-
-                    <p *ngIf="usersInTrip.length == 0" class="text-center m-5"> There is no participants.</p>
-                </tbody>
-            </table>
+        <table
+          class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+        >
+          <thead
+            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+          >
+            <tr>
+              <th scope="col" class="px-6 py-3">Name</th>
+              <th scope="col" class="px-6 py-3">Email</th>
+              <th scope="col" class="px-6 py-3">Current Trip</th>
+              <th scope="col" class="px-6 py-3">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let user of userInfos"
+              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+            >
+              <th
+                scope="row"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              >
+                <img [src]="user.image" alt="" class="w-10 mr-4" />
+                {{ user.userName }}
+              </th>
+              <td class="px-6 py-4">
+                {{ user.email }}
+              </td>
+              <td class="px-6 py-4">
+                {{ user.currentTripId }}
+              </td>
+              <td class="px-6 py-4">
+                <button
+                  *ngIf="!user.isSelected"
+                  (click)="selectUserTrip(user)"
+                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                >
+                  Select
+                </button>
+                <button
+                  *ngIf="user.isSelected"
+                  (click)="selectUserTrip(user)"
+                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="2em"
+                    viewBox="0 0 448 512"
+                  >
+                    <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                    <path
+                      d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"
+                    />
+                  </svg>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="flex justify-center">
+          <button
+            type="button"
+            (click)="addUsersToTrip()"
+            class="text-white px-3 mt-3 bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm py-1 text-center"
+          >
+            Add
+          </button>
         </div>
-        <!-- third -->
+      </div>
+      <!-- second -->
     </div>
+    <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-2">
+      <p class="text-center font-medium">Choosed Participants</p>
+      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead
+          class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+        >
+          <tr>
+            <th scope="col" class="px-6 py-3">Name</th>
+            <th scope="col" class="px-6 py-3">Email</th>
+            <th scope="col" class="px-6 py-3">Current Trip</th>
+            <th scope="col" class="px-6 py-3">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let user of usersInTrip"
+            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+          >
+            <th
+              scope="row"
+              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+            >
+              <img [src]="user.image" alt="" class="w-10 mr-4" />
+              {{ user.userName }}
+            </th>
+            <td class="px-6 py-4">
+              {{ user.email }}
+            </td>
+            <td class="px-6 py-4">
+              {{ user.currentTripId }}
+            </td>
+            <td class="px-6 py-4">
+              <button
+                *ngIf="!user.isSelected"
+                (click)="selectUserTrip(user)"
+                class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+              >
+                Select
+              </button>
+              <button
+                *ngIf="user.isSelected"
+                (click)="selectUserTrip(user)"
+                class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  height="2em"
+                  viewBox="0 0 448 512"
+                >
+                  <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <path
+                    d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"
+                  />
+                </svg>
+              </button>
+            </td>
+          </tr>
+
+          <p *ngIf="usersInTrip.length == 0" class="text-center m-5">
+            There is no participants.
+          </p>
+        </tbody>
+      </table>
+    </div>
+    <!-- third -->
+  </div>
 </div>
 
-
-<div class="m-auto" *ngIf="accountService.userInfo.role != 'Admin'" >
-    <p class="text-center text-3xl text-red-500">Access Denied.</p>
-    <p class="text-center">Role needed.</p>
+<div class="m-auto" *ngIf="accountService.userInfo.role != 'Admin'">
+  <p class="text-center text-3xl text-red-500">Access Denied.</p>
+  <p class="text-center">Role needed.</p>
 </div>

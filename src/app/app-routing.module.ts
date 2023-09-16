@@ -15,13 +15,13 @@ import { AddParticipantsComponent } from './page/admin-panel/pages/add-participa
 import { TripFormComponent } from './page/profile/trip-form/trip-form.component';
 import { AdminChangeUserInformationComponent } from './page/admin-panel/pages/admin-change-user-information/admin-change-user-information.component';
 import { TripComponent } from './page/trip/trip.component';
+import { AdminTripFormComponent } from './page/admin-panel/pages/admin-trip-form/admin-trip-form.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'profile/changepassword', component: ChangePasswordComponent },
   { path: 'profile/changeinfo', component: UserInfoChangeComponent },
-  { path: 'profile/createtrip', component: TripFormComponent },
   { path: 'trip/:id', component: TripComponent },
   { path: 'destinations', component: DestinationsComponent },
   { path: 'hotels', component: HotelsComponent },
@@ -32,6 +32,7 @@ const routes: Routes = [
   { path: 'adminpanel/triplist', component: TripListComponent },
   { path: 'adminpanel/addparticipants', component: AddParticipantsComponent },
   { path: 'adminpanel/changeuserinfo', component: AdminChangeUserInformationComponent },
+  { path: 'adminpanel/createtrip', component: AdminTripFormComponent },
 
 ];
 
