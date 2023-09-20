@@ -45,3 +45,5 @@ API.FileProcessing/
 *.vsidx
 *.torrent
 *.rar
+TravelloApi/TravelloApi/appsettings.json
+TravelloApi/TravelloApi/appsettings.json

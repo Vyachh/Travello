@@ -21,7 +21,7 @@
 
 
     <div class="flex align-middle">
-        <div class="" *ngIf="!isLoggedIn">
+        <div class="" *ngIf="!isLoggedIn || !userInfo">
             <button class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900"
                 (click)="modalService.onLoginButtonClick()">Login</button>
 

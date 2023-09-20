@@ -1,83 +1,113 @@
 <div class="flex" *ngIf="accountService.userInfo">
-    <app-admin-sidebar [Role]="accountService.userInfo.role"></app-admin-sidebar>
+  <app-admin-sidebar [Role]="accountService.userInfo.role"></app-admin-sidebar>
 
+  <div class="w-full">
+    <h1 class="text-center font-medium text-2xl">Control Panel</h1>
 
-    <div class="w-full">
-        <h1 class="text-center font-medium text-2xl">Control Panel</h1>
-
-        <div class="h-full border rounded-xl p-4"
-            *ngIf="accountService.userInfo.role == 'Admin' || accountService.userInfo.role == 'Moderator'">
-            <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-2 ">
-                <p class="text-center font-medium">Add requests</p>
-                <div class="pb-4 bg-white dark:bg-gray-900 flex justify-center">
-                    <label for="table-search" class="sr-only">Search</label>
-                    <div class="relative mt-1">
-                        <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                            </svg>
-                        </div>
-                        <input type="text" id="table-search" [(ngModel)]="searchTrip" (input)="onSearchTripChange()"
-                            class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="Search for items">
-                    </div>
-                </div>
-                <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" *ngIf="tripList">
-                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                        <tr>
-                            <th scope="col" class="px-6 py-3">
-                                Trip title
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Price
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Author
-                            </th>
-                            <th scope="col" class="px-6 py-3">
-                                Action
-                            </th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let trip of tripList"
-                            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                            <th scope="row"
-                                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex">
-                                <img [src]="trip.imageUrl" alt="" class="w-14 rounded-full mr-4">
-                                {{trip.title}}
-                            </th>
-
-                            <td class="px-6 py-4">
-                                {{trip.price}}
-                            </td>
-                            <td class="px-6 py-4">
-                                {{trip.author}}
-                            </td>
-                            <td class="px-6 py-4 justify-around items-center">
-                                <button *ngIf="!trip.isSelected" (click)="onApprove(trip.id)"
-                                    class="font-medium text-[2em] mr-4 text-gray-600 hover:text-green-500 duration-150 dark:text-blue-500 hover:underline ">
-                                    <fa-icon [icon]="faCheck"></fa-icon>
-                                </button>
-
-                                <button *ngIf="!trip.isSelected"
-                                    class="font-medium text-[2em] ml-4 text-gray-600 dark:text-blue-500 hover:text-red-500 duration-150"
-                                    (click)="onDeleteTrip(trip.id)">
-                                    <fa-icon [icon]="faX"></fa-icon>
-                                </button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+    <div
+      class="h-full border rounded-xl p-4 overflow-auto"
+      *ngIf="
+        accountService.userInfo.role == 'Admin' ||
+        accountService.userInfo.role == 'Moderator'
+      "
+    >
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-2">
+        <p class="text-center font-medium">Add requests</p>
+        <div class="pb-4 bg-white dark:bg-gray-900 flex justify-center">
+          <label for="table-search" class="sr-only">Search</label>
+          <div class="relative mt-1">
+            <div
+              class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+            >
+              <svg
+                class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                />
+              </svg>
             </div>
+            <input
+              type="text"
+              id="table-search"
+              [(ngModel)]="searchTrip"
+              (input)="onSearchTripChange()"
+              class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Search for items"
+            />
+          </div>
         </div>
-    </div>
+        <table
+          class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+          *ngIf="tripList"
+        >
+          <thead
+            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+          >
+            <tr>
+              <th scope="col" class="px-6 py-3">Trip title</th>
+              <th scope="col" class="px-6 py-3">Price</th>
+              <th scope="col" class="px-6 py-3">Author</th>
+              <th scope="col" class="px-6 py-3">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              *ngFor="let trip of tripList"
+              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+            >
+              <th
+                scope="row"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex"
+              >
+                <img
+                  [src]="trip.imageUrl"
+                  alt=""
+                  class="w-14 rounded-full mr-4"
+                />
+                {{ trip.title }}
+              </th>
 
+              <td class="px-6 py-4">
+                {{ trip.price }}
+              </td>
+              <td class="px-6 py-4">
+                {{ trip.author }}
+              </td>
+              <td class="px-6 py-4 justify-around items-center">
+                <button
+                  *ngIf="!trip.isSelected"
+                  (click)="onApprove(trip.id)"
+                  class="font-medium text-[2em] mr-4 text-gray-600 hover:text-green-500 duration-150 dark:text-blue-500 hover:underline"
+                >
+                  <fa-icon [icon]="faCheck"></fa-icon>
+                </button>
+
+                <button
+                  *ngIf="!trip.isSelected"
+                  class="font-medium text-[2em] ml-4 text-gray-600 dark:text-blue-500 hover:text-red-500 duration-150"
+                  (click)="onDeleteTrip(trip.id)"
+                >
+                  <fa-icon [icon]="faX"></fa-icon>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="m-auto" *ngIf="accountService.userInfo.role != 'Admin'" >
-    <p class="text-center text-3xl text-red-500">Access Denied.</p>
-    <p class="text-center">Role needed.</p>
+<div class="m-auto" *ngIf="accountService.userInfo.role != 'Admin'">
+  <p class="text-center text-3xl text-red-500">Access Denied.</p>
+  <p class="text-center">Role needed.</p>
 </div>

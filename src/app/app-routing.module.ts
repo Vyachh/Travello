@@ -12,7 +12,6 @@ import { ChangePasswordComponent } from './page/profile/pages/change-password/ch
 import { TripListComponent } from './page/admin-panel/pages/trip-list/trip-list.component';
 import { UserInfoChangeComponent } from './page/profile/pages/user-info-change/user-info-change.component';
 import { AddParticipantsComponent } from './page/admin-panel/pages/add-participants/add-participants.component';
-import { TripFormComponent } from './page/profile/trip-form/trip-form.component';
 import { AdminChangeUserInformationComponent } from './page/admin-panel/pages/admin-change-user-information/admin-change-user-information.component';
 import { TripComponent } from './page/trip/trip.component';
 import { AdminTripFormComponent } from './page/admin-panel/pages/admin-trip-form/admin-trip-form.component';

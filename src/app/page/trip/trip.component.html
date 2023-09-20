@@ -26,7 +26,7 @@
     </div>
     <div class="mt-4">
       <p class="text-gray-600 dark:text-gray-400">
-        Date: {{ trip.dateFrom }} - {{ trip.dateTo }}
+        Date: {{ trip.dateFrom | date }} - {{ trip.dateTo | date}}
       </p>
     </div>
     <div class="flex justify-start gap-4">

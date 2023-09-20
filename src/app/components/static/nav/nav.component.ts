@@ -12,11 +12,11 @@ import { PhotoService } from 'src/app/services/photo.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  [x: string]: any;
+  @ViewChild('menu', { read: ElementRef }) menu: ElementRef;
+
 
   isLoggedIn: boolean
   isAdmin: boolean = false;
-  @ViewChild('menu') menu: ElementRef;
   isMenuOpen: boolean = false;
   hasPhoto = false;
 
@@ -54,19 +54,17 @@ export class NavComponent implements OnInit {
     }
   }
 
+  @HostListener('document:click', ['$event'])
+  onDocumentClick(event: Event): void {
+    const menuElement = this.menu.nativeElement;
 
+    // Проверяем, был ли клик внутри dropdown menu
+    if (!menuElement.contains(event.target)) {
+      // Если клик был вне dropdown menu, скрываем его
+      this.isMenuOpen = false;
+    }
+  }
   
-  // @HostListener('document:click', ['$event.target'])
-  // if (isLoggedIn) {
-
-  // }
-  // onClickOutside(target: any) {
-  //   const menuElement = this.menu.nativeElement;
-  //   if (!menuElement.contains(target)) {
-  //     this.isMenuOpen = false;
-  //   }
-  // }
-
   onSignOut() {
     this.accountService.signOut()
   }

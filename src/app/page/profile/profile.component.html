@@ -43,11 +43,11 @@
             <p>{{userInfo.email}}</p>
         </div>
     </div>
-    <div class="border rounded-xl w-full mx-5 px-5 py-5">
+    <div class="border rounded-xl w-full mx-5 px-5 py-5" *ngIf="trip">
         <h1 class="text-2xl font-bold mb-6 ">Trip Info:</h1>
         <div class="mb-3">
             <h2 class="text-lg font-bold mb-3">Current Trip:</h2>
-            <div class="border w-full rounded-xl p-2 flex" *ngIf="isInTrip">
+            <div class="border w-full rounded-xl p-2 flex justify-between" *ngIf="isInTrip">
                 <img [src]="trip.imageUrl" class=" w-12 h-12 rounded-full" alt="">
                 <span class="border-l mx-3"></span>
                 <div class="">
@@ -55,19 +55,24 @@
                     <p class="">Desciption: {{trip.description | truncate:20}}</p>
                 </div>
                 <span class="border-l mx-3"></span>
+                <div class="items-center flex">
+                    <p >Price: {{trip.price | currency}} </p>
+                </div>
                 <div class="">
-                    <p>Price: {{trip.price | currency}} </p>
-
+                    <button
+                (click)="navigateToDetails(trip.id)"
+                class="relative inline-flex justify-end w-fit p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800"
+              >
+                <span
+                  class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white hover:text-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+                >
+                  Details
+                </span>
+              </button>
                 </div>
             </div>
             <p *ngIf="!isInTrip" class="text-gray-400">Not in trip</p>
         </div>
-
-        <!-- <div class="mb-6">
-            <h2 class="text-lg font-bold">Your trip list:</h2>
-            <ul>
-            </ul>
-        </div> -->
     </div>
 </div>
 

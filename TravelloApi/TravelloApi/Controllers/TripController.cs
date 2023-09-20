@@ -68,6 +68,9 @@ namespace TravelloApi.Controllers
       return Ok();
     }
 
+    /// <summary>
+    /// Отменяет выбранную текущую поездку
+    /// </summary>
     [HttpGet("UndoOngoingTrip")]
     public async Task<IActionResult> UndoOngoingTrip([FromQuery] int id)
     {
@@ -93,6 +96,9 @@ namespace TravelloApi.Controllers
       return Ok();
     }
 
+    /// <summary>
+    /// Отменяет выбранную следующую поездку
+    /// </summary>
     [HttpGet("UndoNextTrip")]
     public async Task<IActionResult> UndoNextTrip([FromQuery] int id)
     {
@@ -233,7 +239,7 @@ namespace TravelloApi.Controllers
     /// </summary>
     /// <param name="fileName">Имя файла фотографии.</param>
     /// <returns>Публичный URL фотографии.</returns>
-     [ApiExplorerSettings(IgnoreApi = true)]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public async Task<string> GetTripPhoto(string fileName)
     {
 
@@ -257,7 +263,7 @@ namespace TravelloApi.Controllers
     /// </summary>
     /// <param name="tripDto">Данные о поездке.</param>
     /// <returns>Значение true, если изображение было успешно добавлено, иначе false.</returns>
-     [ApiExplorerSettings(IgnoreApi = true)]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public async Task<bool> AddImage(TripDto tripDto)
     {
       var photo = tripDto.Image;

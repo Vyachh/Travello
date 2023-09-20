@@ -30,7 +30,6 @@ import { BookingsComponent } from './page/links/bookings/bookings.component';
 import { AuthIntreceptor } from './services/auth.interceptor';
 import { TravelloComponent } from './page/links/travello/travello.component';
 import { AdminPanelComponent } from './page/admin-panel/admin-panel.component';
-import { TripFormComponent } from './page/profile/trip-form/trip-form.component';
 import { CommonModule, DatePipe } from '@angular/common';
 import { ChangePasswordComponent } from './page/profile/pages/change-password/change-password.component';
 
@@ -81,7 +80,6 @@ import { NotFoundComponent } from './page/not-found/not-found.component';
     BookingsComponent,
     TravelloComponent,
     AdminPanelComponent,
-    TripFormComponent,
     SidebarComponent,
     ChangePasswordComponent,
     DayPipe,

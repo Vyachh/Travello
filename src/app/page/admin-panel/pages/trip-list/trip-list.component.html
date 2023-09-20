@@ -1,7 +1,7 @@
 <div class="flex" *ngIf="accountService.userInfo">
   <app-admin-sidebar [Role]="accountService.userInfo.role"></app-admin-sidebar>
 
-  <div class="overflow-hidden rounded-lg border border-gray-200 shadow-md m-5">
+  <div class="overflow-auto relative rounded-lg border border-gray-200 shadow-md m-5 w-full ">
     <h1
       class="mb-4 text-base font-extrabold text-center text-gray-900 dark:text-white md:text-sm lg:text-lg"
     >
@@ -13,7 +13,7 @@
     </h1>
 
     <table
-      class="w-full border-collapse bg-white text-left text-sm text-gray-500"
+      class="w-full border-collapse bg-white text-left text-sm text-gray-500 flex-nowrap"
     >
       <thead class="bg-gray-50">
         <tr>
@@ -22,7 +22,7 @@
             Description
           </th>
           <th scope="col" class="px-2 py-4 font-medium text-gray-900">
-            Date From
+            Date From 
           </th>
           <th scope="col" class="px-2 py-4 font-medium text-gray-900">
             Date To
@@ -55,8 +55,8 @@
             </div>
           </th>
           <td class="px-2 py-4">{{ trip.description | truncate : 20 }}</td>
-          <td class="px-2 py-4">{{ trip.dateFrom }}</td>
-          <td class="px-2 py-4">{{ trip.dateTo }}</td>
+          <td class="px-2 py-4">{{ trip.dateFrom | date}}</td>
+          <td class="px-2 py-4">{{ trip.dateTo | date}}</td>
           <td class="px-2 py-4">{{ trip.price }}</td>
           <td class="px-2 py-4">{{ trip.author }}</td>
           <td class="px-2 py-4">
@@ -102,7 +102,6 @@
           </td>
           <td>
             <div class="flex justify-center gap-4">
-              <span class="border-l mx-3"></span>
               <button
                 *ngIf="!trip.isNextTrip"
                 type="button"
@@ -122,7 +121,9 @@
                     d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"
                   />
                 </svg>
-                <button class="underline" (click)="onUndoNextTrip(trip)">Undo</button>
+                <button class="underline" (click)="onUndoNextTrip(trip)">
+                  Undo
+                </button>
               </p>
             </div>
           </td>
@@ -147,7 +148,9 @@
                     d="M438.6 105.4c12.5 12.5 12.5 32.8 0 45.3l-256 256c-12.5 12.5-32.8 12.5-45.3 0l-128-128c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0L160 338.7 393.4 105.4c12.5-12.5 32.8-12.5 45.3 0z"
                   />
                 </svg>
-                <button class="underline" (click)="onUndoOngoingTrip(trip)">Undo</button>
+                <button class="underline" (click)="onUndoOngoingTrip(trip)">
+                  Undo
+                </button>
               </p>
             </div>
           </td>

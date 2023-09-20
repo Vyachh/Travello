@@ -29,6 +29,7 @@ export class TravelloComponent implements OnInit {
           return;
         }
         this.nextTrip = nextTrip;
+        this.hasNextTripLoaded = true
       },
     });
 
@@ -40,6 +41,8 @@ export class TravelloComponent implements OnInit {
             return;
           }
           this.ongoingTrip = ongoingTrip;
+        this.hasOngoingTripLoaded = true
+
         },
         error: error =>{
           console.error(error)
