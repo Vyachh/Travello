@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "dStRavnt45C8HJ4J+g6HQS2hB3wY3+B93fh2nX+9zIw=",
+  "Hash": "S6CMZzjjAcRkvNK7XHDQz855HKfYe9UXT2ZWKZMIP/M=",
   "Source": "TravelloApi",
   "BasePath": "_content/TravelloApi",
   "Mode": "Default",
@@ -576,6 +576,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-07-16 140510.png"
+    },
+    {
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-19 184237.png",
+      "SourceId": "TravelloApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "BasePath": "_content/TravelloApi",
+      "RelativePath": "TripImage/Снимок экрана 2023-09-19 184237.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-09-19 184237.png"
+    },
+    {
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-20 093507.png",
+      "SourceId": "TravelloApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "BasePath": "_content/TravelloApi",
+      "RelativePath": "TripImage/Снимок экрана 2023-09-20 093507.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-09-20 093507.png"
     }
   ]
 }

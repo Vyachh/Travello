@@ -5,7 +5,6 @@
         <h1 class="text-2xl font-bold mb-6 ">Create New Trip:</h1>
         <div class="mb-6">
             <form action="" [formGroup]="tripForm" (submit)="onSubmit()">
-                <input type="hidden" formControlName="userId">
                 <h2 class="text-lg font-bold my-1">Title:</h2>
                 <input type="text" formControlName="title" placeholder='Title'
                     class="border rounded-xl p-1 w-full mt-1 h-10">

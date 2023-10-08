@@ -97,7 +97,7 @@ namespace TravelloApi.Controllers
     }
 
     /// <summary>
-    /// Отменяет выбранную следующую поездку
+    /// Отменяет выбранную следующую  поездку
     /// </summary>
     [HttpGet("UndoNextTrip")]
     public async Task<IActionResult> UndoNextTrip([FromQuery] int id)

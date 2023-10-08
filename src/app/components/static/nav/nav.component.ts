@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { IUserInfo } from 'src/app/models/UserInfo';
@@ -11,7 +11,8 @@ import { PhotoService } from 'src/app/services/photo.service';
   templateUrl: './nav.component.html',
   styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit {
+export class NavComponent implements OnInit, AfterViewInit {
+
   @ViewChild('menu', { read: ElementRef }) menu: ElementRef;
 
 
@@ -29,6 +30,9 @@ export class NavComponent implements OnInit {
     private notifier:ToastrService
   ) {
     this.isLoggedIn = accountService.isLoggedIn;
+  }
+  ngAfterViewInit(): void {
+    document.addEventListener('click', this.onDocumentClick.bind(this));
   }
 
   ngOnInit(): void {
@@ -54,7 +58,6 @@ export class NavComponent implements OnInit {
     }
   }
 
-  @HostListener('document:click', ['$event'])
   onDocumentClick(event: Event): void {
     const menuElement = this.menu.nativeElement;
 

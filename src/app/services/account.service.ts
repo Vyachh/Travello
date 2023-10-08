@@ -11,8 +11,10 @@ import { PhotoService } from './photo.service';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AccountService {
-  constructor(private httpClient: HttpClient,
+  constructor(
+    private httpClient: HttpClient,
     public localStorage: LocalStorageService,
     public photoService: PhotoService
   ) {
@@ -24,12 +26,12 @@ export class AccountService {
       'Content-Type': 'application/json; charset=utf-8',
       'Authorization': this.token ? "bearer " + this.token : ""
     })
-
   }
 
   private headers: HttpHeaders;
   private token: string | null;
   private baseURL = "https://localhost:7001/Account"
+  
   user: IUser;
   userInfo: IUserInfo;
 
@@ -43,7 +45,7 @@ export class AccountService {
       return this.loadInfo().pipe(
         switchMap((userInfo: IUserInfo) => {
           return this.photoService.getPhoto(userInfo.id).pipe(
-            catchError(error => {
+            catchError(() => {
               console.log("Фото не найдено");
               return of('')
             }),
@@ -145,6 +147,4 @@ export class AccountService {
         { headers: this.headers },
       )
   }
-
-
 }

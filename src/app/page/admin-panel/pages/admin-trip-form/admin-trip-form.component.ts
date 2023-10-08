@@ -1,43 +1,44 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { ITrip } from 'src/app/models/Trip';
 import { AccountService } from 'src/app/services/account.service';
 import { TripService } from 'src/app/services/trip.service';
+import { TripForm } from './TripForm';
 
 @Component({
   selector: 'app-admin-trip-form',
   templateUrl: './admin-trip-form.component.html',
   styleUrls: ['./admin-trip-form.component.css'],
 })
-export class AdminTripFormComponent {
+export class AdminTripFormComponent implements OnInit{
+  tripImage: File;
+  tripForm: FormGroup;
+
   constructor(
-    private tripService: TripService,
     public accountService: AccountService,
+    private fb: FormBuilder,
+    private tripService: TripService,
     private router: Router,
     private notifier: ToastrService
   ) {}
 
-  tripForm = new FormGroup({
-    userId: new FormControl<string | null>('', [Validators.required]),
-    title: new FormControl<string | null>('', [
-      Validators.required,
-      Validators.minLength(6),
-    ]),
-    description: new FormControl<string | null>('', [Validators.required]),
-    dateStart: new FormControl<Date | null>(null, [Validators.required]),
-    dateEnd: new FormControl<Date | null>(null, [Validators.required]),
-    price: new FormControl<string | null>('', [Validators.required]),
-    image: new FormControl<string | null>('', [Validators.required]),
-  });
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.initForm();
+  }
 
-  tripImage: File;
+  initForm(): void {
+    this.tripForm = this.fb.group({
+      title: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      dateStart: [null, [Validators.required]],
+      dateEnd: [null, [Validators.required]],
+      price: ['', [Validators.required]],
+    });
+  }
 
   onSubmit() {
-
     const dateStart: Date = this.tripForm.value.dateStart || new Date();
     const dateEnd: Date = this.tripForm.value.dateEnd || new Date();
     let isDateValid: boolean = this.dateValidate(dateStart, dateEnd);
@@ -48,7 +49,8 @@ export class AdminTripFormComponent {
     }
 
     if (this.tripForm.status === 'VALID') {
-      const formData = new FormData();
+
+      let formData = new FormData();
       formData.append('userId', this.accountService.userInfo.id);
       formData.append('title', this.tripForm.value.title || '');
       formData.append('description', this.tripForm.value.description || '');

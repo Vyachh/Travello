@@ -133,6 +133,14 @@
       "PackagePath": "staticwebassets\\TripImage\\Снимок экрана 2023-07-16 140510.png"
     },
     {
+      "Id": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-19 184237.png",
+      "PackagePath": "staticwebassets\\TripImage\\Снимок экрана 2023-09-19 184237.png"
+    },
+    {
+      "Id": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-20 093507.png",
+      "PackagePath": "staticwebassets\\TripImage\\Снимок экрана 2023-09-20 093507.png"
+    },
+    {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.TravelloApi.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

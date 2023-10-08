@@ -30,7 +30,7 @@
         </div>
     </div>
     <div class="" >
-        <div class="shadow-lg h-fit py-9 px-5 rounded-3xl" *ngIf="hasNextTripLoadCompleted; else NextTripNotLoaded" >
+        <div class="shadow-lg h-fit py-9 px-5 rounded-3xl"  >
             <img [src]="nextTrip.imageUrl" class="rounded-3xl min-w-full max-w-lg" alt="">
             <div class="mt-7" *ngIf="nextTrip">
                 <h3 class="font-medium text-2xl">Trip To {{nextTrip.title}}</h3>
@@ -60,7 +60,7 @@
             </div>
         </ng-template>
 
-        <div class="flex shadow-lg h-fit p-2 rounded-xl mt-10 " *ngIf="hasOngoingTripLoadCompleted; else OngoingTripNotLoaded">
+        <div class="flex shadow-lg h-fit p-2 rounded-xl mt-10 ">
             <div class=" p-3">
                 <img [src]="ongoingTrip.imageUrl" alt="" class="rounded-full w-12 h-12">
             </div>

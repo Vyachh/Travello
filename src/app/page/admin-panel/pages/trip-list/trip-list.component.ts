@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { ITrip } from 'src/app/models/Trip';
+import { ITrip } from 'src/app/models/ITrip';
 import { AccountService } from 'src/app/services/account.service';
 import { ModalService } from 'src/app/services/modal.service';
 import { TripService } from 'src/app/services/trip.service';

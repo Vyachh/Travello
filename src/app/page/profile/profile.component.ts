@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AccountService } from 'src/app/services/account.service';
 import { IUserInfo } from 'src/app/models/UserInfo';
 import { IUser } from 'src/app/models/User';
-import { ITrip } from 'src/app/models/Trip';
+import { ITrip } from 'src/app/models/ITrip';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TripService } from 'src/app/services/trip.service';
 import { PhotoService } from 'src/app/services/photo.service';

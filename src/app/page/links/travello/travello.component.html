@@ -1,7 +1,7 @@
 <div class="flex">
   <!-- Секция с категорией "Next Trip" -->
   <section class="bg-white w-[50%] m-1">
-    <div class="" *ngIf="hasNextTripLoaded; else nextTripNotLoaded">
+    <div class="" >
       <app-next-trip [nextTrip]="nextTrip"></app-next-trip>
     </div>
     <ng-template #nextTripNotLoaded>
@@ -17,7 +17,7 @@
 
   <!-- Секция с категорией "Ongoing Trip" -->
   <section class="bg-white w-[50%] m-1">
-    <div class="" *ngIf="hasOngoingTripLoaded; else ongoingTripNotLoaded">
+    <div class="" >
       <app-ongoing-trip [ongoingTrip]="ongoingTrip"></app-ongoing-trip>
     </div>
     <ng-template #ongoingTripNotLoaded>

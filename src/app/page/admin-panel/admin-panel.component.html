@@ -39,7 +39,7 @@
               type="text"
               id="table-search"
               [(ngModel)]="searchTrip"
-              (input)="onSearchTripChange()"
+              (input)="onSearchTripChange(searchTrip)"
               class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               placeholder="Search for items"
             />
@@ -107,7 +107,7 @@
   </div>
 </div>
 
-<div class="m-auto" *ngIf="accountService.userInfo.role != 'Admin'">
+<div class="m-auto" *ngIf="accountService.userInfo && accountService.userInfo.role != 'Admin'">
   <p class="text-center text-3xl text-red-500">Access Denied.</p>
   <p class="text-center">Role needed.</p>
 </div>

@@ -68,7 +68,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
       };
     });
 
-//builder.Services.AddAuthentication().AddJwtBearer();
 
 var app = builder.Build();
 
@@ -78,7 +77,6 @@ if (app.Environment.IsDevelopment())
   app.UseSwagger();
   app.UseSwaggerUI();
 }
-
 
 app.UseCors("MyPolicy");
 

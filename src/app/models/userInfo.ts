@@ -1,4 +1,4 @@
-import { ITrip } from "./Trip"
+import { ITrip } from "./ITrip"
 
 export interface IUserInfo {
     id: string

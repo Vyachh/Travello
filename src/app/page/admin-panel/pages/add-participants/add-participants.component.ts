@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { ITrip } from 'src/app/models/Trip';
+import { ITrip } from 'src/app/models/ITrip';
 import { ITripCount } from 'src/app/models/TripCount';
 import { IUserInfo } from 'src/app/models/UserInfo';
 import { AccountService } from 'src/app/services/account.service';
