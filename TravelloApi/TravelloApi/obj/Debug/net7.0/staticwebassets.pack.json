@@ -137,8 +137,24 @@
       "PackagePath": "staticwebassets\\TripImage\\Снимок экрана 2023-09-19 184237.png"
     },
     {
+      "Id": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-19 185721.png",
+      "PackagePath": "staticwebassets\\TripImage\\Снимок экрана 2023-09-19 185721.png"
+    },
+    {
       "Id": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-20 093507.png",
       "PackagePath": "staticwebassets\\TripImage\\Снимок экрана 2023-09-20 093507.png"
+    },
+    {
+      "Id": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-22 100155.png",
+      "PackagePath": "staticwebassets\\TripImage\\Снимок экрана 2023-09-22 100155.png"
+    },
+    {
+      "Id": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-22 100443.png",
+      "PackagePath": "staticwebassets\\TripImage\\Снимок экрана 2023-09-22 100443.png"
+    },
+    {
+      "Id": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-22 101032.png",
+      "PackagePath": "staticwebassets\\TripImage\\Снимок экрана 2023-09-22 101032.png"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.TravelloApi.Microsoft.AspNetCore.StaticWebAssets.props",

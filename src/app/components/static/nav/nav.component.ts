@@ -4,7 +4,6 @@ import { ToastrService } from 'ngx-toastr';
 import { IUserInfo } from 'src/app/models/UserInfo';
 import { AccountService } from 'src/app/services/account.service';
 import { ModalService } from 'src/app/services/modal.service';
-import { PhotoService } from 'src/app/services/photo.service';
 
 @Component({
   selector: 'app-nav',
@@ -29,33 +28,39 @@ export class NavComponent implements OnInit, AfterViewInit {
     private router: Router,
     private notifier:ToastrService
   ) {
-    this.isLoggedIn = accountService.isLoggedIn;
   }
   ngAfterViewInit(): void {
     document.addEventListener('click', this.onDocumentClick.bind(this));
   }
 
   ngOnInit(): void {
-    if (this.isLoggedIn) {
+    this.getUserInfo();
+  }
+
+  private getUserInfo() {
+    if (!this.accountService.isTokenExpired) {
       this.accountService.getInfo().subscribe({
         next: userInfo => {
-          this.userInfo = userInfo
+          this.userInfo = userInfo;
           if (userInfo.image) {
-            this.hasPhoto = true
+            this.hasPhoto = true;
           }
           if (userInfo.role == "Admin") {
-            this.isAdmin = true
+            this.isAdmin = true;
           }
+          this.isLoggedIn = true
         },
         error: error => {
           console.error(error);
-          this.notifier.error('','The User information has not been loaded.', {
+          
+          this.notifier.error('', 'The User information has not been loaded.', {
             timeOut: 3000,
             positionClass: 'toast-bottom-right',
           });
         }
-      })
+      });
     }
+      
   }
 
   onDocumentClick(event: Event): void {

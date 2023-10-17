@@ -34,6 +34,7 @@ export class BookingStepsComponent implements AfterViewInit {
   private getOngoingTrip() {
     this.tripService.getOngoingTrip().subscribe({
       next: (ongoingTrip) => {
+        
         if (ongoingTrip.id === 0) {
           return;
         }

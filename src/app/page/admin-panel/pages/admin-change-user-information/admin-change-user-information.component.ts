@@ -49,12 +49,10 @@ this.getAll()
   }
 
   getAll() {
-    if (this.accountService.isLoggedIn) {
       this.accountService.getAll().subscribe({
         next: response => {
           this.userInfos = response.result
         }
       })
-    }
   }
 }
