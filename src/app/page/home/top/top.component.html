@@ -1,0 +1,52 @@
+<div class="container text-center dark:bg-slate-900">
+    <h5 class="font-semibold dark:text-slate-200">Top Selling</h5>
+    <h1 class="text-6xl font-serif font-bold dark:text-slate-200">Top Destinations</h1>
+    <div class=" container flex justify-between mt-28 mb-20">
+
+        <mat-card class="transition-all mx-1 bg-white">
+            <mat-card-content class="bg-transparent p-0 shadow-xl">
+                <img src="assets/top/place1.png" alt="" class="max-w-150">
+                <div class="destination-information">
+                    <div class="flex px-7 justify-between text-2xl mt-8">
+                        <h5 class="font-medium ">Rome, Italy</h5>
+                        <p>{{currency[0] | currency}}k</p>
+                    </div>
+                    <p class="font-sans text-left px-7 my-5">
+                        <mat-icon>near_me</mat-icon>
+                        10 Days Trip
+                    </p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class=" transition-all mx-1 bg-white">
+            <mat-card-content class="bg-transparent p-0 shadow-xl">
+                <img src="assets/top/place2.png" alt="" class="max-w-150">
+                <div class="destination-information">
+                    <div class="flex px-7 justify-between text-2xl mt-8">
+                        <h5 class="font-medium ">London, UK</h5>
+                        <p>{{currency[1] | currency}}k</p>
+                    </div>
+                    <p class="font-sans text-left px-7 my-5">
+                        <mat-icon>near_me</mat-icon>
+                        12 Days Trip
+                    </p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+        <mat-card class=" transition-all mx-1">
+            <mat-card-content class="bg-transparent p-0 shadow-xl">
+                <img src="assets/top/place3.png" alt="" class="max-w-150">
+                <div class="destination-information">
+                    <div class="flex px-7 justify-between text-2xl mt-8">
+                        <h5 class="font-medium ">Full Europe</h5>
+                        <p>{{currency[2] | currency}}k</p>
+                    </div>
+                    <p class="font-sans text-left px-7 my-5">
+                        <mat-icon>near_me</mat-icon>
+                        28 Days Trip
+                    </p>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>

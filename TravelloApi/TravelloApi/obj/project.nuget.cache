@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "uWLZxhoSl9mF9Zaoqm73b/J1U9NKnAz79vB3tXc8P6+r+PmCHF3lZA/k+1gy+lUNXV6VioCxK0ystV0U3dnZ8Q==",
+  "dgSpecHash": "x/AJmf73nezfpk2hFK9kqT5tTArz5pUBS6uKJP9icf2ttJIp6cKWfVuSH7Tmpwckp/WLUMs0YIqzhvJOz6w6GA==",
   "success": true,
-  "projectFilePath": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\TravelloApi.csproj",
+  "projectFilePath": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\TravelloApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\vyach\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\vyach\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

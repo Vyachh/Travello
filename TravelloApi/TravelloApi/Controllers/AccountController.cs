@@ -176,6 +176,10 @@ namespace TravelloApi.Controllers
     [HttpPost("Login")]
     public async Task<IActionResult> Login([FromBody] UserDto userDto)
     {
+      if (userDto.UserName == string.Empty || userDto.Password == string.Empty)
+      {
+        return BadRequest("Incorrect data");
+      }
       var user = await userRepository.GetUserByName(userDto.UserName);
 
       if (userDto.UserName != user.UserName)
