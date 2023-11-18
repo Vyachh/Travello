@@ -1,7 +1,5 @@
 using AutoMapper;
-using Azure.Core;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -75,6 +73,50 @@ namespace TravelloApi.Controllers
       return Ok(userRepository.GetAll());
     }
 
+    [HttpGet("HasTokenExpired")]
+    public IActionResult HasTokenExpired(string token)
+    {
+      var decodedToken = DecodeJwtToken(token);
+      if (!decodedToken.ContainsKey("exp"))
+      {
+        return BadRequest("Invalid Token.");
+      }
+
+      long expireDate = Convert.ToInt64(decodedToken["exp"]);
+
+      DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(expireDate);
+
+      // Convert DateTimeOffset to DateTime if needed
+      DateTime dateTime = dateTimeOffset.LocalDateTime;
+
+      if (dateTime.Date > DateTime.Now)
+      {
+        return Ok(false);
+      }
+
+      return Ok(true);
+    }
+
+    [HttpGet("GetTokenExpiresDate")]
+    public IActionResult GetTokenExpiresDate(string token)
+    {
+      var decodedToken = DecodeJwtToken(token);
+      if (!decodedToken.ContainsKey("exp"))
+      {
+        return BadRequest("Invalid Token.");
+      }
+
+      long expireDate = Convert.ToInt64(decodedToken["exp"]);
+
+      DateTimeOffset dateTimeOffset = DateTimeOffset.FromUnixTimeSeconds(expireDate);
+
+      // Convert DateTimeOffset to DateTime if needed
+      DateTime dateTime = dateTimeOffset.LocalDateTime;
+
+
+      return Ok(dateTime);
+    }
+
     /// <summary>
     /// Получает количество пользователей, участвующих в текущей поездке.
     /// </summary>
@@ -132,6 +174,10 @@ namespace TravelloApi.Controllers
     [HttpPost("Login")]
     public async Task<IActionResult> Login([FromBody] UserDto userDto)
     {
+      if (userDto.UserName == string.Empty || userDto.Password == string.Empty)
+      {
+        return BadRequest("Incorrect data");
+      }
       var user = await userRepository.GetUserByName(userDto.UserName);
 
       if (userDto.UserName != user.UserName)
@@ -159,7 +205,7 @@ namespace TravelloApi.Controllers
     [HttpPost("RefreshToken"), Authorize]
     public async Task<ActionResult<string>> RefreshToken([FromHeader] string request)
     {
-      var refreshToken =  contextAccessor.HttpContext.Request.Cookies["refreshToken"];
+      var refreshToken = contextAccessor.HttpContext.Request.Cookies["refreshToken"];
 
       var userInfo = DecodeJwtToken(request);
       var userId = userInfo["id"];
@@ -168,7 +214,7 @@ namespace TravelloApi.Controllers
 
       if (user == null)
       {
-        return BadRequest("Пользователь не найден!");
+        return BadRequest("User not found.");
       }
 
       if (!user.RefreshToken.Equals(refreshToken))
@@ -229,18 +275,18 @@ namespace TravelloApi.Controllers
     public async Task<IActionResult> SetCurrentTrip([FromBody] UserInfoDto[] userDto)
     {
 
-        User user = new();
-        foreach (var item in userDto)
-        {
-          user = await userRepository.GetUserByName(item.UserName);
-          user.CurrentTripId = item.CurrentTripId;
-        }
-        if (!userRepository.Update(user))
-        {
-          return BadRequest();
-        }
+      User user = new();
+      foreach (var item in userDto)
+      {
+        user = await userRepository.GetUserByName(item.UserName);
+        user.CurrentTripId = item.CurrentTripId;
+      }
+      if (!userRepository.Update(user))
+      {
+        return BadRequest();
+      }
 
-        return Ok();
+      return Ok();
 
     }
 

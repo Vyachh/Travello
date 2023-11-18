@@ -17,56 +17,47 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
   constructor(
-    private accountService: AccountService,
+    public accountService: AccountService,
     private photoService: PhotoService,
     private tripService: TripService,
     private notifier: ToastrService,
-    private router:Router
-  ) {
-    this.isLoggedIn = accountService.isLoggedIn;
-  }
+    private router: Router
+  ) {}
 
-  isLoggedIn = false;
   isInTrip = false;
 
   userInfo: IUserInfo;
   trip: ITrip;
 
   ngOnInit(): void {
-    if (this.isLoggedIn) {
-      this.accountService.getInfo().subscribe({
-        next: (userInfo) => {
-          this.userInfo = userInfo;
-          this.accountService.getCurrentTripId(userInfo.id).subscribe({
-            next: (response: number) => {
-              this.userInfo.currentTripId = response;              
-              if (this.userInfo.currentTripId > 0) {
-                this.isInTrip = true;
-                this.tripService
-                  .getById(this.userInfo.currentTripId)
-                  .subscribe({
-                    next: (response: ITrip) => {
-                      this.trip = response;
-                    },
-                    error: (error) => {
-                      this.notifier.error(
-                        `User's Trip info has not been loaded.`
-                      );
-                    },
-                  });
-              }
-            },
-            error:error =>{
-              this.notifier.error(`User's Trip info has not been loaded.`)
+    this.accountService.getInfo().subscribe({
+      next: (userInfo) => {
+        this.userInfo = userInfo;
+        this.accountService.getCurrentTripId(userInfo.id).subscribe({
+          next: (response: number) => {
+            this.userInfo.currentTripId = response;
+            if (this.userInfo.currentTripId > 0) {
+              this.isInTrip = true;
+              this.tripService.getById(this.userInfo.currentTripId).subscribe({
+                next: (response: ITrip) => {
+                  this.trip = response;
+                },
+                error: (error) => {
+                  this.notifier.error(`User's Trip info has not been loaded.`);
+                },
+              });
             }
-          });
-        },
-        error: (error) => {
-          console.error(error);
-          this.notifier.error('User info has not been loaded.');
-        },
-      });
-    }
+          },
+          error: (error) => {
+            this.notifier.error(`User's Trip info has not been loaded.`);
+          },
+        });
+      },
+      error: (error) => {
+        console.error(error);
+        this.notifier.error('User info has not been loaded.');
+      },
+    });
   }
 
   onUploadPhoto(event: Event) {
@@ -89,5 +80,4 @@ export class ProfileComponent implements OnInit {
   navigateToDetails(id: number) {
     this.router.navigate(['trip', id]);
   }
-
 }

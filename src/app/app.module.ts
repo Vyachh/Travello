@@ -11,13 +11,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavComponent } from './components/static/nav/nav.component';
-import { HeaderComponent } from './components/static/header/header.component';
-import { CategoryComponent } from './components/home/category/category.component';
-import { TopComponent } from './components/home/top/top.component';
-import { HomeComponent } from './page/home/home.component';
-import { BookingStepsComponent } from './components/home/booking-steps/booking-steps.component';
-import { TestimonialsComponent } from './components/home/testimonials/testimonials.component';
-import { NewsComponent } from './components/home/news/news.component';
+import { HeaderComponent } from './page/home/header/header.component';
+import { CategoryComponent } from './page/home/category/category.component';
+import { TopComponent } from './page/home/top/top.component';
+import { HomeComponent } from './page/home/home/home.component';
+import { BookingStepsComponent } from './page/home/booking-steps/booking-steps.component';
+import { TestimonialsComponent } from './page/home/testimonials/testimonials.component';
+import { NewsComponent } from './page/home/news/news.component';
 import { FooterComponent } from './components/static/footer/footer.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { LoginComponent } from './components/auth/login/login.component';
@@ -57,6 +57,7 @@ import { FilterByCityPipe } from './pipes/filter-by-city.pipe';
 import { AdminTripFormComponent } from './page/admin-panel/pages/admin-trip-form/admin-trip-form.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NotFoundComponent } from './page/not-found/not-found.component';
+import { PaymentComponent } from './page/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +103,7 @@ import { NotFoundComponent } from './page/not-found/not-found.component';
     FilterByCityPipe,
     AdminTripFormComponent,
     NotFoundComponent,
+    PaymentComponent,
   ],
   imports: [
     CommonModule,

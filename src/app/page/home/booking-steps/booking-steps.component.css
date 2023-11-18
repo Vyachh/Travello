@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  color: #14183e;
+}
+.step {
+  margin-bottom: 65px;
+  @apply dark:text-white
+}
+.status {
+  color: #84829a;
+}
+.shadow-lg {
+  box-shadow: 0px 10px 23px 0px rgba(34, 60, 80, 0.2);
+}
+
+.title {
+  @apply font-serif font-bold my-10 text-6xl dark:text-white;
+}
+
