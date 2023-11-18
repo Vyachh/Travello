@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "EfKFIyYi/bOymRUItCGBUrJ//vzfwKCTqvahFtZI9uM=",
+  "Hash": "nPbWhy6aoX58/vIVXwlHCXP83zYW4lslQ89fnmmsmIg=",
   "Source": "TravelloApi",
   "BasePath": "_content/TravelloApi",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "TravelloApi\\wwwroot",
       "Source": "TravelloApi",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\1.jpg",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\1.jpg",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "Avatars/1.jpg",
       "AssetKind": "All",
@@ -34,10 +34,27 @@
       "OriginalItemSpec": "wwwroot\\Avatars\\1.jpg"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\DALL·E 2023-07-31 11.16.51 - Trip to Rome.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\akeys_198983.rar",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "BasePath": "_content/TravelloApi",
+      "RelativePath": "Avatars/akeys_198983.rar",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Avatars\\akeys_198983.rar"
+    },
+    {
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\DALL·E 2023-07-31 11.16.51 - Trip to Rome.png",
+      "SourceId": "TravelloApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "Avatars/DALL·E 2023-07-31 11.16.51 - Trip to Rome.png",
       "AssetKind": "All",
@@ -51,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\Avatars\\DALL·E 2023-07-31 11.16.51 - Trip to Rome.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\default.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\default.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "Avatars/default.png",
       "AssetKind": "All",
@@ -68,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\Avatars\\default.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\Norway.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\Norway.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "Avatars/Norway.png",
       "AssetKind": "All",
@@ -85,10 +102,27 @@
       "OriginalItemSpec": "wwwroot\\Avatars\\Norway.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\week7_1100.jpg",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\Skachat_torrent.torrent",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "BasePath": "_content/TravelloApi",
+      "RelativePath": "Avatars/Skachat_torrent.torrent",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Avatars\\Skachat_torrent.torrent"
+    },
+    {
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\week7_1100.jpg",
+      "SourceId": "TravelloApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "Avatars/week7_1100.jpg",
       "AssetKind": "All",
@@ -102,10 +136,27 @@
       "OriginalItemSpec": "wwwroot\\Avatars\\week7_1100.jpg"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\Без названия.jpg",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\XLN_Audio_-_Addictive_Keys_1_1_4_Complete_STANDALONE_VST_AAX_x86_x64_torrent.torrent",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "BasePath": "_content/TravelloApi",
+      "RelativePath": "Avatars/XLN_Audio_-_Addictive_Keys_1_1_4_Complete_STANDALONE_VST_AAX_x86_x64_torrent.torrent",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Avatars\\XLN_Audio_-_Addictive_Keys_1_1_4_Complete_STANDALONE_VST_AAX_x86_x64_torrent.torrent"
+    },
+    {
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\Без названия.jpg",
+      "SourceId": "TravelloApi",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "Avatars/Без названия.jpg",
       "AssetKind": "All",
@@ -119,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\Avatars\\Без названия.jpg"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\Снимок экрана 2023-05-11 220036.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\Снимок экрана 2023-05-11 220036.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "Avatars/Снимок экрана 2023-05-11 220036.png",
       "AssetKind": "All",
@@ -136,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\Avatars\\Снимок экрана 2023-05-11 220036.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\Снимок экрана 2023-05-15 165546.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\Avatars\\Снимок экрана 2023-05-15 165546.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "Avatars/Снимок экрана 2023-05-15 165546.png",
       "AssetKind": "All",
@@ -153,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\Avatars\\Снимок экрана 2023-05-15 165546.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\1.jpg",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\1.jpg",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/1.jpg",
       "AssetKind": "All",
@@ -170,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\1.jpg"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\DALL·E 2023-07-31 11.16.51 - Trip to Rome.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\DALL·E 2023-07-31 11.16.51 - Trip to Rome.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/DALL·E 2023-07-31 11.16.51 - Trip to Rome.png",
       "AssetKind": "All",
@@ -187,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\DALL·E 2023-07-31 11.16.51 - Trip to Rome.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Norway.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Norway.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Norway.png",
       "AssetKind": "All",
@@ -204,10 +255,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Norway.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\place1.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\place1.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/place1.png",
       "AssetKind": "All",
@@ -221,10 +272,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\place1.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Без названия.jpg",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Без названия.jpg",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Без названия.jpg",
       "AssetKind": "All",
@@ -238,10 +289,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Без названия.jpg"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Обои-для-девочек-на-телефон-12-лет-красивые-картинки-16.jpg",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Обои-для-девочек-на-телефон-12-лет-красивые-картинки-16.jpg",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Обои-для-девочек-на-телефон-12-лет-красивые-картинки-16.jpg",
       "AssetKind": "All",
@@ -255,10 +306,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Обои-для-девочек-на-телефон-12-лет-красивые-картинки-16.jpg"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-10 142751.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-10 142751.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-05-10 142751.png",
       "AssetKind": "All",
@@ -272,10 +323,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-05-10 142751.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-10 142754.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-10 142754.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-05-10 142754.png",
       "AssetKind": "All",
@@ -289,10 +340,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-05-10 142754.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-11 220036.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-11 220036.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-05-11 220036.png",
       "AssetKind": "All",
@@ -306,10 +357,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-05-11 220036.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-11 224448.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-11 224448.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-05-11 224448.png",
       "AssetKind": "All",
@@ -323,10 +374,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-05-11 224448.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-12 162335.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-12 162335.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-05-12 162335.png",
       "AssetKind": "All",
@@ -340,10 +391,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-05-12 162335.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-12 171347.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-12 171347.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-05-12 171347.png",
       "AssetKind": "All",
@@ -357,10 +408,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-05-12 171347.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-15 165546.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-15 165546.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-05-15 165546.png",
       "AssetKind": "All",
@@ -374,10 +425,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-05-15 165546.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-15 165959.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-15 165959.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-05-15 165959.png",
       "AssetKind": "All",
@@ -391,10 +442,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-05-15 165959.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-16 213805.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-16 213805.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-05-16 213805.png",
       "AssetKind": "All",
@@ -408,10 +459,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-05-16 213805.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-20 132451.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-20 132451.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-05-20 132451.png",
       "AssetKind": "All",
@@ -425,10 +476,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-05-20 132451.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-24 000725.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-24 000725.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-05-24 000725.png",
       "AssetKind": "All",
@@ -442,10 +493,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-05-24 000725.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-25 074411.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-25 074411.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-05-25 074411.png",
       "AssetKind": "All",
@@ -459,10 +510,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-05-25 074411.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-25 205201.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-25 205201.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-05-25 205201.png",
       "AssetKind": "All",
@@ -476,10 +527,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-05-25 205201.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-29 225336.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-05-29 225336.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-05-29 225336.png",
       "AssetKind": "All",
@@ -493,10 +544,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-05-29 225336.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-06-28 170530.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-06-28 170530.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-06-28 170530.png",
       "AssetKind": "All",
@@ -510,10 +561,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-06-28 170530.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-07-16 140510.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-07-16 140510.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-07-16 140510.png",
       "AssetKind": "All",
@@ -527,10 +578,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-07-16 140510.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-19 184237.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-19 184237.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-09-19 184237.png",
       "AssetKind": "All",
@@ -544,10 +595,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-09-19 184237.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-19 185721.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-19 185721.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-09-19 185721.png",
       "AssetKind": "All",
@@ -561,10 +612,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-09-19 185721.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-20 093507.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-20 093507.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-09-20 093507.png",
       "AssetKind": "All",
@@ -578,10 +629,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-09-20 093507.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-22 100155.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-22 100155.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-09-22 100155.png",
       "AssetKind": "All",
@@ -595,10 +646,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-09-22 100155.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-22 100443.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-22 100443.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-09-22 100443.png",
       "AssetKind": "All",
@@ -612,10 +663,10 @@
       "OriginalItemSpec": "wwwroot\\TripImage\\Снимок экрана 2023-09-22 100443.png"
     },
     {
-      "Identity": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-22 101032.png",
+      "Identity": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\TripImage\\Снимок экрана 2023-09-22 101032.png",
       "SourceId": "TravelloApi",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\vyach\\Documents\\GitHub\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
+      "ContentRoot": "C:\\Vyacheslau\\Coding\\Angular\\Travello\\TravelloApi\\TravelloApi\\wwwroot\\",
       "BasePath": "_content/TravelloApi",
       "RelativePath": "TripImage/Снимок экрана 2023-09-22 101032.png",
       "AssetKind": "All",

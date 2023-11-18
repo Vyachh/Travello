@@ -89,7 +89,7 @@ namespace TravelloApi.Controllers
       // Convert DateTimeOffset to DateTime if needed
       DateTime dateTime = dateTimeOffset.LocalDateTime;
 
-      if (dateTime.Date < DateTime.Now)
+      if (dateTime.Date > DateTime.Now)
       {
         return Ok(false);
       }

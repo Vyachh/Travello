@@ -57,6 +57,7 @@ import { FilterByCityPipe } from './pipes/filter-by-city.pipe';
 import { AdminTripFormComponent } from './page/admin-panel/pages/admin-trip-form/admin-trip-form.component';
 import { ToastrModule } from 'ngx-toastr';
 import { NotFoundComponent } from './page/not-found/not-found.component';
+import { PaymentComponent } from './page/payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -102,6 +103,7 @@ import { NotFoundComponent } from './page/not-found/not-found.component';
     FilterByCityPipe,
     AdminTripFormComponent,
     NotFoundComponent,
+    PaymentComponent,
   ],
   imports: [
     CommonModule,
