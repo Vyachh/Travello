@@ -182,3 +182,4 @@ C:\Users\vyach\Documents\GitHub\Travello\TravelloApi\TravelloApi\obj\Debug\net7.
 C:\Users\vyach\Documents\GitHub\Travello\TravelloApi\TravelloApi\obj\Debug\net7.0\TravelloApi.pdb
 C:\Users\vyach\Documents\GitHub\Travello\TravelloApi\TravelloApi\obj\Debug\net7.0\TravelloApi.genruntimeconfig.cache
 C:\Users\vyach\Documents\GitHub\Travello\TravelloApi\TravelloApi\obj\Debug\net7.0\ref\TravelloApi.dll
+C:\Vyacheslau\Coding\Angular\Travello\TravelloApi\TravelloApi\obj\Debug\net7.0\TravelloApi.sourcelink.json

@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ITrip } from 'src/app/models/ITrip';
 import { TripService } from 'src/app/services/trip.service';
-import { loadStripe } from '@stripe/stripe-js';
 
 @Component({
   selector: 'app-payment',

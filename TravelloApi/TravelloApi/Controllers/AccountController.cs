@@ -31,7 +31,11 @@ namespace TravelloApi.Controllers
     /// <param name="userRepository">Репозиторий для работы с данными о пользователях.</param>
     /// <param name="mapper">Объект для маппинга данных между сущностями и DTO.</param>
     /// <param name="configuration">Конфигурация приложения.</param>
-    public AccountController(IUserRepository userRepository, IMapper mapper, IConfiguration configuration, IHttpContextAccessor contextAccessor)
+    public AccountController(
+                             IUserRepository userRepository,
+                             IMapper mapper,
+                             IConfiguration configuration,
+                             IHttpContextAccessor contextAccessor)
     {
       this.userRepository = userRepository;
       this.mapper = mapper;

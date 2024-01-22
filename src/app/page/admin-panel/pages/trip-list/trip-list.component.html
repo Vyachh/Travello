@@ -1,14 +1,13 @@
 <div class="flex" *ngIf="accountService.userInfo">
   <app-admin-sidebar [Role]="accountService.userInfo.role"></app-admin-sidebar>
 
-  <div class="overflow-auto relative rounded-lg border border-gray-200 shadow-md m-5 w-full ">
+  <div class="overflow-auto relative rounded-lg border border-gray-200 shadow-md m-5 w-full dark:text-white ">
     <h1
       class="mb-4 text-base font-extrabold text-center text-gray-900 dark:text-white md:text-sm lg:text-lg"
     >
       <span
-        class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400"
-        >Trip</span
-      >
+        class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 dark:text-white"
+        >Trip</span >
       List
     </h1>
 
@@ -17,7 +16,7 @@
     >
       <thead class="bg-gray-50">
         <tr>
-          <th scope="col" class="px-2 py-4 font-medium text-gray-900">Title</th>
+          <th scope="col" class="px-2 py-4 font-medium text-gray-900 dark:text-white">Title</th>
           <th scope="col" class="px-2 py-4 font-medium text-gray-900">
             Description
           </th>

@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import { IUserInfo } from 'src/app/models/UserInfo';
 import { AccountService } from 'src/app/services/account.service';
 import { ModalService } from 'src/app/services/modal.service';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-nav',
@@ -31,7 +32,8 @@ export class NavComponent implements OnInit, AfterViewInit {
     public modalService: ModalService,
     public accountService: AccountService,
     private router: Router,
-    private notifier: ToastrService
+    private notifier: ToastrService,
+    private themeService: ThemeService
   ) {}
   ngAfterViewInit(): void {
     document.addEventListener('click', this.onDocumentClick.bind(this));
@@ -39,6 +41,10 @@ export class NavComponent implements OnInit, AfterViewInit {
 
   ngOnInit(): void {
     this.getUserInfo();
+  }
+
+  toggleTheme() {
+    this.themeService.toggleTheme();
   }
 
   private getUserInfo() {
