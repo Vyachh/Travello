@@ -21,25 +21,33 @@
   </div>
 
   <div class="flex">
-    <button class="pl-4">
-      <img class="bg-white" src="assets/icons/moon.svg"/>
-    </button>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
+    <!-- <button (click)="toggleTheme()" class="pl-4">
+      <span class="moon material-symbols-outlined dark:text-white nav-link">
+        dark_mode
+      </span>
+      <span class="sun material-symbols-outlined dark:text-white nav-link">
+        light_mode
+      </span>
+    </button> -->
+    <!-- <button>
+    </button> -->
 
     <span class="border-l mx-3"></span>
 
     <div class="flex align-middle">
-      <div class="dark:hover:bg-slate-500" *ngIf="!isLoggedIn || !userInfo">
-        <button
-          class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900"
-          (click)="modalService.onLoginButtonClick()"
-        >
+      <div *ngIf="!isLoggedIn || !userInfo">
+        <button class="nav-link" (click)="modalService.onLoginButtonClick()">
           Login
         </button>
 
         <span class="border-l mx-3"></span>
 
         <button
-          class="rounded-lg px-3 py-1 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900 border-black border-2"
+          class="border-black border-2 dark:border-white nav-link"
           (click)="modalService.onSignupButtonClick()"
         >
           Sign up
