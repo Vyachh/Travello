@@ -1,5 +1,5 @@
 <nav
-  class="relative flex w-full flex-wrap items-center justify-between py-5 dark:bg-slate-900"
+  class="relative flex w-full flex-wrap items-center justify-between py-5 "
   data-te-navbar-ref
 >
   <div>
@@ -21,33 +21,25 @@
   </div>
 
   <div class="flex">
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
-    />
-    <!-- <button (click)="toggleTheme()" class="pl-4">
-      <span class="moon material-symbols-outlined dark:text-white nav-link">
-        dark_mode
-      </span>
-      <span class="sun material-symbols-outlined dark:text-white nav-link">
-        light_mode
-      </span>
-    </button> -->
-    <!-- <button>
-    </button> -->
+    <button class="pl-4">
+      <img class="bg-white" src="assets/icons/moon.svg"/>
+    </button>
 
     <span class="border-l mx-3"></span>
 
     <div class="flex align-middle">
-      <div *ngIf="!isLoggedIn || !userInfo">
-        <button class="nav-link" (click)="modalService.onLoginButtonClick()">
+      <div class="" *ngIf="!isLoggedIn || !userInfo">
+        <button
+          class="rounded-lg px-3 py-2 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900"
+          (click)="modalService.onLoginButtonClick()"
+        >
           Login
         </button>
 
         <span class="border-l mx-3"></span>
 
         <button
-          class="border-black border-2 dark:border-white nav-link"
+          class="rounded-lg px-3 py-1 text-slate-700 font-medium hover:bg-slate-100 hover:text-slate-900 border-black border-2"
           (click)="modalService.onSignupButtonClick()"
         >
           Sign up
@@ -56,7 +48,7 @@
       </div>
 
       <div
-        class="flex justify-center rounded-lg dark:hover:bg-slate-500"
+        class="flex justify-center rounded-lg "
         *ngIf="isLoggedIn && userInfo"
       >
         <div class="relative inline-block">
@@ -64,7 +56,7 @@
           <button
             #menu
             (click)="isMenuOpen = !isMenuOpen"
-            class="relative dark:hover:bg-slate-500 z-10 flex items-center p-2 text-sm text-gray-600 bg-white border border-transparent rounded-md focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:text-white dark:bg-gray-800 focus:outline-none"
+            class="relative  z-10 flex items-center p-2 text-sm text-gray-600 bg-white border border-transparent rounded-md focus:border-blue-500 focus:ring-opacity-40  focus:ring-blue-300  focus:ring   focus:outline-none"
           >
             <span class="mx-1">{{ userInfo.userName }}</span>
             <svg
@@ -84,11 +76,11 @@
           <div
             *ngIf="userInfo"
             [ngClass]="{ hidden: !isMenuOpen, block: isMenuOpen }"
-            class="menu absolute right-0 z-20 w-56 py-2 mt-2 overflow-hidden bg-white rounded-md shadow-xl dark:bg-gray-800"
+            class="menu absolute right-0 z-20 w-56 py-2 mt-2 overflow-hidden bg-white rounded-md shadow-xl "
           >
             <button
               (click)="onRedirect('profile')"
-              class="flex items-center p-3 w-full text-lef -mt-2 text-sm text-gray-600 transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+              class="flex items-center p-3 w-full text-lef -mt-2 text-sm text-gray-600 transition-colors duration-200 transform  hover:bg-gray-100 "
             >
               <div
                 *ngIf="hasPhoto"
@@ -102,31 +94,31 @@
               ></div>
               <div class="mx-1">
                 <h1
-                  class="text-sm font-semibold text-gray-700 dark:text-gray-200"
+                  class="text-sm font-semibold text-gray-700 "
                 >
                   {{ userInfo.userName }}
                 </h1>
-                <p class="text-sm text-gray-500 dark:text-gray-400">
+                <p class="text-sm text-gray-500 ">
                   {{ userInfo.role }}
                 </p>
               </div>
             </button>
 
-            <hr class="border-gray-200 dark:border-gray-700" />
+            <hr class="border-gray-200 " />
 
             <button
               *ngIf="accountService.userInfo.role != 'User'"
               (click)="onRedirect('adminpanel')"
-              class="block w-full text-left px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+              class="block w-full text-left px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform  hover:bg-gray-100 "
             >
               Control Panel
             </button>
 
-            <hr class="border-gray-200 dark:border-gray-700" />
+            <hr class="border-gray-200 " />
 
             <button
               (click)="onSignOut()"
-              class="block w-full text-left px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
+              class="block w-full text-left px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform  hover:bg-gray-100 "
             >
               Sign Out
             </button>

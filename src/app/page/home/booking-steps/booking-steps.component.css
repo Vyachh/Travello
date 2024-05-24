@@ -5,7 +5,6 @@
 }
 .step {
   margin-bottom: 65px;
-  @apply dark:text-white
 }
 .status {
   color: #84829a;
@@ -15,6 +14,6 @@
 }
 
 .title {
-  @apply font-serif font-bold my-10 text-6xl dark:text-white;
+  @apply font-serif font-bold my-10 text-6xl;
 }
 

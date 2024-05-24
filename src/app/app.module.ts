@@ -58,7 +58,6 @@ import { AdminTripFormComponent } from './page/admin-panel/pages/admin-trip-form
 import { ToastrModule } from 'ngx-toastr';
 import { NotFoundComponent } from './page/not-found/not-found.component';
 import { PaymentComponent } from './page/payment/payment.component';
-import { ThemeDirective } from './directives/theme.directive';
 
 @NgModule({
   declarations: [
@@ -105,7 +104,6 @@ import { ThemeDirective } from './directives/theme.directive';
     AdminTripFormComponent,
     NotFoundComponent,
     PaymentComponent,
-    ThemeDirective,
   ],
   imports: [
     CommonModule,

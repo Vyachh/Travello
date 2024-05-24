@@ -11,14 +11,14 @@ mat-card:hover {
 }
 
 .card {
-  @apply max-w-xs transition-all dark:bg-slate-800;
+  @apply max-w-xs transition-all ;
 }
 .card-image {
   @apply w-28 max-h-36 m-auto transition-none overflow-hidden;
 }
 .card-title {
-  @apply font-medium my-8 dark:text-slate-200;
+  @apply font-medium my-8 ;
 }
 .card-text {
-  @apply font-sans dark:text-slate-200;
+  @apply font-sans ;
 }
