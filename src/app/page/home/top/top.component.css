@@ -7,5 +7,5 @@ mat-card{
     max-height: 600px;
 }
 .destination-information{
-    @apply absolute -bottom-5 bg-white w-full rounded-3xl rounded-t-lg dark:bg-slate-800 dark:text-white
+    @apply absolute -bottom-5 bg-white w-full rounded-3xl rounded-t-lg
 }

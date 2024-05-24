@@ -1,7 +1,5 @@
 <div class="relative" *ngIf="nextTrip">
-  <h2
-    class="text-4xl font-medium text-black text-center mb-8 z-10 dark:text-white"
-  >
+  <h2 class="text-4xl font-medium text-black text-center mb-8 z-10">
     Next Trip:
   </h2>
   <img
@@ -11,9 +9,9 @@
   <div class="inset justify-end items-center">
     <div class="h-20">
       <div
-        class="bg-white shadow-lg rounded-bl-md h-32 p-2 flex flex-col justify-between dark:bg-slate-800"
+        class="bg-white shadow-lg rounded-bl-md h-32 p-2 flex flex-col justify-between"
       >
-        <h3 class="text-2xl font-bold dark:text-white">Trip To {{ nextTrip.title }}</h3>
+        <h3 class="text-2xl font-bold">Trip To {{ nextTrip.title }}</h3>
         <p class="text-gray-400 font-medium mt-2">
           {{ nextTrip.dateFrom | day }} {{ nextTrip.dateFrom | month }} -
           {{ nextTrip.dateTo | day }} {{ nextTrip.dateTo | month }} | by

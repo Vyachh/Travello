@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalService } from './services/modal.service';
 import { AccountService } from './services/account.service';
+import { Role } from './enum/role.enum';
 
 @Component({
   selector: 'app-root',

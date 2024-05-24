@@ -1,13 +1,14 @@
 <div class="flex" *ngIf="accountService.userInfo">
   <app-admin-sidebar [Role]="accountService.userInfo.role"></app-admin-sidebar>
 
-  <div class="overflow-auto relative rounded-lg border border-gray-200 shadow-md m-5 w-full dark:text-white ">
+  <div class="overflow-auto relative rounded-lg border border-gray-200 shadow-md m-5 w-full ">
     <h1
-      class="mb-4 text-base font-extrabold text-center text-gray-900 dark:text-white md:text-sm lg:text-lg"
+      class="mb-4 text-base font-extrabold text-center text-gray-900 md:text-sm lg:text-lg"
     >
       <span
-        class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400 dark:text-white"
-        >Trip</span >
+        class="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400"
+        >Trip</span
+      >
       List
     </h1>
 
@@ -16,7 +17,7 @@
     >
       <thead class="bg-gray-50">
         <tr>
-          <th scope="col" class="px-2 py-4 font-medium text-gray-900 dark:text-white">Title</th>
+          <th scope="col" class="px-2 py-4 font-medium text-gray-900">Title</th>
           <th scope="col" class="px-2 py-4 font-medium text-gray-900">
             Description
           </th>
@@ -105,7 +106,7 @@
                 *ngIf="!trip.isNextTrip"
                 type="button"
                 (click)="onSetNextTrip(index)"
-                class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-3 py-1 text-center"
+                class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300  font-medium rounded-lg text-sm px-3 py-1 text-center"
               >
                 Set Next Trip
               </button>
@@ -132,7 +133,7 @@
                 *ngIf="!trip.isOngoingTrip"
                 type="button"
                 (click)="onSetOngoingTrip(index)"
-                class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-3 py-1 text-center"
+                class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm px-3 py-1 text-center"
               >
                 Set Ongoing Trip
               </button>

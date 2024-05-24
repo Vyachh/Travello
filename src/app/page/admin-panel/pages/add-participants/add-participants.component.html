@@ -5,14 +5,14 @@
     <div class="grid grid-cols-2 border rounded-2xl w-full">
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-2">
         <p class="text-center font-medium">Choose Trip</p>
-        <div class="pb-4 bg-white dark:bg-gray-900 flex justify-center">
+        <div class="pb-4 bg-white flex justify-center">
           <label for="table-search" class="sr-only">Search</label>
           <div class="relative mt-1">
             <div
               class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
             >
               <svg
-                class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                class="w-4 h-4 text-gray-500"
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -32,16 +32,16 @@
               id="table-search"
               [(ngModel)]="searchTrip"
               (input)="onSearchTripChange()"
-              class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Search for items"
             />
           </div>
         </div>
         <table
-          class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+          class="w-full text-sm text-left text-gray-500 "
         >
           <thead
-            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+            class="text-xs text-gray-700 uppercase bg-gray-50"
           >
             <tr>
               <th scope="col" class="px-6 py-3">Trip title</th>
@@ -53,11 +53,11 @@
           <tbody>
             <tr
               *ngFor="let trip of trips"
-              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              class="bg-white border-b hover:bg-gray-50 "
             >
               <th
                 scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white flex"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowra flex"
               >
                 <img
                   [src]="trip.imageUrl"
@@ -76,13 +76,13 @@
                 <button
                   *ngIf="!trip.isSelected"
                   (click)="selectTrip(trip)"
-                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                  class="font-medium text-blue-600 hover:underline"
                 >
                   Select
                 </button>
                 <p
                   *ngIf="trip.isSelected"
-                  class="font-medium text-black dark:text-white"
+                  class="font-medium text-black "
                 >
                   Selected
                 </p>
@@ -94,14 +94,14 @@
       <!--  first -->
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-2">
         <p class="text-center font-medium">Choose Participant</p>
-        <div class="pb-4 bg-white dark:bg-gray-900 flex justify-center">
+        <div class="pb-4 bg-white flex justify-center">
           <label for="table-search" class="sr-only">Search</label>
           <div class="relative mt-1">
             <div
               class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
             >
               <svg
-                class="w-4 h-4 text-gray-500 dark:text-gray-400"
+                class="w-4 h-4 text-gray-500 "
                 aria-hidden="true"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -119,16 +119,16 @@
             <input
               type="text"
               id="table-search"
-              class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
               placeholder="Search for items"
             />
           </div>
         </div>
         <table
-          class="w-full text-sm text-left text-gray-500 dark:text-gray-400"
+          class="w-full text-sm text-left text-gray-500 "
         >
           <thead
-            class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+            class="text-xs text-gray-700 uppercase bg-gray-50 "
           >
             <tr>
               <th scope="col" class="px-6 py-3">Name</th>
@@ -140,11 +140,11 @@
           <tbody>
             <tr
               *ngFor="let user of userInfos"
-              class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+              class="bg-white border-b hover:bg-gray-50 "
             >
               <th
                 scope="row"
-                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap"
               >
                 <img [src]="user.image" alt="" class="w-10 mr-4" />
                 {{ user.userName }}
@@ -159,14 +159,14 @@
                 <button
                   *ngIf="!user.isSelected"
                   (click)="selectUserTrip(user)"
-                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                  class="font-medium text-blue-600  hover:underline"
                 >
                   Select
                 </button>
                 <button
                   *ngIf="user.isSelected"
                   (click)="selectUserTrip(user)"
-                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                  class="font-medium text-blue-600  hover:underline"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -187,7 +187,7 @@
           <button
             type="button"
             (click)="addUsersToTrip()"
-            class="text-white px-3 mt-3 bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm py-1 text-center"
+            class="text-white px-3 mt-3 bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm py-1 text-center"
           >
             Add
           </button>
@@ -197,9 +197,9 @@
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-2">
       <p class="text-center font-medium">Choosed Participants</p>
-      <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <table class="w-full text-sm text-left text-gray-500 ">
         <thead
-          class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
+          class="text-xs text-gray-700 uppercase bg-gray-50 "
         >
           <tr>
             <th scope="col" class="px-6 py-3">Name</th>
@@ -211,11 +211,11 @@
         <tbody>
           <tr
             *ngFor="let user of usersInTrip"
-            class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
+            class="bg-white border-b hover:bg-gray-50 "
           >
             <th
               scope="row"
-              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+              class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap "
             >
               <img [src]="user.image" alt="" class="w-10 mr-4" />
               {{ user.userName }}
@@ -230,14 +230,14 @@
               <button
                 *ngIf="!user.isSelected"
                 (click)="selectUserTrip(user)"
-                class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                class="font-medium text-blue-600 hover:underline"
               >
                 Select
               </button>
               <button
                 *ngIf="user.isSelected"
                 (click)="selectUserTrip(user)"
-                class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                class="font-medium text-blue-600 hover:underline"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

@@ -1,18 +1,21 @@
-.container{
+.container {
     position: absolute;
     bottom: 0;
-justify-content: space-between;
-width: 100%;
-display: flex;
+    justify-content: space-between;
+    width: 100%;
+    display: flex;
 }
-.title{
-    font-weight:bold;
+
+.title {
+    font-weight: bold;
     font-size: 28px;
     padding-bottom: 20px;
 }
-.block{
+
+.block {
     max-width: 144px;
 }
-a{
+
+a {
     font-size: 20px;
 }

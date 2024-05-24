@@ -6,3 +6,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 @tailwind components;
 @tailwind utilities;
 @import 'ngx-toastr/toastr';
+

@@ -7,16 +7,16 @@
     />
   </div>
   <div class="w-2/3 pl-8">
-    <h2 class="text-2xl font-semibold text-gray-800 dark:text-white">
+    <h2 class="text-2xl font-semibold text-gray-800 ">
       {{ trip.title }}
     </h2>
-    <p class="mt-2 text-gray-600 dark:text-gray-400">{{ trip.description }}</p>
+    <p class="mt-2 text-gray-600 ">{{ trip.description }}</p>
     <div class="mt-4 flex items-center justify-between">
       <div class="flex items-center space-x-4">
-        <span class="text-gray-700 dark:text-gray-300"
+        <span class="text-gray-700 "
           >Author: {{ trip.author }}</span
         >
-        <span class="text-gray-700 dark:text-gray-300"
+        <span class="text-gray-700 "
           >Price: ${{ trip.price }}</span
         >
       </div>
@@ -25,7 +25,7 @@
       >
     </div>
     <div class="mt-4">
-      <p class="text-gray-600 dark:text-gray-400">
+      <p class="text-gray-600 ">
         Date: {{ trip.dateFrom | date }} - {{ trip.dateTo | date}}
       </p>
     </div>
@@ -34,7 +34,7 @@
       <button
         type="button"
         (click)="onEdit()"
-        class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 dark:focus:ring-teal-800 font-medium rounded-lg text-sm px-3 py-1 text-center"
+        class="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300  font-medium rounded-lg text-sm px-3 py-1 text-center"
       >
         Edit
       </button>
