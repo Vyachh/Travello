@@ -45,10 +45,19 @@ API.FileProcessing/
 *.vsidx
 *.torrent
 *.rar
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 TravelloApi/TravelloApi/bin/
 TravelloApi/TravelloApi/obj/
 TravelloApi/TravelloApi.Test/bin/
 TravelloApi/TravelloApi.Test/obj/
 TravelloApi/.vs/
 TravelloApi/TravelloApi/wwwroot/
+<<<<<<< Updated upstream
+=======
+NbtRouteCoordinationDepartmentException_OverLimitDemand_Dcm_Data
+>>>>>>> Stashed changes
+/TravelloApi/TravelloApi/bin
+/TravelloApi/TravelloApi/obj
