@@ -419,7 +419,6 @@ namespace TravelloApi.Controllers
       var result = new JwtSecurityTokenHandler().WriteToken(token);
 
       return result;
-
     }
 
     /// <summary>

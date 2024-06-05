@@ -3,53 +3,38 @@
   <div class="rounded-xl border w-full mx-5 px-5 py-5">
     <div class="flex items-center mb-4">
       <div class="relative">
-        <div
-          class="relative z-0 rounded-full bg-no-repeat bg-cover"
-          *ngIf="userInfo"
-          [style.background-image]="'url(' + userInfo.image + ')'"
-          style="width: 96px; height: 96px"
-        >
-          <label
-            for="fileInput"
-            class="absolute rounded-full flex opacity-0 v items-center w-full h-full justify-center hover:opacity-50 transition-opacity bg-gray-400 cursor-pointer"
-          >
+        <div class="relative z-0 rounded-full bg-no-repeat bg-cover" *ngIf="userInfo"
+          [style.background-image]="'url(' + userInfo.image + ')'" style="width: 96px; height: 96px">
+          <label for="fileInput"
+            class="absolute rounded-full flex opacity-0 v items-center w-full h-full justify-center hover:opacity-50 transition-opacity bg-gray-400 cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-              <path
-                fill="currentColor"
-                d="M12 18a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-2a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm-6-6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"
-              ></path>
-              <path
-                fill="currentColor"
-                d="M7.871 2.89A2 2 0 0 1 9.535 2h4.93a2 2 0 0 1 1.664.89L17.535 5H19a4 4 0 0 1 4 4v9a4 4 0 0 1-4 4H5a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h1.465L7.87 2.89ZM21 9a2 2 0 0 0-2-2h-2a1 1 0 0 1-.832-.445L14.465 4h-4.93L7.832 6.555A1 1 0 0 1 7 7H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9Z"
-              ></path>
+              <path fill="currentColor"
+                d="M12 18a5 5 0 1 0 0-10 5 5 0 0 0 0 10Zm0-2a3 3 0 1 1 0-6 3 3 0 0 1 0 6Zm-6-6a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z">
+              </path>
+              <path fill="currentColor"
+                d="M7.871 2.89A2 2 0 0 1 9.535 2h4.93a2 2 0 0 1 1.664.89L17.535 5H19a4 4 0 0 1 4 4v9a4 4 0 0 1-4 4H5a4 4 0 0 1-4-4V9a4 4 0 0 1 4-4h1.465L7.87 2.89ZM21 9a2 2 0 0 0-2-2h-2a1 1 0 0 1-.832-.445L14.465 4h-4.93L7.832 6.555A1 1 0 0 1 7 7H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V9Z">
+              </path>
             </svg>
-            <input
-              accept=".jpg, .jpeg, .png"
-              class="z-10"
-              id="fileInput"
-              name="Photo"
-              type="file"
-              hidden
-              (change)="onUploadPhoto($event)"
-            />
+            <input accept=".jpg, .jpeg, .png" class="z-10" id="fileInput" name="Photo" type="file" hidden
+              (change)="onUploadPhoto($event)" />
           </label>
         </div>
       </div>
 
       <div class="ml-4">
-        <h1 class="text-2xl font-bold">User Name:</h1>
+        <h1 class="text-2xl font-bold">Имя пользователя</h1>
         <p>{{ userInfo.userName }}</p>
       </div>
     </div>
 
     <div class="mb-6 flex">
       <div class="">
-        <h2 class="text-lg font-bold">Birthday:</h2>
+        <h2 class="text-lg font-bold">День рождения:</h2>
         <p>{{ userInfo.birthdate }}</p>
       </div>
       <span class="border-l mx-3"></span>
       <div class="">
-        <h2 class="text-lg font-bold">Role:</h2>
+        <h2 class="text-lg font-bold">Роль:</h2>
         <p>{{ userInfo.role }}</p>
       </div>
     </div>
@@ -59,43 +44,36 @@
     </div>
   </div>
   <div class="border rounded-xl w-full mx-5 px-5 py-5" *ngIf="trip">
-    <h1 class="text-2xl font-bold mb-6">Trip Info:</h1>
+    <h1 class="text-2xl font-bold mb-6">Информация о поездках пользователя</h1>
     <div class="mb-3">
-      <h2 class="text-lg font-bold mb-3">Current Trip:</h2>
-      <div
-        class="border w-full rounded-xl p-2 flex justify-between"
-        *ngIf="isInTrip"
-      >
+      <h2 class="text-lg font-bold mb-3">Текущая поездка:</h2>
+      <div class="border w-full rounded-xl p-2 flex justify-between" *ngIf="isInTrip">
         <img [src]="trip.imageUrl" class="w-12 h-12 rounded-full" alt="" />
         <span class="border-l mx-3"></span>
         <div class="">
-          <p class="font-medium">Title: {{ trip.title }}</p>
-          <p class="">Desciption: {{ trip.description | truncate : 20 }}</p>
+          <p class="font-medium">Название {{ trip.title }}</p>
+          <p class="">Описание: {{ trip.description | truncate : 20 }}</p>
         </div>
         <span class="border-l mx-3"></span>
         <div class="items-center flex">
-          <p>Price: {{ trip.price | currency }}</p>
+          <p>Цена: {{ trip.price | currency }}</p>
         </div>
         <div class="">
-          <button
-            (click)="navigateToDetails(trip.id)"
-            class="relative inline-flex justify-end w-fit p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300  focus:ring-4 focus:outline-none focus:ring-lime-200 "
-          >
+          <button (click)="navigateToDetails(trip.id)"
+            class="relative inline-flex justify-end w-fit p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300  focus:ring-4 focus:outline-none focus:ring-lime-200 ">
             <span
-              class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white hover:text-white rounded-md group-hover:bg-opacity-0"
-            >
-              Details
+              class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white hover:text-white rounded-md group-hover:bg-opacity-0">
+              Подробнее
             </span>
           </button>
         </div>
       </div>
-      <p *ngIf="!isInTrip" class="text-gray-400">Not in trip</p>
+      <p *ngIf="!isInTrip" class="text-gray-400">Нет текущей поездки/p>
     </div>
   </div>
 </div>
 
 <div class="w-fit m-auto p-5" *ngIf="!accountService.userInfo">
-  <h1 class="text-6xl font-semibold text-center">You need to Log in!</h1>
-
+  <h1 class="text-6xl font-semibold text-center">Вам нужно авторизоваться</h1>
   <app-login></app-login>
 </div>

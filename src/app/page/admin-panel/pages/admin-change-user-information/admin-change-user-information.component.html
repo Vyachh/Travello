@@ -6,19 +6,19 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50  ">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            Name
+                            Имя
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Email
+                            Электронная почта
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Current Trip
+                            Выбранная поездка
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Role
+                            Роль
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Action
+                            Действия
                         </th>
                     </tr>
                 </thead>
@@ -39,7 +39,7 @@
                         </td>
                         <td class="px-6 py-4">
                             <button *ngIf="!user.isSelected" (click)="selectUser(user)"
-                                class="font-medium text-blue-600 hover:underline">Select</button>
+                                class="font-medium text-blue-600 hover:underline">Выбрать</button>
                             <button *ngIf="user.isSelected" (click)="selectUser(user)"
                                 class="font-medium text-blue-600 hover:underline"><svg
                                     xmlns="http://www.w3.org/2000/svg" height="1.5em"
@@ -50,14 +50,14 @@
                             </button>
                         </td>
                     </tr>
-                    <p *ngIf="userInfos.length == 0" class="text-center m-5"> There is no participants.</p>
+                    <p *ngIf="userInfos.length == 0" class="text-center m-5">Пользователи отсутствуют</p>
                 </tbody>
             </table>
         </div>
 
         <div class="p-10 ">
             <div class="max-w-md mx-auto">
-                <label for="select" class="font-semibold block py-2">Select Role:</label>
+                <label for="select" class="font-semibold block py-2">Выбрать роль:</label>
                 <div class="relative">
                     <div class="h-10 bg-white flex border border-gray-200 rounded items-center">
                         <input [value]="role" (click)="showRoleOptions = !showRoleOptions"
@@ -101,18 +101,13 @@
                 class="relative flex justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 focus:ring-4 focus:outline-none focus:ring-lime-200 ">
                 <span
                     class="relative px-5 py-2.5 transition-all ease-in duration-100 bg-white rounded-md group-hover:bg-opacity-0">
-                    Submit
+                    Подтвердить
                 </span>
             </button>
         </div>
     </div>
 
     <div class="m-auto" *ngIf="accountService.userInfo.role != 'Admin'">
-        <p class="text-center text-3xl text-red-500">Access Denied.</p>
-        <p class="text-center">Role needed.</p>
-    </div>
-
-    <div class="m-auto" *ngIf="">
-        <p class="text-center text-3xl text-red-500">Access Denied.</p>
-        <p class="text-center">Role needed.</p>
+        <p class="text-center text-3xl text-red-500">Доступ запрещен</p>
+        <p class="text-center">Недостаточно прав</p>
     </div>
