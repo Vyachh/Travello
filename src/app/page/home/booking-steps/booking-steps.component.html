@@ -1,29 +1,29 @@
 <div class="container">
     <div class="">
-        <p class="font-semibold text-2xl dark:text-white">Easy and Fast</p>
+        <p class="font-semibold text-2xl dark:text-white">Быстро и легко</p>
         <h1 class="title ">
-            Book Your Next Trip <br>
-            In 3 Easy Steps
+            Спланируйте свою следующую поездку <br>
+            В 3 легких шага
         </h1>
         <div class="">
             <div class="flex step">
                 <img src="assets/booking-steps/step1.png" class="mr-7" alt="">
                 <div class="text-black">
-                    <h5 class="font-bold">Choose Destination</h5>
+                    <h5 class="font-bold">Выберите поездку</h5>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, dolor?</p>
                 </div>
             </div>
             <div class="flex step">
                 <img src="assets/booking-steps/step2.png" class="mr-7" alt="">
                 <div class="text-black">
-                    <h5 class="font-bold">Make Payment</h5>
+                    <h5 class="font-bold">Оплатите поездку</h5>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, dolor?</p>
                 </div>
             </div>
             <div class="flex step">
                 <img src="assets/booking-steps/step3.png" class="mr-7" alt="">
                 <div class="text-black">
-                    <h5 class="font-bold">Reach Airport on Selected Date</h5>
+                    <h5 class="font-bold">Будьте в аэропорте в поставленное время</h5>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, dolor?</p>
                 </div>
             </div>
@@ -34,7 +34,7 @@
             <img [src]="nextTrip.imageUrl" class="rounded-3xl min-w-full max-w-lg" alt="">
             <div class="mt-7" *ngIf="nextTrip">
                 <h3 class="font-medium text-2xl">Trip To {{nextTrip.title}}</h3>
-                <p class="text-gray-400 font-medium pt-3">{{nextTrip.dateFrom | day}} {{nextTrip.dateFrom | month}} - {{nextTrip.dateTo | day}} {{nextTrip.dateFrom | month}}  | by {{nextTrip.author}}</p>
+                <p class="text-gray-400 font-medium pt-3">{{nextTrip.dateFrom | day}} {{nextTrip.dateFrom | month}} - {{nextTrip.dateTo | day}} {{nextTrip.dateFrom | month}}  | автор: {{nextTrip.author}}</p>
                 <div class="py-5 px-2">
                     <a href=""><mat-icon
                             class="bg-gray-100 text-gray-500 rounded-full m-2 scale-110 transition-all  hover:text-gray-100 hover:bg-gray-500">terrain</mat-icon></a>
@@ -54,8 +54,7 @@
             <div class="shadow-lg h-fit py-9 px-5 rounded-3xl" >
                 <img src="https://place-hold.it/384x176" class="rounded-3xl min-w-full max-w-sm max-h-44" alt="">
                 <div class="mt-7">
-                    <h3 class="font-medium text-2xl">The next trip has not been choosen.</h3>
-                    <p class="text-gray-400 font-medium pt-3">You must wait for it!</p>
+                    <h3 class="font-medium text-2xl">Следующая поездка не выбрана</h3>
                 </div>
             </div>
         </ng-template>
@@ -65,10 +64,10 @@
                 <img [src]="ongoingTrip.imageUrl" alt="" class="rounded-full w-12 h-12">
             </div>
             <div class="p-3">
-                <p class="status" *ngIf="ongoingTrip">Ongoing</p>
-                <h3 class="font-medium text-2xl">Trip to {{ongoingTrip.title}}</h3>
+                <p class="status" *ngIf="ongoingTrip">Текущая поездка</p>
+                <h3 class="font-medium text-2xl">Поездка в {{ongoingTrip.title}}</h3>
                 <div class="">
-                    <p class="font-medium"><span style="color:#8A79DF">{{percentCompleted}}%</span> completed</p>
+                    <p class="font-medium"><span style="color:#8A79DF">{{percentCompleted}}%</span> завершена</p>
                     <mat-progress-bar class="rounded-2xl" mode="determinate" [value]="percentCompleted"></mat-progress-bar>
                 </div>
             </div>
@@ -76,7 +75,7 @@
 
         <ng-template #OngoingTripNotLoaded>
             <div class="shadow-lg h-fit p-2 mt-4 rounded-3xl" >
-                    <h3 class="font-medium text-gray-400 text-center">The ongoing trip has not been choosen.</h3>
+                    <h3 class="font-medium text-gray-400 text-center">Текущая поездка не была выбрана</h3>
             </div>
         </ng-template>
     </div>

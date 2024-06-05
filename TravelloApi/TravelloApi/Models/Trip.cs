@@ -13,7 +13,6 @@ namespace TravelloApi.Models
     public string Author { get; set; } = string.Empty;
     public int Price { get; set; }
     public string ImageUrl { get; set; }
-
     public bool IsNextTrip { get; set; }
     public bool IsOngoingTrip { get; set; }
     public bool IsApproved { get; set; }

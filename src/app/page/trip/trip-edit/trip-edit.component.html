@@ -1,11 +1,10 @@
 <form action="" [formGroup]="tripForm" (submit)="onSubmit()">
-    <!-- <input type="hidden" formControlName="id"> -->
-    <h2 class="text-lg font-bold my-1">Title:</h2>
-    <input type="text" formControlName="title" placeholder='Title' class="border rounded-xl p-1 w-full mt-1 h-10">
-    <h2 class="text-lg font-bold mt-1">Description:</h2>
-    <textarea type="text" formControlName="description" placeholder='Description'
+    <h2 class="text-lg font-bold my-1">Название:</h2>
+    <input type="text" formControlName="title" placeholder='Название' class="border rounded-xl p-1 w-full mt-1 h-10">
+    <h2 class="text-lg font-bold mt-1">Описание:</h2>
+    <textarea type="text" formControlName="description" placeholder='Описание'
         class="border rounded-xl p-1 w-full mt-1 h-10"></textarea>
-    <h2 class="text-lg font-bold mt-1">Travel Time:</h2>
+    <h2 class="text-lg font-bold mt-1">Сроки поездки:</h2>
     <div class="flex items-center">
         <div class="relative">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -19,7 +18,7 @@
                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5    "
                 placeholder="Select date start">
         </div>
-        <span class="mx-4 text-gray-500">to</span>
+        <span class="mx-4 text-gray-500">до</span>
         <div class="relative">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                 <svg class="w-4 h-4 text-gray-500 " aria-hidden="true"
@@ -34,10 +33,10 @@
         </div>
     </div>
 
-    <h2 class="text-lg font-bold mt-1">Price:</h2>
-    <input type="number" formControlName="price" placeholder='Price' class="border rounded-xl p-1 w-full mt-1 h-10">
+    <h2 class="text-lg font-bold mt-1">Цена:</h2>
+    <input type="number" formControlName="price" placeholder='Цена' class="border rounded-xl p-1 w-full mt-1 h-10">
 
-    <h2 class="text-lg font-bold mt-1">Image:</h2>
+    <h2 class="text-lg font-bold mt-1">Фотография:</h2>
     <label class="block border rounded-xl">
         <input type="file" class="block w-full text-sm text-gray-500
                 file:mr-4 file:py-2 file:px-4
@@ -49,6 +48,6 @@
     <p class="mt-1 text-sm text-gray-500 " id="file_input_help">SVG, PNG, JPG</p>
 
     <button class="bg-green-500 hover:bg-green-600 active:bg-green-700 text-white py-2 w-full mt-[10%] rounded-xl">
-        Submit
+        Подтвердить
     </button>
 </form>

@@ -17,7 +17,7 @@
         </div>
         <div
             class="border  rounded-xl ml-2 bg-amber-300 text-gray-600 font-medium hover:bg-amber-400 active:bg-amber-500">
-            <button class="p-3" (click)="onSubmit()">Find Tickets</button>
+            <button class="p-3" (click)="onSubmit()">Найти билеты</button>
         </div>
 
     </div>
@@ -27,29 +27,29 @@
         <div *ngFor="let flight of flights"
             class="hotel-block mb-4 bg-white shadow-lg rounded-xl p-2 flex justify-around">
             <div class="">
-                <h3 class="text-2xl ">Departure: </h3>
+                <h3 class="text-2xl ">Отправка: </h3>
                 <p class="text-gray-400 font-medium mt-2">{{flight.departure}}</p>
-                <h3 class="text-2xl ">Departure Time: </h3>
+                <h3 class="text-2xl ">Время отправки: </h3>
                 <p class="text-gray-400 font-medium mt-2">{{flight.departureTime}}</p>
             </div>
 
             <span class="border rounded-2xl max-h-xl"></span>
 
             <div class="">
-                <h3 class="text-2xl ">Arrival: </h3>
+                <h3 class="text-2xl ">Прибытие: </h3>
                 <p class="text-gray-400 font-medium mt-2">{{flight.arrival}}</p>
-                <h3 class="text-2xl ">Arrival Time: </h3>
+                <h3 class="text-2xl ">Время прибытия: </h3>
                 <p class="text-gray-400 font-medium mt-2">{{flight.arrivalTime}}</p>
             </div>
 
             <span class="border rounded-2xl max-h-xl"></span>
 
             <div class="justify-between">
-                <h3 class="text-2xl ">Price: </h3>
+                <h3 class="text-2xl ">Цена: </h3>
                 <p class="text-gray-400 font-medium ">{{flight.price}}</p>
                 <button 
                     class="my-2 bg-blue-500 text-white py-2 px-4 rounded-lg text-center font-medium hover:bg-blue-600 transition-colors duration-300">
-                    Show Price
+                    Показать цену
                 </button>
             </div>
         </div>

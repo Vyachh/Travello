@@ -1,10 +1,10 @@
 <div class="">
     <div class="mb-4 w-full flex shadow-lg p-3 rounded-xl">
         <div class="block mx-2">
-            <span class=" text-gray-400 mr-3">Select grade:</span>
+            <span class=" text-gray-400 mr-3">Выбрать оценку поездки:</span>
             <select class="border p-3 bg-slate-200 rounded-xl" [value]="" [(ngModel)]="selectedGrade"
                 (ngModelChange)="filterByGrade($event)">
-                <option value="">All Grades</option>
+                <option value="">Все оценки</option>
                 <option value="5.0">5.0</option>
                 <option value="4.5">4.5</option>
                 <option value="4.0">4.0</option>
@@ -13,15 +13,14 @@
             </select>
         </div>
         <div class="block mx-2">
-            <span class=" text-gray-400 mr-3">Select City:</span>
+            <span class=" text-gray-400 mr-3">Выбрать город:</span>
             <select class="border p-3 bg-slate-200 rounded-xl" [(ngModel)]="selectedCity"
                 (ngModelChange)="filterByCity($event)">
-                <option value="">All Cities</option>
-                <option value="Miami">Miami</option>
-                <option value="Malibu">Malibu</option>
-                <option value="Aspen">Aspen</option>
-                <option value="New York">New York</option>
-                <!-- ... Добавьте остальные города -->
+                <option value="">Все города</option>
+                <option value="Miami">Нижний Новгород</option>
+                <option value="Malibu">Москва</option>
+                <option value="Aspen">Санкт Петербург</option>
+                <option value="New York">Владивосток</option>
             </select>
         </div>
     </div>
@@ -42,7 +41,7 @@
                         {{hotel.city}}
                     </a>
                     <a href="" class="bg-gray-300 text-gray-600 rounded-full p-2 mx-2 hover:bg-gray-400">
-                        Show on map
+                        Показать на карте
                     </a>
                 </div>
             </div>
@@ -53,12 +52,12 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path>
                     </svg>
-                    <p> {{hotel.grade}} Grade</p>
+                    <p> {{hotel.grade}} оценка</p>
                 </div>
                 <div class="mt-10">
                     <a href=""
                         class="mt-4 bg-blue-500 text-white py-2 px-4 rounded-lg text-center font-medium hover:bg-blue-600 transition-colors duration-300">
-                        Show Price
+                        Показать цену
                     </a>
                 </div>
             </div>

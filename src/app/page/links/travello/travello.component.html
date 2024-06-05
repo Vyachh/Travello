@@ -9,7 +9,7 @@
         class="bg-white shadow-lg rounded-xl h-32 p-2 flex flex-col justify-between"
       >
         <h1 class="text-center">
-          The next trip has not been loaded or choosen.
+          Следующая поездка не выбрана
         </h1>
       </div>
     </ng-template>
@@ -25,7 +25,7 @@
           class="bg-white shadow-lg rounded-xl h-32 p-2 flex flex-col justify-between"
         >
           <h1 class="text-center">
-            The ongoingTrip trip has not been loaded or choosen.
+            Текущая поездка не выбрана
           </h1>
         </div>
       </ng-template>
@@ -35,26 +35,22 @@
   <div class="pt-6 pb-12">
     <div id="card" class="">
       <h2 class="text-center font-serif uppercase text-4xl xl:text-5xl">
-        Trip List
+        Список поездок
       </h2>
-      <!-- container for all cards -->
       <div
         class="container w-100 lg:w-4/5 mx-auto flex flex-col"
         *ngIf="tripList && tripList.length > 0"
       >
-        <!-- card -->
         <div
           *ngFor="let trip of tripList"
           class="flex flex-col md:flex-row overflow-hidden bg-white rounded-lg shadow-xl mt-4 w-100 mx-2"
         >
-          <!-- media -->
           <div class="h-64 w-auto md:w-1/2">
             <img
               class="inset-0 h-full w-full object-cover object-center"
               [src]="trip.imageUrl"
             />
           </div>
-          <!-- content -->
           <div
             class="w-full py-4 px-6 text-gray-800 flex flex-col justify-between"
           >
@@ -80,15 +76,13 @@
                 <span
                   class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white hover:text-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
                 >
-                  Details
+                  Подробнее
                 </span>
               </button>
             </div>
           </div>
         </div>
-        <!--/ card-->
       </div>
-      <!--/ flex-->
     </div>
   </div>
 </section>
