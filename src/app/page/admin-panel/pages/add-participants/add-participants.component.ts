@@ -114,11 +114,16 @@ export class AddParticipantsComponent implements OnInit {
   }
 
   addUsersToTrip() {
-    this.accountService.addUsersToTrip(this.selectedUsers).subscribe({
+    var userIds = this.selectedUsers.map(user => user.id);
+    this.accountService.addUsersToTrip(userIds,this.selectedTrip.id).subscribe({
       next: (response) => {
+        console.log(response);
+        
         location.reload();
       },
       error: (error) => {
+        console.log(error);
+        
         this.notifier.error('', `Users not added to trip`);
       },
     });

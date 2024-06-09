@@ -445,7 +445,6 @@ namespace TravelloApi.Test.Controller
       var result = await controller.SetCurrentTrip(userDtos);
 
       // Assert
-      // Проверяем, что возвращается OkResult
       Assert.IsType<OkResult>(result);
     }
 

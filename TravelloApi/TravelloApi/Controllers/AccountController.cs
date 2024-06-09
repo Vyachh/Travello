@@ -275,17 +275,59 @@ namespace TravelloApi.Controllers
     /// </summary>
     /// <param name="userDto">Массив данных о пользователях и их текущих поездках.</param>
     /// <returns>Результат выполнения операции.</returns>
-    [HttpPut("SetCurrentTrip"), Authorize(Roles = "Moderator,Admin")]
-    public async Task<IActionResult> SetCurrentTrip([FromBody] UserInfoDto[] userDto)
+    [HttpPut("SetTrip"), Authorize(Roles = "Moderator, Admin")]
+    public async Task<IActionResult> SetCurrentTrip([FromBody] UserInfoDto[] infoDtos)
     {
+      //var users = new List<User>();
+      //foreach (var id in ids)
+      //{
+      //  users.Add(await userRepository.GetUserById(id));
+      //}
 
-      User user = new();
-      foreach (var item in userDto)
+      //foreach (var user in users)
+      //{
+      //  user.CurrentTripId = tripId;
+      //}
+
+      ////foreach (var item in userDto)
+      ////{
+      ////  user = await userRepository.GetUserByName(item.UserName);
+      ////  user.CurrentTripId = item.CurrentTripId;
+      ////}
+      //if (!userRepository.Update(users))
+      //{
+      //  return BadRequest();
+      //}
+
+      return Ok();
+
+    }
+
+    /// <summary>
+    /// Устанавливает текущую поездку для указанных пользователей.
+    /// </summary>
+    /// <param name="userDto">Массив данных о пользователях и их текущих поездках.</param>
+    /// <returns>Результат выполнения операции.</returns>
+    [HttpPut("SetCurrentTrip"), Authorize(Roles = "Moderator, Admin")]
+    public async Task<IActionResult> SetCurrentTrip([FromBody] Payload payload)
+    {
+      var users = new List<User>();
+      foreach (var id in payload.UserIds)
       {
-        user = await userRepository.GetUserByName(item.UserName);
-        user.CurrentTripId = item.CurrentTripId;
+        users.Add(await userRepository.GetUserById(id));
       }
-      if (!userRepository.Update(user))
+
+      foreach (var user in users)
+      {
+        user.CurrentTripId = payload.TripId;
+      }
+
+      //foreach (var item in userDto)
+      //{
+      //  user = await userRepository.GetUserByName(item.UserName);
+      //  user.CurrentTripId = item.CurrentTripId;
+      //}
+      if (!userRepository.Update(users))
       {
         return BadRequest();
       }

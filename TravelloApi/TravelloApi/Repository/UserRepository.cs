@@ -49,9 +49,6 @@ namespace TravelloApi.Reposity
     {
       return dataContext.User.FirstOrDefault(u => u.Id == id).UserName;
     }
-
-
-
     public bool Save()
     {
       var saved = dataContext.SaveChanges();
@@ -76,6 +73,12 @@ namespace TravelloApi.Reposity
       Count = g.Count(u => u.User != null)
     })
     .ToListAsync();
+    }
+
+    public bool Update(List<User> users)
+    {
+      dataContext.UpdateRange(users);
+      return Save();
     }
   }
 }
