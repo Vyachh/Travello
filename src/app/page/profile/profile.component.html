@@ -56,7 +56,7 @@
         </div>
         <span class="border-l mx-3"></span>
         <div class="items-center flex">
-          <p>Цена: {{ trip.price | currency }}</p>
+          <p>Цена: {{ trip.price | currency:'₽' }}</p>
         </div>
         <div class="">
           <button (click)="navigateToDetails(trip.id)"
