@@ -38,7 +38,7 @@ export class BookingStepsComponent implements AfterViewInit {
         if (ongoingTrip.id === 0) {
           return;
         }
-        if (this.getTodayDate() < ongoingTrip.dateFrom) {
+        if (this.getTodayDate() > ongoingTrip.dateFrom) {
           return;
         }
 
@@ -93,7 +93,7 @@ export class BookingStepsComponent implements AfterViewInit {
       this.daysLeftCalculate(today, dateTo) / (1000 * 60 * 60 * 24);
     const tripLength =
       this.daysLeftCalculate(dateFrom, dateTo) / (1000 * 60 * 60 * 24);
-    const invertedPercentage = Math.round(100 - (daysLeft / tripLength) * 100);
+    const invertedPercentage = Math.round(100 - (tripLength / daysLeft) * 100);
 
     return invertedPercentage;
   }
