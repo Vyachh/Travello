@@ -145,8 +145,8 @@ export class AccountService {
     return this.isLoggedIn;
   }
 
-  addUsersToTrip(userList: IUserInfo[]) {
-    return this.httpClient.put(`${this.baseURL}/SetCurrentTrip`, userList, {
+  addUsersToTrip(userIds: string[], tripId:number) {
+    return this.httpClient.put(`${this.baseURL}/SetCurrentTrip`, {userIds, tripId}, {
       headers: this.headers,
     });
   }
