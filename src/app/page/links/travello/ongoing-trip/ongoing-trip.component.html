@@ -1,8 +1,7 @@
 <div class="relative" *ngIf="ongoingTrip">
   <h2 class="text-4xl font-bold text-center mb-8">
-    Ongoing Trip:
+    Текущая поездка:
   </h2>
-  <!-- <img src="{{ongoingTrip.imageUrl}}" alt="Ongoing Trip Image" class="w-max h-max z-0"> -->
   <div class="">
     <img
       class="inset-0 h-96 w-full object-cover object-center"
@@ -14,7 +13,7 @@
       <div
         class="bg-white shadow-lg rounded-br-md h-32 p-2 flex flex-col justify-between"
       >
-        <h3 class="text-2xl font-bold">Trip To {{ ongoingTrip.title }}</h3>
+        <h3 class="text-2xl font-bold">Поездка в {{ ongoingTrip.title }}</h3>
         <p class="text-gray-400 font-medium mt-2">
           {{ ongoingTrip.dateFrom | day }} {{ ongoingTrip.dateFrom | month }} -
           {{ ongoingTrip.dateTo | day }} {{ ongoingTrip.dateTo | month }} | by
@@ -35,7 +34,7 @@
               d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"
             ></path>
           </svg>
-          <p>{{ ongoingTrip.onGoingCount || 0 }} people going</p>
+          <p>{{ ongoingTrip.onGoingCount || 0 }} человек едет в эту поездку</p>
         </div>
       </div>
     </div>

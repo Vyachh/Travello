@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./top.component.css']
 })
 export class TopComponent {
-  currency = [5.42, 4.2, 15]
+  currency = [35000, 40000, 100000]
 }

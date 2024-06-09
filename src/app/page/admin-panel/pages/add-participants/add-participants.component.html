@@ -6,7 +6,7 @@
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-2">
         <p class="text-center font-medium">Выбрать поездку</p>
         <div class="pb-4 bg-white flex justify-center">
-          <label for="table-search" class="sr-only">Search</label>
+          <label for="table-search" class="sr-only">Искать</label>
           <div class="relative mt-1">
             <div
               class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
@@ -44,10 +44,10 @@
             class="text-xs text-gray-700 uppercase bg-gray-50"
           >
             <tr>
-              <th scope="col" class="px-6 py-3">Trip title</th>
-              <th scope="col" class="px-6 py-3">People Ongoing</th>
-              <th scope="col" class="px-6 py-3">Price</th>
-              <th scope="col" class="px-6 py-3">Action</th>
+              <th scope="col" class="px-6 py-3">Название поездки</th>
+              <th scope="col" class="px-6 py-3">Количество участников</th>
+              <th scope="col" class="px-6 py-3">Цена</th>
+              <th scope="col" class="px-6 py-3">Действия</th>
             </tr>
           </thead>
           <tbody>
@@ -78,24 +78,23 @@
                   (click)="selectTrip(trip)"
                   class="font-medium text-blue-600 hover:underline"
                 >
-                  Select
+                  Выбрать
                 </button>
                 <p
                   *ngIf="trip.isSelected"
                   class="font-medium text-black "
                 >
-                  Selected
+                  Выбрано
                 </p>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <!--  first -->
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-2">
-        <p class="text-center font-medium">Choose Participant</p>
+        <p class="text-center font-medium">Выбрать участника</p>
         <div class="pb-4 bg-white flex justify-center">
-          <label for="table-search" class="sr-only">Search</label>
+          <label for="table-search" class="sr-only">Искать</label>
           <div class="relative mt-1">
             <div
               class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
@@ -120,7 +119,7 @@
               type="text"
               id="table-search"
               class="block p-2 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-              placeholder="Search for items"
+              placeholder="Искать участника"
             />
           </div>
         </div>
@@ -131,10 +130,10 @@
             class="text-xs text-gray-700 uppercase bg-gray-50 "
           >
             <tr>
-              <th scope="col" class="px-6 py-3">Name</th>
-              <th scope="col" class="px-6 py-3">Email</th>
-              <th scope="col" class="px-6 py-3">Current Trip</th>
-              <th scope="col" class="px-6 py-3">Action</th>
+              <th scope="col" class="px-6 py-3">Имя</th>
+              <th scope="col" class="px-6 py-3">Электронная почта</th>
+              <th scope="col" class="px-6 py-3">Выбранная поездка</th>
+              <th scope="col" class="px-6 py-3">Действие</th>
             </tr>
           </thead>
           <tbody>
@@ -161,7 +160,7 @@
                   (click)="selectUserTrip(user)"
                   class="font-medium text-blue-600  hover:underline"
                 >
-                  Select
+                  Выбрать
                 </button>
                 <button
                   *ngIf="user.isSelected"
@@ -173,7 +172,6 @@
                     height="2em"
                     viewBox="0 0 448 512"
                   >
-                    <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
                     <path
                       d="M170.5 51.6L151.5 80h145l-19-28.4c-1.5-2.2-4-3.6-6.7-3.6H177.1c-2.7 0-5.2 1.3-6.7 3.6zm147-26.6L354.2 80H368h48 8c13.3 0 24 10.7 24 24s-10.7 24-24 24h-8V432c0 44.2-35.8 80-80 80H112c-44.2 0-80-35.8-80-80V128H24c-13.3 0-24-10.7-24-24S10.7 80 24 80h8H80 93.8l36.7-55.1C140.9 9.4 158.4 0 177.1 0h93.7c18.7 0 36.2 9.4 46.6 24.9zM80 128V432c0 17.7 14.3 32 32 32H336c17.7 0 32-14.3 32-32V128H80zm80 64V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16zm80 0V400c0 8.8-7.2 16-16 16s-16-7.2-16-16V192c0-8.8 7.2-16 16-16s16 7.2 16 16z"
                     />
@@ -189,23 +187,22 @@
             (click)="addUsersToTrip()"
             class="text-white px-3 mt-3 bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-teal-300 font-medium rounded-lg text-sm py-1 text-center"
           >
-            Add
+            Добавить
           </button>
         </div>
       </div>
-      <!-- second -->
     </div>
     <div class="relative overflow-x-auto shadow-md sm:rounded-lg m-2">
-      <p class="text-center font-medium">Choosed Participants</p>
+      <p class="text-center font-medium">Выбранные участники</p>
       <table class="w-full text-sm text-left text-gray-500 ">
         <thead
           class="text-xs text-gray-700 uppercase bg-gray-50 "
         >
           <tr>
-            <th scope="col" class="px-6 py-3">Name</th>
-            <th scope="col" class="px-6 py-3">Email</th>
-            <th scope="col" class="px-6 py-3">Current Trip</th>
-            <th scope="col" class="px-6 py-3">Action</th>
+            <th scope="col" class="px-6 py-3">Имя</th>
+            <th scope="col" class="px-6 py-3">Электронная почта</th>
+            <th scope="col" class="px-6 py-3">Выбранная поездка</th>
+            <th scope="col" class="px-6 py-3">Действие</th>
           </tr>
         </thead>
         <tbody>
@@ -232,7 +229,7 @@
                 (click)="selectUserTrip(user)"
                 class="font-medium text-blue-600 hover:underline"
               >
-                Select
+                Выбрать
               </button>
               <button
                 *ngIf="user.isSelected"
@@ -254,7 +251,7 @@
           </tr>
 
           <p *ngIf="usersInTrip.length == 0" class="text-center m-5">
-            There is no participants.
+            В данной поездке нет участников.
           </p>
         </tbody>
       </table>
@@ -264,6 +261,6 @@
 </div>
 
 <div class="m-auto" *ngIf="accountService.userInfo.role != 'Admin'">
-  <p class="text-center text-3xl text-red-500">Access Denied.</p>
-  <p class="text-center">Role needed.</p>
+  <p class="text-center text-3xl text-red-500">Доступ запрещен</p>
+  <p class="text-center">Недостаточно прав</p>
 </div>
