@@ -11,6 +11,7 @@ namespace TravelloApi.Interfaces
     Task<List<TripCount>> GetOngoingPeopleCount();
     bool Add(User user);
     bool Update(User user);
+    bool Update(List<User> users);
     bool Delete(string id);
     bool Save();
   }
