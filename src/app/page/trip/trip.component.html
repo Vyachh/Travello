@@ -17,7 +17,7 @@
           >Author: {{ trip.author }}</span
         >
         <span class="text-gray-700 "
-          >Price: ${{ trip.price }}</span
+          >Price: {{ trip.price | currency:'₽'}}</span
         >
       </div>
       <span class="text-green-500"
